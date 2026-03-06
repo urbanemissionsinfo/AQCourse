@@ -316,7 +316,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notebooks/01_Calculating_AQI.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Calculating Air Quality Index (AQI)</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notebooks/Calculating_AQI.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Calculating Air Quality Index (AQI)</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -371,7 +371,7 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../notebooks/01_Calculating_AQI.html" class="sidebar-item-text sidebar-link active">
+  <a href="../notebooks/Calculating_AQI.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Calculating Air Quality Index (AQI)</span></span></a>
   </div>
 </li>
@@ -418,7 +418,7 @@ window.Quarto = {
 <p>It unifies all the complicated (a) science of pollution composition, (b) exposure rate based health severity, (c) ambient standards, and (d) measurement and standard protocols, into simple color coded alerts of good or bad or severe air pollution categories.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="01_Calculating_AQI_files/figure-html/10225c95-5cb0-4354-9ae0-596b63a10f77-1-ec967657-2a1b-4623-8c96-ecc75ff1ce07.png" class="img-fluid figure-img"></p>
+<p><img src="Calculating_AQI_files/figure-html/10225c95-5cb0-4354-9ae0-596b63a10f77-1-ec967657-2a1b-4623-8c96-ecc75ff1ce07.png" class="img-fluid figure-img"></p>
 <figcaption>aqi.png</figcaption>
 </figure>
 </div>
@@ -434,7 +434,7 @@ window.Quarto = {
 <p>The sub-index is also a unit less number. The Central Pollution Pollution Board (CPCB) in India mapped pollutant concentration breakpoints to certain air quality categories as follows:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="01_Calculating_AQI_files/figure-html/c79770f2-e9aa-454e-b0db-040b7381f5ee-1-c23d67e9-fc1b-4235-963a-2bec1803ac2e.png" class="img-fluid figure-img"></p>
+<p><img src="Calculating_AQI_files/figure-html/c79770f2-e9aa-454e-b0db-040b7381f5ee-1-c23d67e9-fc1b-4235-963a-2bec1803ac2e.png" class="img-fluid figure-img"></p>
 <figcaption>aqi_breaks_india.png</figcaption>
 </figure>
 </div>
@@ -763,7 +763,7 @@ so2       [ppb]
 Name: unit, dtype: object</code></pre>
 </div>
 </div>
-<p>We’ll take help of the following table to convert all pollutant concentrations to µg/m3 <img src="01_Calculating_AQI_files/figure-html/622e228c-fbd2-46b0-93e6-7e99a4edfcef-1-a80daa33-379b-473f-8821-b80fabf95a58.webp" class="img-fluid" alt="Conversion-factors-for-standard-conditions.webp"></p>
+<p>We’ll take help of the following table to convert all pollutant concentrations to µg/m3 <img src="Calculating_AQI_files/figure-html/622e228c-fbd2-46b0-93e6-7e99a4edfcef-1-a80daa33-379b-473f-8821-b80fabf95a58.webp" class="img-fluid" alt="Conversion-factors-for-standard-conditions.webp"></p>
 <div id="5e72be9c-2881-48b3-9e6d-b03572c572cb" class="cell" data-execution_count="59">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>pollutant_conc_24h_pivoted <span class="op">=</span> pollutant_conc_24h.pivot_table(<span class="st">'value'</span>,<span class="st">'datetimeLocal'</span>,<span class="st">'parameter'</span>)</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>pollutant_conc_24h_pivoted[<span class="st">'so2'</span>] <span class="op">=</span> pollutant_conc_24h_pivoted[<span class="st">'so2'</span>]<span class="op">*</span><span class="fl">2.66</span></span>
@@ -1057,7 +1057,7 @@ dtype: float64</code></pre>
 <p>The <a href="https://cpcb.nic.in/displaypdf.php?id=RG93bmxvYWRzL0FRSV9CdWxsZXRpbl8yMDI2MDMwMi5wZGY=">official AQI Bulletin of March 2nd</a> reported that the <code>Puducherry's AQI is 101</code>, with <code>PM2.5</code> as prominent pollutant. The minor discrepancy could be because of any data gaps. Since Puducherry has only one monitor, it’s AQI value is reported as city average.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="01_Calculating_AQI_files/figure-html/693b5dbe-a47d-422e-bb7d-bcd16e26ee37-1-ba187f2a-cb1c-433f-a316-f38696c91bc1.png" class="img-fluid figure-img"></p>
+<p><img src="Calculating_AQI_files/figure-html/693b5dbe-a47d-422e-bb7d-bcd16e26ee37-1-ba187f2a-cb1c-433f-a316-f38696c91bc1.png" class="img-fluid figure-img"></p>
 <figcaption>Air-Quality-Index-AQI.png</figcaption>
 </figure>
 </div>
