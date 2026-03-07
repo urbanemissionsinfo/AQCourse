@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Air Quality Course",
     "section": "",
-    "text": "1 Introduction\nCourse on Air Quality Analysis and Management\n\nCalculating Air Quality Index (AQI)",
+    "text": "1 Introduction\nCourse on Air Quality Analysis and Management\n\nCalculating Air Quality Index (AQI)\nPlotting AQI of a City",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Air Quality Course</span>"
     ]
@@ -47,6 +47,46 @@
     "text": "2.3 Summary\nWe thus learnt how to calculate AQI at a station using the 24 hour average concentrations of each pollutant. CPCB calculates AQI at every station at 4PM and publishes the average AQI of all stations in a city in its AQI Bulletins. UrbanEmissions cleaned this AQI Bulletins data from 2015-2026. You can check it out here: AQI Bulletins Visualisation\nThe real-time AQI that we see on portals like CPCB - NAQI perform the same operation for every station, every hour.",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Calculating Air Quality Index (AQI)</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/Plotting_AQI_of_a_City.html",
+    "href": "notebooks/Plotting_AQI_of_a_City.html",
+    "title": "3  Plotting AQI of a City",
+    "section": "",
+    "text": "3.1 Accessing real-time AQI data\nIn the previous tutorial, we learnt how to calculate AQI at a single monitor at a given time. In this tutorial, we’ll learn to plot AQIs of a city and also learn how city average AQIs are calculated. These averages are reported by news papers and also in AQI Bulletins.\nThe Central Pollution Control Board (CPCB) publishes AQI at every monitoring station every hour. This data can be downloaded at the NAQI portal. We’ll now work with AQI data from each station in Delhi reported at 4PM on 7th March.\nimport pandas as pd\naqi_stations = pd.read_csv('data/AQI_all_station2026_03_07T16_00_00Z.csv') #Data downloaded and cleaned from NAQI portal\naqi_stations['City'] = aqi_stations.City.ffill() # Filling Null values in City column\naqi_stations_delhi = aqi_stations[aqi_stations['City']=='Delhi'].reset_index(drop='True')\naqi_stations_delhi.head()\n\n\n\n\n\n\n\n\nS.No.\nState\nCity\nStation Name\nCurrent AQI value\n\n\n\n\n0\n76\nDelhi\nDelhi\nAlipur, Delhi - DPCC\n256\n\n\n1\n77\nDelhi\nDelhi\nAnand Vihar, Delhi - DPCC\n275\n\n\n2\n78\nDelhi\nDelhi\nAshok Vihar, Delhi - DPCC\n261\n\n\n3\n79\nDelhi\nDelhi\nAya Nagar, Delhi - IMD\n200\n\n\n4\n80\nDelhi\nDelhi\nBawana, Delhi - DPCC\n262\nvalid_aqis = pd.to_numeric(aqi_stations_delhi['Current AQI value'], errors='coerce')\nnum_monitors = valid_aqis.dropna().shape[0]\ntotal_monitors = aqi_stations_delhi.shape[0]\n\nprint(f'Total number of monitors: {total_monitors} \\n Number of monitors with AQI data: {num_monitors}')\n\nTotal number of monitors: 46 \n Number of monitors with AQI data: 45\nWe have AQI data from 45 stations at 4PM on March 7th. The average of these 45 AQIs is reported at city average AQI.\nmean_aqi = round(valid_aqis.mean())\n\nprint(f'The average AQI in Delhi on March 7th 4PM is: {mean_aqi} \\n It is calculated using AQIs from {num_monitors}/{total_monitors} monitors')\n\nThe average AQI in Delhi on March 7th 4PM is: 246 \n It is calculated using AQIs from 45/46 monitors\nThis is precisely the AQI reported by CPCB on AQI Bulletin on March 7th\nHowever, there is an important nuance that goes missing in the average AQI of a city. A monitoring station gives information of air quality for an area of ~10 sq.km.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Plotting AQI of a City</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/Plotting_AQI_of_a_City.html#accessing-real-time-aqi-data",
+    "href": "notebooks/Plotting_AQI_of_a_City.html#accessing-real-time-aqi-data",
+    "title": "3  Plotting AQI of a City",
+    "section": "",
+    "text": "2026march7_4pm_bulletin_delhi.png",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Plotting AQI of a City</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/Plotting_AQI_of_a_City.html#plotting-aqi-at-each-station-on-a-map",
+    "href": "notebooks/Plotting_AQI_of_a_City.html#plotting-aqi-at-each-station-on-a-map",
+    "title": "3  Plotting AQI of a City",
+    "section": "3.2 Plotting AQI at each station on a map",
+    "text": "3.2 Plotting AQI at each station on a map\nWe shall thus plot the AQI at each station on a map, to find out how representative the monitoring network is.\n\n\nShow hidden code that downloads lat-lons of CPCB air quality stations in Delhi\napi_key = \"\" #Generate API key from data.gov.in portal.\nstate = 'Delhi'\nurl = f\"https://api.data.gov.in/resource/3b01bcb8-0b14-4abf-b6f2-c1bfd384ba69?api-key={api_key}&format=csv&filters[state]={state}&limit=500\"\ndf = pd.read_csv(url)\n\ndf[['station','latitude','longitude']].drop_duplicates().reset_index(drop=True).to_csv('data/delhi_stations_locations.csv',index=False)\n\n\n\ndelhi_stations_locations = pd.read_csv('data/delhi_stations_locations.csv')\ndelhi_stations_locations.head()\n\n\n\n\n\n\n\n\nstation\nlatitude\nlongitude\n\n\n\n\n0\nAlipur, Delhi - DPCC\n28.815329\n77.153010\n\n\n1\nAshok Vihar, Delhi - DPCC\n28.695381\n77.181665\n\n\n2\nAya Nagar, Delhi - IMD\n28.470691\n77.109936\n\n\n3\nBawana, Delhi - DPCC\n28.776200\n77.051074\n\n\n4\nChandni Chowk, Delhi - IITM\n28.656756\n77.227234\n\n\n\n\n\n\n\n\n#Merge Station locations dataframe with station AQI dataframe\naqi_stations_delhi_locations = aqi_stations_delhi.merge(delhi_stations_locations, left_on='Station Name', right_on='station')\naqi_stations_delhi_locations.head()\n\n\n\n\n\n\n\n\nS.No.\nState\nCity\nStation Name\nCurrent AQI value\nstation\nlatitude\nlongitude\n\n\n\n\n0\n76\nDelhi\nDelhi\nAlipur, Delhi - DPCC\n256\nAlipur, Delhi - DPCC\n28.815329\n77.153010\n\n\n1\n77\nDelhi\nDelhi\nAnand Vihar, Delhi - DPCC\n275\nAnand Vihar, Delhi - DPCC\n28.647622\n77.315809\n\n\n2\n78\nDelhi\nDelhi\nAshok Vihar, Delhi - DPCC\n261\nAshok Vihar, Delhi - DPCC\n28.695381\n77.181665\n\n\n3\n79\nDelhi\nDelhi\nAya Nagar, Delhi - IMD\n200\nAya Nagar, Delhi - IMD\n28.470691\n77.109936\n\n\n4\n80\nDelhi\nDelhi\nBawana, Delhi - DPCC\n262\nBawana, Delhi - DPCC\n28.776200\n77.051074\n\n\n\n\n\n\n\n\n# Convert this latitudes and longitudes into GeoDataFrame using geopandas\nimport geopandas as gpd\naqi_stations_delhi_gdf = gpd.GeoDataFrame(\n    aqi_stations_delhi_locations,\n    geometry=gpd.points_from_xy(aqi_stations_delhi_locations.longitude, aqi_stations_delhi_locations.latitude),\n    crs=\"EPSG:4326\"\n)\naqi_stations_delhi_gdf.head()\n\n\n\n\n\n\n\n\nS.No.\nState\nCity\nStation Name\nCurrent AQI value\nstation\nlatitude\nlongitude\ngeometry\n\n\n\n\n0\n76\nDelhi\nDelhi\nAlipur, Delhi - DPCC\n256\nAlipur, Delhi - DPCC\n28.815329\n77.153010\nPOINT (77.15301 28.81533)\n\n\n1\n77\nDelhi\nDelhi\nAnand Vihar, Delhi - DPCC\n275\nAnand Vihar, Delhi - DPCC\n28.647622\n77.315809\nPOINT (77.31581 28.64762)\n\n\n2\n78\nDelhi\nDelhi\nAshok Vihar, Delhi - DPCC\n261\nAshok Vihar, Delhi - DPCC\n28.695381\n77.181665\nPOINT (77.18166 28.69538)\n\n\n3\n79\nDelhi\nDelhi\nAya Nagar, Delhi - IMD\n200\nAya Nagar, Delhi - IMD\n28.470691\n77.109936\nPOINT (77.10994 28.47069)\n\n\n4\n80\nDelhi\nDelhi\nBawana, Delhi - DPCC\n262\nBawana, Delhi - DPCC\n28.776200\n77.051074\nPOINT (77.05107 28.7762)\n\n\n\n\n\n\n\n\ndef aqi_color(aqi):\n    \n    if aqi &lt;= 50:\n        return \"#274e13ff\"\n    elif aqi &lt;= 100:\n        return \"#93c47dff\"\n    elif aqi &lt;= 200:\n        return \"#f2f542\"\n    elif aqi &lt;= 300:\n        return \"#f59042\"\n    elif aqi &lt;= 400:\n        return \"#ff0000\"\n    else:\n        return \"#753b3b\"\n\n\n#Assign colors to each AQI station based on the AQI value\naqi_stations_delhi_gdf[\"Current AQI value\"] = pd.to_numeric(aqi_stations_delhi_gdf['Current AQI value'], errors='coerce')\naqi_stations_delhi_gdf[\"color\"] = aqi_stations_delhi_gdf[\"Current AQI value\"].apply(aqi_color)\n\n\ndelhi_districts = gpd.read_file('data/DELHI_DISTRICTS.geojson')\n\nWe’ll create a buffer of radius 2km around each station on the map. For which we’ll first convert the co-ordinate system from degrees to metres.\n\naqi_stations_delhi_gdf = aqi_stations_delhi_gdf.to_crs(epsg=3857)\naqi_stations_delhi_gdf[\"geometry\"] = aqi_stations_delhi_gdf.buffer(2000)\n\ndelhi_districts = delhi_districts.to_crs(epsg=3857)\n\n\nimport matplotlib.pyplot as plt\nimport matplotlib.patches as mpatches\n\nfig, ax = plt.subplots(figsize=(8,8))\n\n# Plot admin background\ndelhi_districts.plot(ax=ax, color=\"white\", edgecolor=\"black\", linewidth=0.5)\n\n# Plot AQI circles\naqi_stations_delhi_gdf.plot(\n    ax=ax,\n    color=aqi_stations_delhi_gdf[\"color\"],\n    edgecolor=\"black\",\n    alpha=0.8\n)\n\nax.set_title(\"Delhi - AQI Monitoring Stations\", fontsize=16)\n\nax.axis(\"off\")\n\nlegend_items = [\n    mpatches.Patch(color=\"#274e13ff\", label=\"Good (0-50)\"),\n    mpatches.Patch(color=\"#93c47dff\", label=\"Satisfactory (51-100)\"),\n    mpatches.Patch(color=\"#f2f542\", label=\"Moderate (101-200)\"),\n    mpatches.Patch(color=\"#f59042\", label=\"Poor (201-300)\"),\n    mpatches.Patch(color=\"#ff0000\", label=\"Very Poor (301-400)\"),\n    mpatches.Patch(color=\"#753b3b\", label=\"Severe (401-500)\")\n]\n\nax.legend(handles=legend_items, loc=\"lower left\")\n\nax.text(\n    0.02, 0.95,\n    f\"Average AQI: {mean_aqi:.0f}\",\n    transform=ax.transAxes,\n    fontsize=13,\n    fontweight=\"bold\",\n    bbox=dict(facecolor=\"white\", edgecolor=\"black\", alpha=0.8)\n)\n\nplt.show()\n\n\n\n\n\n\n\n\nThus we can see that large parts of Delhi are under-represented by the monitoring network. This fact is crucial while reporting city average AQIs. Other cities have even smaller networks and thus are even less spatially represented.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Plotting AQI of a City</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/Plotting_AQI_of_a_City.html#summary",
+    "href": "notebooks/Plotting_AQI_of_a_City.html#summary",
+    "title": "3  Plotting AQI of a City",
+    "section": "3.3 Summary",
+    "text": "3.3 Summary\nWe thus learnt how to calculate the city average AQI and to plot AQIs from multiple stations in a city on a map. We learnt that a monitor represents only an area of 10 sq.km and thus a city’s monitoring network could spatially under-represent a city.\nFor further reading, please refer our primer on air quality monitoring",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Plotting AQI of a City</span>"
     ]
   }
 ]

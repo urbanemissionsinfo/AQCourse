@@ -2,10 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://urbanemissionsinfo.github.io/AQCourse/index.html</loc>
-    <lastmod>2026-03-06T23:03:32.281Z</lastmod>
+    <lastmod>2026-03-07T12:39:12.345Z</lastmod>
   </url>
   <url>
     <loc>https://urbanemissionsinfo.github.io/AQCourse/notebooks/Calculating_AQI.html</loc>
-    <lastmod>2026-03-06T23:03:37.917Z</lastmod>
+    <lastmod>2026-03-07T12:41:32.748Z</lastmod>
+  </url>
+  <url>
+    <loc>https://urbanemissionsinfo.github.io/AQCourse/notebooks/Plotting_AQI_of_a_City.html</loc>
+    <lastmod>2026-03-07T12:43:04.349Z</lastmod>
   </url>
 </urlset>
