@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>3&nbsp; Plotting AQI of a City – Air Quality Course</title>
+<title>2&nbsp; Plotting AQI of a City – Air Quality Course</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -287,7 +287,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notebooks/Plotting_AQI_of_a_City.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Plotting AQI of a City</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notebooks/Plotting_AQI_of_a_City.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Plotting AQI of a City</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -337,19 +337,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Air Quality Course</span></span></a>
+ <span class="menu-text">Introduction</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../notebooks/Calculating_AQI.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Calculating Air Quality Index (AQI)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Calculating Air Quality Index (AQI)</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../notebooks/Plotting_AQI_of_a_City.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Plotting AQI of a City</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Plotting AQI of a City</span></span></a>
   </div>
 </li>
     </ul>
@@ -362,9 +362,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#accessing-real-time-aqi-data" id="toc-accessing-real-time-aqi-data" class="nav-link active" data-scroll-target="#accessing-real-time-aqi-data"><span class="header-section-number">3.1</span> Accessing real-time AQI data</a></li>
-  <li><a href="#plotting-aqi-at-each-station-on-a-map" id="toc-plotting-aqi-at-each-station-on-a-map" class="nav-link" data-scroll-target="#plotting-aqi-at-each-station-on-a-map"><span class="header-section-number">3.2</span> Plotting AQI at each station on a map</a></li>
-  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">3.3</span> Summary</a></li>
+  <li><a href="#accessing-real-time-aqi-data" id="toc-accessing-real-time-aqi-data" class="nav-link active" data-scroll-target="#accessing-real-time-aqi-data"><span class="header-section-number">2.1</span> Accessing real-time AQI data</a></li>
+  <li><a href="#plotting-aqi-at-each-station-on-a-map" id="toc-plotting-aqi-at-each-station-on-a-map" class="nav-link" data-scroll-target="#plotting-aqi-at-each-station-on-a-map"><span class="header-section-number">2.2</span> Plotting AQI at each station on a map</a></li>
+  <li><a href="#how-to-calculate-city-average-aqi" id="toc-how-to-calculate-city-average-aqi" class="nav-link" data-scroll-target="#how-to-calculate-city-average-aqi"><span class="header-section-number">2.3</span> How to calculate City Average AQI?</a></li>
+  <li><a href="#plotting-city-average-aqis" id="toc-plotting-city-average-aqis" class="nav-link" data-scroll-target="#plotting-city-average-aqis"><span class="header-section-number">2.4</span> Plotting city average AQIs</a>
+  <ul class="collapse">
+  <li><a href="#pollution-stripes" id="toc-pollution-stripes" class="nav-link" data-scroll-target="#pollution-stripes"><span class="header-section-number">2.4.1</span> Pollution Stripes</a></li>
+  <li><a href="#calendar-heatmaps" id="toc-calendar-heatmaps" class="nav-link" data-scroll-target="#calendar-heatmaps"><span class="header-section-number">2.4.2</span> Calendar Heatmaps</a></li>
+  </ul></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">2.5</span> Summary</a></li>
   </ul>
 </nav>
     </div>
@@ -374,7 +380,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Plotting AQI of a City</span></h1>
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Plotting AQI of a City</span></h1>
 </div>
 
 
@@ -392,16 +398,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p>In the previous tutorial, we learnt how to calculate AQI at a single monitor at a given time. In this tutorial, we’ll learn to plot AQIs of a city and also learn how city average AQIs are calculated. These averages are reported by news papers and also in <a href="https://cpcb.nic.in/AQI_Bulletin.php">AQI Bulletins</a>.</p>
-<section id="accessing-real-time-aqi-data" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="accessing-real-time-aqi-data"><span class="header-section-number">3.1</span> Accessing real-time AQI data</h2>
-<p>The Central Pollution Control Board (CPCB) publishes AQI at every monitoring station every hour. This data can be downloaded at the <a href="https://airquality.cpcb.gov.in/AQI_India/">NAQI portal</a>. We’ll now work with AQI data from each station in Delhi reported at 4PM on 7th March.</p>
-<div id="9220d87d-bf89-482b-8b44-572ccd83e630" class="cell" data-execution_count="82">
+<section id="accessing-real-time-aqi-data" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="accessing-real-time-aqi-data"><span class="header-section-number">2.1</span> Accessing real-time AQI data</h2>
+<p>The Central Pollution Control Board (CPCB) publishes AQI at every monitoring station every hour. This data can be downloaded at the <a href="https://airquality.cpcb.gov.in/AQI_India/">NAQI portal</a>. We’ll now work with AQI data from each station in <code>Delhi</code> reported at 4PM on 7th March.</p>
+<div id="9220d87d-bf89-482b-8b44-572ccd83e630" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>aqi_stations <span class="op">=</span> pd.read_csv(<span class="st">'data/AQI_all_station2026_03_07T16_00_00Z.csv'</span>) <span class="co">#Data downloaded and cleaned from NAQI portal</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>aqi_stations[<span class="st">'City'</span>] <span class="op">=</span> aqi_stations.City.ffill() <span class="co"># Filling Null values in City column</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>aqi_stations_delhi <span class="op">=</span> aqi_stations[aqi_stations[<span class="st">'City'</span>]<span class="op">==</span><span class="st">'Delhi'</span>].reset_index(drop<span class="op">=</span><span class="st">'True'</span>)</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>aqi_stations_delhi.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="82">
+<div class="cell-output cell-output-display" data-execution_count="1">
 <div>
 
 
@@ -463,54 +469,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="66770c9b-84c8-47ef-b49a-4ff0abcc38f8" class="cell" data-execution_count="83">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>valid_aqis <span class="op">=</span> pd.to_numeric(aqi_stations_delhi[<span class="st">'Current AQI value'</span>], errors<span class="op">=</span><span class="st">'coerce'</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>num_monitors <span class="op">=</span> valid_aqis.dropna().shape[<span class="dv">0</span>]</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>total_monitors <span class="op">=</span> aqi_stations_delhi.shape[<span class="dv">0</span>]</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Total number of monitors: </span><span class="sc">{</span>total_monitors<span class="sc">}</span><span class="ss"> </span><span class="ch">\n</span><span class="ss"> Number of monitors with AQI data: </span><span class="sc">{</span>num_monitors<span class="sc">}</span><span class="ss">'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Total number of monitors: 46 
- Number of monitors with AQI data: 45</code></pre>
-</div>
-</div>
-<p>We have AQI data from 45 stations at 4PM on March 7th. The average of these 45 AQIs is reported at city average AQI.</p>
-<div id="ee11ad21-a17f-4830-bb87-62adda9d7f6b" class="cell" data-execution_count="84">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>mean_aqi <span class="op">=</span> <span class="bu">round</span>(valid_aqis.mean())</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'The average AQI in Delhi on March 7th 4PM is: </span><span class="sc">{</span>mean_aqi<span class="sc">}</span><span class="ss"> </span><span class="ch">\n</span><span class="ss"> It is calculated using AQIs from </span><span class="sc">{</span>num_monitors<span class="sc">}</span><span class="ss">/</span><span class="sc">{</span>total_monitors<span class="sc">}</span><span class="ss"> monitors'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>The average AQI in Delhi on March 7th 4PM is: 246 
- It is calculated using AQIs from 45/46 monitors</code></pre>
-</div>
-</div>
-<p>This is precisely the AQI reported by CPCB on <a href="https://cpcb.nic.in/displaypdf.php?id=RG93bmxvYWRzL0FRSV9CdWxsZXRpbl8yMDI2MDMwNy5wZGY=">AQI Bulletin on March 7th</a></p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="Plotting_AQI_of_a_City_files/figure-html/cbbdfed5-ab8d-448d-b34b-11800e9ab3a7-1-0f345e54-c96f-4252-8424-5fcb8849ee2a.png" class="img-fluid figure-img"></p>
-<figcaption>2026march7_4pm_bulletin_delhi.png</figcaption>
-</figure>
-</div>
-<p>However, there is an important nuance that goes missing in the average AQI of a city. A monitoring station gives information of air quality for an area of ~10 sq.km. <img src="Plotting_AQI_of_a_City_files/figure-html/cbbdfed5-ab8d-448d-b34b-11800e9ab3a7-2-dea3d47c-538b-4997-88f5-d780ddfd26d6.png" class="img-fluid" alt="station_area.png"></p>
 </section>
-<section id="plotting-aqi-at-each-station-on-a-map" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="plotting-aqi-at-each-station-on-a-map"><span class="header-section-number">3.2</span> Plotting AQI at each station on a map</h2>
+<section id="plotting-aqi-at-each-station-on-a-map" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="plotting-aqi-at-each-station-on-a-map"><span class="header-section-number">2.2</span> Plotting AQI at each station on a map</h2>
 <p>We shall thus plot the AQI at each station on a map, to find out how representative the monitoring network is.</p>
-<div id="aaf02953-17eb-42a1-a9bc-cec87f4a1fd7" class="cell" data-execution_count="23">
+<div id="aaf02953-17eb-42a1-a9bc-cec87f4a1fd7" class="cell">
 <details class="code-fold">
 <summary>Show hidden code that downloads lat-lons of CPCB air quality stations in Delhi</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>api_key <span class="op">=</span> <span class="st">""</span> <span class="co">#Generate API key from data.gov.in portal.</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>state <span class="op">=</span> <span class="st">'Delhi'</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="ss">f"https://api.data.gov.in/resource/3b01bcb8-0b14-4abf-b6f2-c1bfd384ba69?api-key=</span><span class="sc">{</span>api_key<span class="sc">}</span><span class="ss">&amp;format=csv&amp;filters[state]=</span><span class="sc">{</span>state<span class="sc">}</span><span class="ss">&amp;limit=500"</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(url)</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>df[[<span class="st">'station'</span>,<span class="st">'latitude'</span>,<span class="st">'longitude'</span>]].drop_duplicates().reset_index(drop<span class="op">=</span><span class="va">True</span>).to_csv(<span class="st">'data/delhi_stations_locations.csv'</span>,index<span class="op">=</span><span class="va">False</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>api_key <span class="op">=</span> <span class="st">""</span> <span class="co">#Generate API key from data.gov.in portal.</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>state <span class="op">=</span> <span class="st">'Delhi'</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="ss">f"https://api.data.gov.in/resource/3b01bcb8-0b14-4abf-b6f2-c1bfd384ba69?api-key=</span><span class="sc">{</span>api_key<span class="sc">}</span><span class="ss">&amp;format=csv&amp;filters[state]=</span><span class="sc">{</span>state<span class="sc">}</span><span class="ss">&amp;limit=500"</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(url)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>df[[<span class="st">'station'</span>,<span class="st">'latitude'</span>,<span class="st">'longitude'</span>]].drop_duplicates().reset_index(drop<span class="op">=</span><span class="va">True</span>).to_csv(<span class="st">'data/delhi_stations_locations.csv'</span>,index<span class="op">=</span><span class="va">False</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div id="382a6ed1-2c45-4871-ae6d-fb92d9a27392" class="cell" data-execution_count="69">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>delhi_stations_locations <span class="op">=</span> pd.read_csv(<span class="st">'data/delhi_stations_locations.csv'</span>)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>delhi_stations_locations.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="69">
+<div id="382a6ed1-2c45-4871-ae6d-fb92d9a27392" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>delhi_stations_locations <span class="op">=</span> pd.read_csv(<span class="st">'data/delhi_stations_locations.csv'</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>delhi_stations_locations.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="2">
 <div>
 
 
@@ -560,11 +537,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="17102723-20c9-4e80-a10e-9edaee6c9173" class="cell" data-execution_count="70">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Merge Station locations dataframe with station AQI dataframe</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>aqi_stations_delhi_locations <span class="op">=</span> aqi_stations_delhi.merge(delhi_stations_locations, left_on<span class="op">=</span><span class="st">'Station Name'</span>, right_on<span class="op">=</span><span class="st">'station'</span>)</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>aqi_stations_delhi_locations.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="70">
+<div id="17102723-20c9-4e80-a10e-9edaee6c9173" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Merge Station locations dataframe with station AQI dataframe</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>aqi_stations_delhi_locations <span class="op">=</span> aqi_stations_delhi.merge(delhi_stations_locations, left_on<span class="op">=</span><span class="st">'Station Name'</span>, right_on<span class="op">=</span><span class="st">'station'</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>aqi_stations_delhi_locations.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
 <div>
 
 
@@ -644,16 +621,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="00e0596b-af89-422f-8c5d-5b70b78fd062" class="cell" data-execution_count="71">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert this latitudes and longitudes into GeoDataFrame using geopandas</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> geopandas <span class="im">as</span> gpd</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>aqi_stations_delhi_gdf <span class="op">=</span> gpd.GeoDataFrame(</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    aqi_stations_delhi_locations,</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    geometry<span class="op">=</span>gpd.points_from_xy(aqi_stations_delhi_locations.longitude, aqi_stations_delhi_locations.latitude),</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    crs<span class="op">=</span><span class="st">"EPSG:4326"</span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>aqi_stations_delhi_gdf.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="71">
+<div id="00e0596b-af89-422f-8c5d-5b70b78fd062" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert this latitudes and longitudes into GeoDataFrame using geopandas</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> geopandas <span class="im">as</span> gpd</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>aqi_stations_delhi_gdf <span class="op">=</span> gpd.GeoDataFrame(</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    aqi_stations_delhi_locations,</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    geometry<span class="op">=</span>gpd.points_from_xy(aqi_stations_delhi_locations.longitude, aqi_stations_delhi_locations.latitude),</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    crs<span class="op">=</span><span class="st">"EPSG:4326"</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>aqi_stations_delhi_gdf.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
 <div>
 
 
@@ -739,93 +716,156 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="b60efbdb-545a-482c-bacb-fd66fe662895" class="cell" data-execution_count="72">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> aqi_color(aqi):</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> aqi <span class="op">&lt;=</span> <span class="dv">50</span>:</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"#274e13ff"</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> aqi <span class="op">&lt;=</span> <span class="dv">100</span>:</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"#93c47dff"</span></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> aqi <span class="op">&lt;=</span> <span class="dv">200</span>:</span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"#f2f542"</span></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> aqi <span class="op">&lt;=</span> <span class="dv">300</span>:</span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"#f59042"</span></span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> aqi <span class="op">&lt;=</span> <span class="dv">400</span>:</span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"#ff0000"</span></span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"#753b3b"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="b60efbdb-545a-482c-bacb-fd66fe662895" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> aqi_color(aqi):</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> aqi <span class="op">&lt;=</span> <span class="dv">50</span>:</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"#274e13ff"</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> aqi <span class="op">&lt;=</span> <span class="dv">100</span>:</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"#93c47dff"</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> aqi <span class="op">&lt;=</span> <span class="dv">200</span>:</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"#f2f542"</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> aqi <span class="op">&lt;=</span> <span class="dv">300</span>:</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"#f59042"</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> aqi <span class="op">&lt;=</span> <span class="dv">400</span>:</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"#ff0000"</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"#753b3b"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="ac5fc25a-7646-4cbe-9ccd-de2153e29e1d" class="cell" data-execution_count="73">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Assign colors to each AQI station based on the AQI value</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>aqi_stations_delhi_gdf[<span class="st">"Current AQI value"</span>] <span class="op">=</span> pd.to_numeric(aqi_stations_delhi_gdf[<span class="st">'Current AQI value'</span>], errors<span class="op">=</span><span class="st">'coerce'</span>)</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>aqi_stations_delhi_gdf[<span class="st">"color"</span>] <span class="op">=</span> aqi_stations_delhi_gdf[<span class="st">"Current AQI value"</span>].<span class="bu">apply</span>(aqi_color)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="ac5fc25a-7646-4cbe-9ccd-de2153e29e1d" class="cell" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Assign colors to each AQI station based on the AQI value</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>aqi_stations_delhi_gdf[<span class="st">"Current AQI value"</span>] <span class="op">=</span> pd.to_numeric(aqi_stations_delhi_gdf[<span class="st">'Current AQI value'</span>], errors<span class="op">=</span><span class="st">'coerce'</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>aqi_stations_delhi_gdf[<span class="st">"color"</span>] <span class="op">=</span> aqi_stations_delhi_gdf[<span class="st">"Current AQI value"</span>].<span class="bu">apply</span>(aqi_color)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="98be4025-b155-4060-9dae-f50aca27a91b" class="cell" data-execution_count="74">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>delhi_districts <span class="op">=</span> gpd.read_file(<span class="st">'data/DELHI_DISTRICTS.geojson'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="98be4025-b155-4060-9dae-f50aca27a91b" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>delhi_districts <span class="op">=</span> gpd.read_file(<span class="st">'data/DELHI_DISTRICTS.geojson'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>We’ll create a buffer of radius 2km around each station on the map. For which we’ll first convert the co-ordinate system from degrees to metres.</p>
-<div id="d7487a96-1d09-4346-982d-5f9e2a58165f" class="cell" data-execution_count="75">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>aqi_stations_delhi_gdf <span class="op">=</span> aqi_stations_delhi_gdf.to_crs(epsg<span class="op">=</span><span class="dv">3857</span>)</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>aqi_stations_delhi_gdf[<span class="st">"geometry"</span>] <span class="op">=</span> aqi_stations_delhi_gdf.<span class="bu">buffer</span>(<span class="dv">2000</span>)</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>delhi_districts <span class="op">=</span> delhi_districts.to_crs(epsg<span class="op">=</span><span class="dv">3857</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Each monitoring station represents an circular area of radius 2km. <img src="Plotting_AQI_of_a_City_files/figure-html/53142f83-3806-4422-a950-f9bc8d4d1572-1-fd8cd13b-937e-45b3-9e6d-c63b6418a504.png" class="img-fluid" alt="station_area.png"></p>
+<p>We’ll thus create a buffer of radius 2km around each station on the map. For which we’ll first convert the co-ordinate system from degrees to metres.</p>
+<div id="d7487a96-1d09-4346-982d-5f9e2a58165f" class="cell" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>aqi_stations_delhi_gdf <span class="op">=</span> aqi_stations_delhi_gdf.to_crs(epsg<span class="op">=</span><span class="dv">3857</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>aqi_stations_delhi_gdf[<span class="st">"geometry"</span>] <span class="op">=</span> aqi_stations_delhi_gdf.<span class="bu">buffer</span>(<span class="dv">2000</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>delhi_districts <span class="op">=</span> delhi_districts.to_crs(epsg<span class="op">=</span><span class="dv">3857</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="3d13498a-a29d-4a52-8ece-30dd81576145" class="cell" data-execution_count="81">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.patches <span class="im">as</span> mpatches</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">8</span>))</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot admin background</span></span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>delhi_districts.plot(ax<span class="op">=</span>ax, color<span class="op">=</span><span class="st">"white"</span>, edgecolor<span class="op">=</span><span class="st">"black"</span>, linewidth<span class="op">=</span><span class="fl">0.5</span>)</span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot AQI circles</span></span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>aqi_stations_delhi_gdf.plot(</span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>    ax<span class="op">=</span>ax,</span>
-<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>    color<span class="op">=</span>aqi_stations_delhi_gdf[<span class="st">"color"</span>],</span>
-<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>    edgecolor<span class="op">=</span><span class="st">"black"</span>,</span>
-<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>    alpha<span class="op">=</span><span class="fl">0.8</span></span>
-<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">"Delhi - AQI Monitoring Stations"</span>, fontsize<span class="op">=</span><span class="dv">16</span>)</span>
-<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>ax.axis(<span class="st">"off"</span>)</span>
-<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>legend_items <span class="op">=</span> [</span>
-<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>    mpatches.Patch(color<span class="op">=</span><span class="st">"#274e13ff"</span>, label<span class="op">=</span><span class="st">"Good (0-50)"</span>),</span>
-<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>    mpatches.Patch(color<span class="op">=</span><span class="st">"#93c47dff"</span>, label<span class="op">=</span><span class="st">"Satisfactory (51-100)"</span>),</span>
-<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>    mpatches.Patch(color<span class="op">=</span><span class="st">"#f2f542"</span>, label<span class="op">=</span><span class="st">"Moderate (101-200)"</span>),</span>
-<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a>    mpatches.Patch(color<span class="op">=</span><span class="st">"#f59042"</span>, label<span class="op">=</span><span class="st">"Poor (201-300)"</span>),</span>
-<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a>    mpatches.Patch(color<span class="op">=</span><span class="st">"#ff0000"</span>, label<span class="op">=</span><span class="st">"Very Poor (301-400)"</span>),</span>
-<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a>    mpatches.Patch(color<span class="op">=</span><span class="st">"#753b3b"</span>, label<span class="op">=</span><span class="st">"Severe (401-500)"</span>)</span>
-<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a>]</span>
-<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-30"><a href="#cb14-30" aria-hidden="true" tabindex="-1"></a>ax.legend(handles<span class="op">=</span>legend_items, loc<span class="op">=</span><span class="st">"lower left"</span>)</span>
-<span id="cb14-31"><a href="#cb14-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-32"><a href="#cb14-32" aria-hidden="true" tabindex="-1"></a>ax.text(</span>
-<span id="cb14-33"><a href="#cb14-33" aria-hidden="true" tabindex="-1"></a>    <span class="fl">0.02</span>, <span class="fl">0.95</span>,</span>
-<span id="cb14-34"><a href="#cb14-34" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f"Average AQI: </span><span class="sc">{</span>mean_aqi<span class="sc">:.0f}</span><span class="ss">"</span>,</span>
-<span id="cb14-35"><a href="#cb14-35" aria-hidden="true" tabindex="-1"></a>    transform<span class="op">=</span>ax.transAxes,</span>
-<span id="cb14-36"><a href="#cb14-36" aria-hidden="true" tabindex="-1"></a>    fontsize<span class="op">=</span><span class="dv">13</span>,</span>
-<span id="cb14-37"><a href="#cb14-37" aria-hidden="true" tabindex="-1"></a>    fontweight<span class="op">=</span><span class="st">"bold"</span>,</span>
-<span id="cb14-38"><a href="#cb14-38" aria-hidden="true" tabindex="-1"></a>    bbox<span class="op">=</span><span class="bu">dict</span>(facecolor<span class="op">=</span><span class="st">"white"</span>, edgecolor<span class="op">=</span><span class="st">"black"</span>, alpha<span class="op">=</span><span class="fl">0.8</span>)</span>
-<span id="cb14-39"><a href="#cb14-39" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb14-40"><a href="#cb14-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-41"><a href="#cb14-41" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="3d13498a-a29d-4a52-8ece-30dd81576145" class="cell" data-execution_count="14">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.patches <span class="im">as</span> mpatches</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">8</span>))</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot admin background</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>delhi_districts.plot(ax<span class="op">=</span>ax, color<span class="op">=</span><span class="st">"white"</span>, edgecolor<span class="op">=</span><span class="st">"black"</span>, linewidth<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot AQI circles</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>aqi_stations_delhi_gdf.plot(</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>    ax<span class="op">=</span>ax,</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>    color<span class="op">=</span>aqi_stations_delhi_gdf[<span class="st">"color"</span>],</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>    edgecolor<span class="op">=</span><span class="st">"black"</span>,</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>    alpha<span class="op">=</span><span class="fl">0.8</span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">"Delhi - AQI Monitoring Stations"</span>, fontsize<span class="op">=</span><span class="dv">16</span>)</span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>ax.axis(<span class="st">"off"</span>)</span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>legend_items <span class="op">=</span> [</span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>    mpatches.Patch(color<span class="op">=</span><span class="st">"#274e13ff"</span>, label<span class="op">=</span><span class="st">"Good (0-50)"</span>),</span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>    mpatches.Patch(color<span class="op">=</span><span class="st">"#93c47dff"</span>, label<span class="op">=</span><span class="st">"Satisfactory (51-100)"</span>),</span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>    mpatches.Patch(color<span class="op">=</span><span class="st">"#f2f542"</span>, label<span class="op">=</span><span class="st">"Moderate (101-200)"</span>),</span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>    mpatches.Patch(color<span class="op">=</span><span class="st">"#f59042"</span>, label<span class="op">=</span><span class="st">"Poor (201-300)"</span>),</span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>    mpatches.Patch(color<span class="op">=</span><span class="st">"#ff0000"</span>, label<span class="op">=</span><span class="st">"Very Poor (301-400)"</span>),</span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a>    mpatches.Patch(color<span class="op">=</span><span class="st">"#753b3b"</span>, label<span class="op">=</span><span class="st">"Severe (401-500)"</span>)</span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a>ax.legend(handles<span class="op">=</span>legend_items, loc<span class="op">=</span><span class="st">"lower left"</span>)</span>
+<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a>ax.text(</span>
+<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a>    <span class="fl">0.45</span>, <span class="fl">0.97</span>,</span>
+<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f"March 7th, 4PM"</span>,</span>
+<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a>    transform<span class="op">=</span>ax.transAxes,</span>
+<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a>    fontsize<span class="op">=</span><span class="dv">13</span>,</span>
+<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a>ax.text(</span>
+<span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a>    <span class="fl">0.02</span>, <span class="fl">0.95</span>,</span>
+<span id="cb10-39"><a href="#cb10-39" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f"Average AQI: </span><span class="sc">{</span>aqi_stations_delhi_gdf[<span class="st">'Current AQI value'</span>]<span class="sc">.</span>mean()<span class="sc">:.0f}</span><span class="ss">"</span>,</span>
+<span id="cb10-40"><a href="#cb10-40" aria-hidden="true" tabindex="-1"></a>    transform<span class="op">=</span>ax.transAxes,</span>
+<span id="cb10-41"><a href="#cb10-41" aria-hidden="true" tabindex="-1"></a>    fontsize<span class="op">=</span><span class="dv">13</span>,</span>
+<span id="cb10-42"><a href="#cb10-42" aria-hidden="true" tabindex="-1"></a>    fontweight<span class="op">=</span><span class="st">"bold"</span>,</span>
+<span id="cb10-43"><a href="#cb10-43" aria-hidden="true" tabindex="-1"></a>    bbox<span class="op">=</span><span class="bu">dict</span>(facecolor<span class="op">=</span><span class="st">"white"</span>, edgecolor<span class="op">=</span><span class="st">"black"</span>, alpha<span class="op">=</span><span class="fl">0.8</span>)</span>
+<span id="cb10-44"><a href="#cb10-44" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb10-45"><a href="#cb10-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-46"><a href="#cb10-46" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Plotting_AQI_of_a_City_files/figure-html/cell-13-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="Plotting_AQI_of_a_City_files/figure-html/cell-11-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>Thus we can see that <a href="https://www.newslaundry.com/2025/12/01/two-thirds-of-delhi-does-not-have-reliable-air-quality-data#container">large parts of Delhi are under-represented by the monitoring network</a>. This fact is crucial while reporting city average AQIs. Other cities have even smaller networks and thus are even less spatially represented.</p>
+<p>Thus we can see that <a href="https://www.newslaundry.com/2025/12/01/two-thirds-of-delhi-does-not-have-reliable-air-quality-data#container">large parts of Delhi are under-represented by the monitoring network</a>. This fact is crucial while reporting city average AQIs.</p>
 </section>
-<section id="summary" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="summary"><span class="header-section-number">3.3</span> Summary</h2>
-<p>We thus learnt how to calculate the city average AQI and to plot AQIs from multiple stations in a city on a map. We learnt that a monitor represents only an area of 10 sq.km and thus a city’s monitoring network could spatially under-represent a city.</p>
-<p>For further reading, please refer our <a href="https://urbanemissions.info/wp-content/uploads/docs/Primer-Air-Monitoring-101.pdf">primer on air quality monitoring</a></p>
+<section id="how-to-calculate-city-average-aqi" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="how-to-calculate-city-average-aqi"><span class="header-section-number">2.3</span> How to calculate City Average AQI?</h2>
+<p>In the above plot, Delhi’s average AQI at 4PM on March 7th is reported as 246. The CPCB reports the average of all functioning monitoring stations’ AQI, at a given time, as the city average AQI.</p>
+<div id="9939aa8a-10cd-4069-8642-35c76d5eecac" class="cell" data-execution_count="15">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>valid_aqis <span class="op">=</span> pd.to_numeric(aqi_stations_delhi[<span class="st">'Current AQI value'</span>], errors<span class="op">=</span><span class="st">'coerce'</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>num_monitors <span class="op">=</span> valid_aqis.dropna().shape[<span class="dv">0</span>]</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>total_monitors <span class="op">=</span> aqi_stations_delhi.shape[<span class="dv">0</span>]</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Total number of monitors: </span><span class="sc">{</span>total_monitors<span class="sc">}</span><span class="ss"> </span><span class="ch">\n</span><span class="ss"> Number of monitors with AQI data: </span><span class="sc">{</span>num_monitors<span class="sc">}</span><span class="ss">'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Total number of monitors: 46 
+ Number of monitors with AQI data: 45</code></pre>
+</div>
+</div>
+<p>We have AQI data from 45 stations at 4PM on March 7th. The average of these 45 AQIs is reported at city average AQI.</p>
+<div id="a7e6a362-c3bf-446f-bd49-ef994b1df50b" class="cell" data-execution_count="16">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>mean_aqi <span class="op">=</span> <span class="bu">round</span>(valid_aqis.mean())</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'The average AQI in Delhi on March 7th 4PM is: </span><span class="sc">{</span>mean_aqi<span class="sc">}</span><span class="ss"> </span><span class="ch">\n</span><span class="ss"> It is calculated using AQIs from </span><span class="sc">{</span>num_monitors<span class="sc">}</span><span class="ss">/</span><span class="sc">{</span>total_monitors<span class="sc">}</span><span class="ss"> monitors'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>The average AQI in Delhi on March 7th 4PM is: 246 
+ It is calculated using AQIs from 45/46 monitors</code></pre>
+</div>
+</div>
+<p>This is precisely the AQI reported by CPCB on <a href="https://cpcb.nic.in/displaypdf.php?id=RG93bmxvYWRzL0FRSV9CdWxsZXRpbl8yMDI2MDMwNy5wZGY=">AQI Bulletin on March 7th</a></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Plotting_AQI_of_a_City_files/figure-html/1b5fb3d1-2919-4ebf-a45b-61e61042b8e7-1-bea547b9-ad9c-4174-8ec0-dc5874dad2db.png" class="img-fluid figure-img"></p>
+<figcaption>2026march7_4pm_bulletin_delhi.png</figcaption>
+</figure>
+</div>
+<p>However, there is an important nuance that goes missing while reporting the average AQI of a city alone. A monitoring station gives information of air quality for an area of ~10 sq.km. We’ve seen above, how even a city like Delhi, which has the densest monitoring network in India, has large parts of it under-represented. Other cities have even smaller networks and thus are even less spatially represented.</p>
+<p>You can read more about issues with such small monitoring networks here: <a href="https://urbanemissions.info/wp-content/uploads/docs/SIM-48-2024.pdf">Data from small monitoring networks is unreliable</a>.</p>
+</section>
+<section id="plotting-city-average-aqis" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="plotting-city-average-aqis"><span class="header-section-number">2.4</span> Plotting city average AQIs</h2>
+<p>CPCB reports daily the city average AQI of every city in its <a href="https://cpcb.nic.in/AQI_Bulletin.php">AQI Bulletins</a>. Urban Emissions cleaned this <a href="https://github.com/urbanemissionsinfo/AQI_bulletins/tree/main/data/Processed">data from 2015-2025</a>. This data can be used to tell interesting visual stories of a city’s air pollution. Urban Emissions has another dedicated set of tutorials on creating <a href="https://urbanemissionsinfo.github.io/AirQualityVisuals/">Air Quality Visuals</a></p>
+<section id="pollution-stripes" class="level3" data-number="2.4.1">
+<h3 data-number="2.4.1" class="anchored" data-anchor-id="pollution-stripes"><span class="header-section-number">2.4.1</span> <a href="https://urbanemissionsinfo.github.io/AirQualityVisuals/notebooks/Pollution_Stripes.html">Pollution Stripes</a></h3>
+<p>This <a href="https://urbanemissionsinfo.github.io/AirQualityVisuals/notebooks/Pollution_Stripes.html">tutorial</a> helps in creating a pollution stripes for a city. These are inspired from climate stripes used to represent global warming.<img src="Plotting_AQI_of_a_City_files/figure-html/20f45691-23a1-4743-9428-a373cbbb9d04-1-c8d1d333-f069-4785-b1e8-200ceb04d655.png" class="img-fluid" alt="pollution-stripes_delhi.png"></p>
+</section>
+<section id="calendar-heatmaps" class="level3" data-number="2.4.2">
+<h3 data-number="2.4.2" class="anchored" data-anchor-id="calendar-heatmaps"><span class="header-section-number">2.4.2</span> <a href="https://urbanemissionsinfo.github.io/AirQualityVisuals/notebooks/Calendar_Heatmap.html">Calendar Heatmaps</a></h3>
+<p>This <a href="https://urbanemissionsinfo.github.io/AirQualityVisuals/notebooks/Calendar_Heatmap.html">tutorial</a> helps in creating a calendar heatmap for a city <img src="Plotting_AQI_of_a_City_files/figure-html/f9863648-d9be-431b-a987-9b27c7558bc6-1-44463051-2215-4971-a69e-eda70e8d9405.png" class="img-fluid" alt="calendarheatmap.png"></p>
+</section>
+</section>
+<section id="summary" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="summary"><span class="header-section-number">2.5</span> Summary</h2>
+<p>With this tutorial, we completed the AQI part of the course. Let’s recap on what we’ve learnt so far.</p>
+<ol type="1">
+<li>We learnt how to calculate AQI at a station from the raw concentrations of each pollutant.</li>
+<li>We learnt how to plot AQIs from multiple stations in a city on a map.</li>
+<li>We learnt how to calculate city average AQI and several ways of plotting them.</li>
+<li>We learnt that a monitor represents only an area of 10 sq.km and thus a city’s monitoring network could spatially under-represent a city.</li>
+</ol>
+<p>For further reading, please refer our following primers:</p>
+<ol type="1">
+<li><a href="https://urbanemissions.info/wp-content/uploads/docs/Primer-Air-Monitoring-101.pdf">Primer on air quality monitoring</a></li>
+<li><a href="https://urbanemissions.info/wp-content/uploads/docs/SIM-46-2021.pdf">Frequently asked questions on AQI</a></li>
+<li><a href="https://urbanemissions.info/wp-content/uploads/docs/SIM-47-2024.pdf">AQI Analysis for Indian cities</a></li>
+</ol>
 
 
 </section>
@@ -1247,7 +1287,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="../notebooks/Calculating_AQI.html" class="pagination-link" aria-label="Calculating Air Quality Index (AQI)">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Calculating Air Quality Index (AQI)</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Calculating Air Quality Index (AQI)</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
