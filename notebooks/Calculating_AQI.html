@@ -382,6 +382,12 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Plotting AQI of a City</span></span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/Air_Quality_Standards.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Compliance with Air Quality Standards</span></span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -600,7 +606,7 @@ window.Quarto = {
 </section>
 <section id="exercise-calculating-sub-indices-of-various-pollutants-from-real-data-of-a-monitoring-station" class="level2" data-number="1.2">
 <h2 data-number="1.2" class="anchored" data-anchor-id="exercise-calculating-sub-indices-of-various-pollutants-from-real-data-of-a-monitoring-station"><span class="header-section-number">1.2</span> Exercise: Calculating Sub-Indices of various pollutants from real data of a monitoring station</h2>
-<p>For the purposes of this tutorial, we’ll use concentration data of from a single monitor in Puducherry. This data can be downloaded from <a href="https://explore.openaq.org/locations/60659">openaq</a>. We’ll calculate sub-indices of all pollutants for a day.</p>
+<p>For the purposes of this tutorial, we’ll use concentration data of from a single monitor in Puducherry. This data can be downloaded from <a href="https://explore.openaq.org/locations/60659">openaq</a> OR from <a href="https://airquality.cpcb.gov.in/ccr/#/caaqm-dashboard-all/caaqm-landing/caaqm-data-repository">CPCB’s Data Repository</a> We’ll calculate sub-indices of all pollutants for a day.</p>
 <div id="a72a2c64-6a45-4885-b8ba-a66fa5483810" class="cell" data-execution_count="25">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>pollutant_conc <span class="op">=</span> pd.read_csv(<span class="st">'data/openaq_location_60659_measurments.csv'</span>)</span>
