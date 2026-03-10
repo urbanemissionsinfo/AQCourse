@@ -1,0 +1,1516 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>3&nbsp; Compliance with Air Quality Standards – Air Quality Course</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../notebooks/Plotting_AQI_of_a_City.html" rel="prev">
+<link href="../images/favicon.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-4d9afe2b8d18ee9fa5d0d57b5ed4214d.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-18e48916e66a9a8e2d6c438ebac6ca13.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-7e34ecb6a0e7991f0346b0751d4a7c3f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-18e48916e66a9a8e2d6c438ebac6ca13.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+</head>
+
+<body class="nav-sidebar floating quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notebooks/Air_Quality_Standards.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Compliance with Air Quality Standards</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Air Quality Course</a> 
+        <div class="sidebar-tools-main tools-wide">
+    <a href="https://github.com/urbanemissionsinfo/AQCourse" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="../Air-Quality-Course.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
+    <div class="dropdown">
+      <a href="" title="Share" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Share"><i class="bi bi-share"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://twitter.com/intent/tweet?url=|url|">
+              <i class="bi bi-twitter pe-1"></i>
+            Twitter
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://www.linkedin.com/sharing/share-offsite/?url=|url|">
+              <i class="bi bi-linkedin pe-1"></i>
+            LinkedIn
+            </a>
+          </li>
+      </ul>
+    </div>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/Calculating_AQI.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Calculating Air Quality Index (AQI)</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/Plotting_AQI_of_a_City.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Plotting AQI of a City</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/Air_Quality_Standards.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Compliance with Air Quality Standards</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#dataset" id="toc-dataset" class="nav-link active" data-scroll-target="#dataset"><span class="header-section-number">3.1</span> Dataset</a></li>
+  <li><a href="#annual-average-compliance" id="toc-annual-average-compliance" class="nav-link" data-scroll-target="#annual-average-compliance"><span class="header-section-number">3.2</span> Annual average compliance</a></li>
+  <li><a href="#daily-average-compliance" id="toc-daily-average-compliance" class="nav-link" data-scroll-target="#daily-average-compliance"><span class="header-section-number">3.3</span> Daily average compliance</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">3.4</span> Summary</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Compliance with Air Quality Standards</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Often, we come across <a href="https://www.thehindu.com/news/national/204-of-238-indian-cities-did-not-meet-air-quality-standards-crea/article70712544.ece">news</a> that many cities in India do not meet air quality standards.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Air_Quality_Standards_files/figure-html/5ac81c21-d352-4bc7-9ff0-50be3c7ab477-2-8e0eef5d-6dc6-4499-87f8-d09ef556dae0.png" class="img-fluid figure-img"></p>
+<figcaption>naaqs_compliance.png</figcaption>
+</figure>
+</div>
+<p>There are two air such air quality standards that are often assessed. The air quality standards provide a upper limit to each pollutant concentration.</p>
+<ol type="1">
+<li><a href="https://scclmines.com/env/docs/naaqs-2009.pdf">National Ambient Air Quality Standards (NAAQS)</a>: These are notified by the Central Pollution Control Board (CPCB), in India.<img src="Air_Quality_Standards_files/figure-html/5ac81c21-d352-4bc7-9ff0-50be3c7ab477-1-07dc1507-a436-41bb-85fb-868165f4bd62.jpg" class="img-fluid" alt="naaqs.jpg"></li>
+<li><a href="https://www.who.int/news-room/feature-stories/detail/what-are-the-who-air-quality-guidelines">Air quality guidelines</a>: These are notified by the World Health Organisation (W.H.O). These guidelines are much more stringent when compared to NAAQS. <img src="Air_Quality_Standards_files/figure-html/5ac81c21-d352-4bc7-9ff0-50be3c7ab477-3-bdeb002d-ff54-4535-8cc8-f4838081e5ee.png" class="img-fluid" alt="who_guidelines.png"></li>
+</ol>
+<p>Note that the air quality standards are not based on AQI. They are based on raw pollutant concentrations.</p>
+<p>In this tutorial, we will learn to determine if a city is complying with air quality standards (both NAAQS and WHO guidelines) for pollutants <code>PM2.5</code>, <code>PM10</code>, <code>NO2</code> and <code>SO2</code>. Only these 4 pollutants have annual standards.</p>
+<section id="dataset" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="dataset"><span class="header-section-number">3.1</span> Dataset</h2>
+<p>We need data of raw pollutant concentrations of a city. This data can be obtained from the <a href="https://airquality.cpcb.gov.in/ccr/#/caaqm-dashboard-all/caaqm-landing/caaqm-data-repository">CPCB’s Data Repository</a>. In this tutorial, we will work with <code>Hyderabad</code> data and check if Hyderabad complies with air quality standards. From the data repository, we can download the daily average concentration of each pollutant from each monitoring station in Hyderabad, for the year 2025. <img src="Air_Quality_Standards_files/figure-html/fd4f125b-647f-4c1e-a9b5-b5897fecdcf8-1-d2d55793-c159-4a21-a33f-4856861d3ae1.png" class="img-fluid" alt="hyd_ccr.png"></p>
+<div id="9ad50a53-d3bb-4200-8fe1-4112798ea10b" class="cell" data-execution_count="126">
+<details class="code-fold">
+<summary>Show hidden code that prepares raw concentration daily averages of each station in Hyderabad</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> glob</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>files <span class="op">=</span> glob.glob(<span class="st">'data/hyderabad_stations_dailyaverages/Raw*'</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>dfs <span class="op">=</span> []</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> <span class="bu">file</span> <span class="kw">in</span> files:</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    station_name <span class="op">=</span> <span class="bu">file</span>.split(<span class="st">'_'</span>)[<span class="dv">8</span>]</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> pd.read_csv(<span class="bu">file</span>)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    df[<span class="st">'station'</span>] <span class="op">=</span> station_name</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    dfs.append(df)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>hyderabad_stations_dailyaverages <span class="op">=</span> pd.concat(dfs)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<div id="1a14d087-8c1d-4a65-99c2-7d26c381681e" class="cell" data-execution_count="127">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>required_columns <span class="op">=</span> [<span class="st">'Timestamp'</span>, <span class="st">'station'</span>,<span class="st">'PM2.5 (µg/m³)'</span>, <span class="st">'PM10 (µg/m³)'</span>,</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>       <span class="st">'NO2 (µg/m³)'</span>, <span class="st">'SO2 (µg/m³)'</span> ]</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>hyderabad_stations_dailyaverages <span class="op">=</span> hyderabad_stations_dailyaverages[required_columns]</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>hyderabad_stations_dailyaverages <span class="op">=</span> hyderabad_stations_dailyaverages.rename(columns<span class="op">=</span>{<span class="st">"PM2.5 (µg/m³)"</span>: <span class="st">"PM2.5"</span>,</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>                                                 <span class="st">"PM10 (µg/m³)"</span>: <span class="st">"PM10"</span>,</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>                                                <span class="st">"NO2 (µg/m³)"</span>:<span class="st">"NO2"</span>,</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>                                                <span class="st">"SO2 (µg/m³)"</span>:<span class="st">"SO2"</span>})</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>hyderabad_stations_dailyaverages.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="127">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Timestamp</th>
+<th data-quarto-table-cell-role="th">station</th>
+<th data-quarto-table-cell-role="th">PM2.5</th>
+<th data-quarto-table-cell-role="th">PM10</th>
+<th data-quarto-table-cell-role="th">NO2</th>
+<th data-quarto-table-cell-role="th">SO2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>2025-01-01 00:00:00</td>
+<td>ICRISAT</td>
+<td>75.62</td>
+<td>145.38</td>
+<td>16.29</td>
+<td>23.09</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>2025-01-02 00:00:00</td>
+<td>ICRISAT</td>
+<td>62.54</td>
+<td>146.77</td>
+<td>16.47</td>
+<td>21.68</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>2025-01-03 00:00:00</td>
+<td>ICRISAT</td>
+<td>60.70</td>
+<td>144.88</td>
+<td>17.95</td>
+<td>20.76</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>2025-01-04 00:00:00</td>
+<td>ICRISAT</td>
+<td>71.64</td>
+<td>165.74</td>
+<td>18.88</td>
+<td>13.06</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>2025-01-05 00:00:00</td>
+<td>ICRISAT</td>
+<td>67.12</td>
+<td>127.62</td>
+<td>12.89</td>
+<td>10.43</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="annual-average-compliance" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="annual-average-compliance"><span class="header-section-number">3.2</span> Annual average compliance</h2>
+<p>Checking compliance based on annual averages is a straight forward task. We can calculate the annual average concentration from the daily averages for each pollutant and compare the annual average with the air quality standard. It is only pollutants <code>PM2.5</code>, <code>PM10</code>, <code>NO2</code>, and <code>SO2</code> that have annual standards. <code>SO2</code> does not have an annual standard in W.H.O guidelines.</p>
+<div id="d2113da0-2ac2-4318-8087-0195b3b7b9ba" class="cell" data-execution_count="157">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>NAAQS_ANNUAL <span class="op">=</span> {<span class="st">'PM2.5'</span>:<span class="dv">40</span>, <span class="st">'PM10'</span>:<span class="dv">60</span>, <span class="st">'NO2'</span>:<span class="dv">40</span>, <span class="st">'SO2'</span>:<span class="dv">50</span>}</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>WHO_ANNUAL <span class="op">=</span> {<span class="st">'PM2.5'</span>:<span class="dv">5</span>, <span class="st">'PM10'</span>:<span class="dv">15</span>, <span class="st">'NO2'</span>:<span class="dv">10</span>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>The above data is station level daily average data. To check compliance with air quality standards, we need city-level averages.</p>
+<div id="d4bc42ce-97b1-44ca-bae9-18f427ce6e65" class="cell" data-execution_count="129">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>hyderabad_city_dailyaverages <span class="op">=</span> hyderabad_stations_dailyaverages.groupby(<span class="st">'Timestamp'</span>)[[<span class="st">'PM2.5'</span>,<span class="st">'PM10'</span>,<span class="st">'NO2'</span>, <span class="st">'SO2'</span>]].mean()</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>hyderabad_city_dailyaverages.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="129">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">PM2.5</th>
+<th data-quarto-table-cell-role="th">PM10</th>
+<th data-quarto-table-cell-role="th">NO2</th>
+<th data-quarto-table-cell-role="th">SO2</th>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">Timestamp</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2025-01-01 00:00:00</th>
+<td>47.557857</td>
+<td>103.451538</td>
+<td>22.214286</td>
+<td>11.124286</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">2025-01-02 00:00:00</th>
+<td>43.112143</td>
+<td>104.064615</td>
+<td>23.777857</td>
+<td>14.044286</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2025-01-03 00:00:00</th>
+<td>41.000769</td>
+<td>103.462500</td>
+<td>29.124615</td>
+<td>14.409231</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">2025-01-04 00:00:00</th>
+<td>42.022857</td>
+<td>107.634615</td>
+<td>25.560000</td>
+<td>12.781429</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2025-01-05 00:00:00</th>
+<td>44.377692</td>
+<td>100.313333</td>
+<td>21.624615</td>
+<td>10.005385</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>The only condition to check as per NAAQS is that there are a minimum of <code>104 measurements</code> to calculate the annual average. Since our data is from Continous Ambient Air Quality Monitors (CAAQMS), this condition would be met.</p>
+<div id="826518e0-7918-4b82-84e7-a9f992621d1c" class="cell" data-execution_count="130">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>hyderabad_city_dailyaverages.count()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="130">
+<pre><code>PM2.5    365
+PM10     365
+NO2      365
+SO2      365
+dtype: int64</code></pre>
+</div>
+</div>
+<div id="d2e17b0a-83bf-4568-af64-93d2e374016c" class="cell" data-execution_count="131">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>hyderabad_city_annualaverage <span class="op">=</span> hyderabad_city_dailyaverages.mean().reset_index()</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>hyderabad_city_annualaverage.columns <span class="op">=</span> [<span class="st">'pollutant'</span>, <span class="st">'annual_avg'</span>]</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>hyderabad_city_annualaverage</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="131">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">pollutant</th>
+<th data-quarto-table-cell-role="th">annual_avg</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>PM2.5</td>
+<td>35.545039</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>PM10</td>
+<td>82.764408</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>NO2</td>
+<td>18.095544</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>SO2</td>
+<td>9.807129</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>We can just compare these annual averages with the NAAQS and W.H.O guidelines now to check if Hyderabad’s annual average pollution complies with air quality standards.</p>
+<div id="dcf9a0de-c859-43d8-8058-39dd93e27e05" class="cell" data-execution_count="132">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>hyderabad_city_annualaverage[<span class="st">'NAAQS'</span>] <span class="op">=</span> hyderabad_city_annualaverage.<span class="bu">apply</span>(</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">lambda</span> x: <span class="st">'N/A'</span> <span class="cf">if</span> x[<span class="st">'pollutant'</span>] <span class="kw">not</span> <span class="kw">in</span> NAAQS_ANNUAL <span class="cf">else</span> (<span class="st">'Yes'</span> <span class="cf">if</span> x[<span class="st">'annual_avg'</span>] <span class="op">&lt;</span> NAAQS_ANNUAL[x[<span class="st">'pollutant'</span>]] <span class="cf">else</span> <span class="st">'No'</span>),</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    axis<span class="op">=</span><span class="dv">1</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>hyderabad_city_annualaverage[<span class="st">'WHO'</span>] <span class="op">=</span> hyderabad_city_annualaverage.<span class="bu">apply</span>(</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">lambda</span> x: <span class="st">'N/A'</span> <span class="cf">if</span> x[<span class="st">'pollutant'</span>] <span class="kw">not</span> <span class="kw">in</span> WHO_ANNUAL <span class="cf">else</span> (<span class="st">'Yes'</span> <span class="cf">if</span> x[<span class="st">'annual_avg'</span>] <span class="op">&lt;</span> WHO_ANNUAL[x[<span class="st">'pollutant'</span>]] <span class="cf">else</span> <span class="st">'No'</span>),</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    axis<span class="op">=</span><span class="dv">1</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>hyderabad_city_annualaverage</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="132">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">pollutant</th>
+<th data-quarto-table-cell-role="th">annual_avg</th>
+<th data-quarto-table-cell-role="th">NAAQS</th>
+<th data-quarto-table-cell-role="th">WHO</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>PM2.5</td>
+<td>35.545039</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>PM10</td>
+<td>82.764408</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>NO2</td>
+<td>18.095544</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>SO2</td>
+<td>9.807129</td>
+<td>Yes</td>
+<td>N/A</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>Hyderabad’s air quality did not meet any of the W.H.O guidelines. It met NAAQS guidelines for <code>PM2.5</code>, <code>NO2</code>, <code>SO2</code> and failed to meet <code>PM10</code> guideline. This gives some policy insight that Hyderabad should focus more on cutting <code>PM10</code>.</p>
+</section>
+<section id="daily-average-compliance" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="daily-average-compliance"><span class="header-section-number">3.3</span> Daily average compliance</h2>
+<p>Annual averages could be misleading as we breathe air every day. A couple of months of high pollution along with clean air in remaining months would result in a low annual average. But, our health would still get affected. Hence, the air quality standards have daily averages as well. As per NAAQS, a city should meet these daily averages on <code>98% of the days</code> and on <code>no two consecutive days</code> should a city miss the standard.</p>
+<p>As per W.H.O, a city should meet these daily averages on <code>99% of the days</code>.</p>
+<p>Note: <code>O3</code> and <code>CO</code> require Daily Maximum 8-hour average concentrations for comparison.</p>
+<div id="33d32316-2530-44ec-987d-5108960a94ee" class="cell" data-execution_count="156">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>NAAQS_DAILY <span class="op">=</span> {<span class="st">'PM2.5'</span>:<span class="dv">60</span>, <span class="st">'PM10'</span>:<span class="dv">100</span>, <span class="st">'NO2'</span>:<span class="dv">80</span>, <span class="st">'SO2'</span>:<span class="dv">80</span>}</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>WHO_DAILY <span class="op">=</span> {<span class="st">'PM2.5'</span>:<span class="dv">15</span>, <span class="st">'PM10'</span>:<span class="dv">45</span>, <span class="st">'NO2'</span>:<span class="dv">25</span>, <span class="st">'SO2'</span>:<span class="dv">40</span>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="307f7a69-173e-4c9c-a5b8-40303e84c97e" class="cell" data-execution_count="149">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Calculate 98th percentile of each pollutant concentration</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>hyderabad_city_percentiles <span class="op">=</span> hyderabad_city_dailyaverages.quantile(<span class="fl">0.98</span>).reset_index()  <span class="co"># 98th percentile</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>hyderabad_city_percentiles.columns <span class="op">=</span> [<span class="st">'pollutant'</span>, <span class="st">'98th_pct'</span>]</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>hyderabad_city_percentiles</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="149">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">pollutant</th>
+<th data-quarto-table-cell-role="th">98th_pct</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>PM2.5</td>
+<td>52.443343</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>PM10</td>
+<td>110.660585</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>NO2</td>
+<td>27.319477</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>SO2</td>
+<td>14.044523</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="1294fecb-6279-4eb4-aa25-8906c5a239f7" class="cell" data-execution_count="150">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Checking if air quality crossed NAAQS standards on two consecutive days</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> idx,row <span class="kw">in</span> hyderabad_city_percentiles.iterrows():</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    pollutant <span class="op">=</span> row[<span class="st">'pollutant'</span>]</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    daily_averages <span class="op">=</span> hyderabad_city_dailyaverages[pollutant] <span class="co">#Daily city-averages of pollutant</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Checking if city missed the NAAQS on a day</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    daily_averages_cross_NAAQS <span class="op">=</span> daily_averages <span class="op">&gt;</span> NAAQS_DAILY[pollutant]</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Checking if city missed the NAAQS on two consecutive days</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>    has_consecutive <span class="op">=</span> daily_averages_cross_NAAQS.rolling(<span class="dv">2</span>).<span class="bu">sum</span>().eq(<span class="dv">2</span>).<span class="bu">any</span>()</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>    hyderabad_city_percentiles.loc[idx, <span class="st">'consecutive_fail'</span>] <span class="op">=</span> has_consecutive</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>hyderabad_city_percentiles</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="150">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">pollutant</th>
+<th data-quarto-table-cell-role="th">98th_pct</th>
+<th data-quarto-table-cell-role="th">consecutive_fail</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>PM2.5</td>
+<td>52.443343</td>
+<td>False</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>PM10</td>
+<td>110.660585</td>
+<td>True</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>NO2</td>
+<td>27.319477</td>
+<td>False</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>SO2</td>
+<td>14.044523</td>
+<td>False</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="bcc186a0-ea59-4430-9491-bd1cb8f71477" class="cell" data-execution_count="158">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check NAAQS Compliance</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>hyderabad_city_percentiles[<span class="st">'NAAQS'</span>] <span class="op">=</span> hyderabad_city_percentiles.<span class="bu">apply</span>(</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">lambda</span> x: <span class="st">'N/A'</span> <span class="cf">if</span> x[<span class="st">'pollutant'</span>] <span class="kw">not</span> <span class="kw">in</span> NAAQS_DAILY <span class="cf">else</span> (<span class="st">'Yes'</span> <span class="cf">if</span> x[<span class="st">'98th_pct'</span>] <span class="op">&lt;</span> NAAQS_DAILY[x[<span class="st">'pollutant'</span>]] <span class="cf">else</span> <span class="st">'No'</span>),</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    axis<span class="op">=</span><span class="dv">1</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>hyderabad_city_percentiles</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="158">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">pollutant</th>
+<th data-quarto-table-cell-role="th">98th_pct</th>
+<th data-quarto-table-cell-role="th">consecutive_fail</th>
+<th data-quarto-table-cell-role="th">NAAQS</th>
+<th data-quarto-table-cell-role="th">99th_pct</th>
+<th data-quarto-table-cell-role="th">WHO</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>PM2.5</td>
+<td>52.443343</td>
+<td>False</td>
+<td>Yes</td>
+<td>55.085321</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>PM10</td>
+<td>110.660585</td>
+<td>True</td>
+<td>No</td>
+<td>114.056215</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>NO2</td>
+<td>27.319477</td>
+<td>False</td>
+<td>Yes</td>
+<td>28.532114</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>SO2</td>
+<td>14.044523</td>
+<td>False</td>
+<td>Yes</td>
+<td>14.466769</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="4c829822-b979-4d72-83f8-fb8f3d241d2e" class="cell" data-execution_count="159">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Calculate 99th percentile - for WHO guideline</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>hyderabad_city_percentiles[<span class="st">'99th_pct'</span>] <span class="op">=</span> hyderabad_city_dailyaverages.quantile(<span class="fl">0.99</span>).reset_index()[<span class="fl">0.99</span>]</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>hyderabad_city_percentiles</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="159">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">pollutant</th>
+<th data-quarto-table-cell-role="th">98th_pct</th>
+<th data-quarto-table-cell-role="th">consecutive_fail</th>
+<th data-quarto-table-cell-role="th">NAAQS</th>
+<th data-quarto-table-cell-role="th">99th_pct</th>
+<th data-quarto-table-cell-role="th">WHO</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>PM2.5</td>
+<td>52.443343</td>
+<td>False</td>
+<td>Yes</td>
+<td>55.085321</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>PM10</td>
+<td>110.660585</td>
+<td>True</td>
+<td>No</td>
+<td>114.056215</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>NO2</td>
+<td>27.319477</td>
+<td>False</td>
+<td>Yes</td>
+<td>28.532114</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>SO2</td>
+<td>14.044523</td>
+<td>False</td>
+<td>Yes</td>
+<td>14.466769</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="6a062b3e-25fb-4a1e-9839-61445aa12f2a" class="cell" data-execution_count="160">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>hyderabad_city_percentiles[<span class="st">'WHO'</span>] <span class="op">=</span> hyderabad_city_percentiles.<span class="bu">apply</span>(</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">lambda</span> x: <span class="st">'N/A'</span> <span class="cf">if</span> x[<span class="st">'pollutant'</span>] <span class="kw">not</span> <span class="kw">in</span> WHO_DAILY <span class="cf">else</span> (<span class="st">'Yes'</span> <span class="cf">if</span> x[<span class="st">'98th_pct'</span>] <span class="op">&lt;</span> WHO_DAILY[x[<span class="st">'pollutant'</span>]] <span class="cf">else</span> <span class="st">'No'</span>),</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    axis<span class="op">=</span><span class="dv">1</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>hyderabad_city_percentiles</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="160">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">pollutant</th>
+<th data-quarto-table-cell-role="th">98th_pct</th>
+<th data-quarto-table-cell-role="th">consecutive_fail</th>
+<th data-quarto-table-cell-role="th">NAAQS</th>
+<th data-quarto-table-cell-role="th">99th_pct</th>
+<th data-quarto-table-cell-role="th">WHO</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>PM2.5</td>
+<td>52.443343</td>
+<td>False</td>
+<td>Yes</td>
+<td>55.085321</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>PM10</td>
+<td>110.660585</td>
+<td>True</td>
+<td>No</td>
+<td>114.056215</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>NO2</td>
+<td>27.319477</td>
+<td>False</td>
+<td>Yes</td>
+<td>28.532114</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>SO2</td>
+<td>14.044523</td>
+<td>False</td>
+<td>Yes</td>
+<td>14.466769</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>With daily averages, Hyderabad’s air quality met WHO guideline only for <code>SO2</code> and not for any other pollutant. This could be because there is no thermal power plant inside Hyderabad city.</p>
+<p>As with annual averages, it met NAAQS guidelines for <code>PM2.5</code>, <code>NO2</code> and <code>SO2</code> and failed to meet <code>PM10</code> guideline.</p>
+<p>We can also analyse this compliance as the number of days on which residents of Hyderabad breathed unhealthy air</p>
+<div id="b422f9be-6568-41ba-9b06-b7a4d0e8d9c0" class="cell" data-execution_count="163">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"In 2025, residents of Hyderabad breathed air that is not complaint with NAAQS for </span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> idx,row <span class="kw">in</span> hyderabad_city_percentiles.iterrows():</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    pollutant <span class="op">=</span> row[<span class="st">'pollutant'</span>]</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    daily_averages <span class="op">=</span> hyderabad_city_dailyaverages[pollutant] <span class="co">#Daily city-averages of pollutant</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Checking if city missed the NAAQS on a day</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>    daily_averages_cross_NAAQS <span class="op">=</span> daily_averages <span class="op">&gt;</span> NAAQS_DAILY[pollutant]</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>    num_days <span class="op">=</span> daily_averages_cross_NAAQS.<span class="bu">sum</span>()</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>num_days<span class="sc">}</span><span class="ss"> days for </span><span class="sc">{</span>pollutant<span class="sc">}</span><span class="ss"> pollutant </span><span class="ch">\n</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>In 2025, residents of Hyderabad breathed air that is not complaint with NAAQS for 
+
+2 days for PM2.5 pollutant 
+
+70 days for PM10 pollutant 
+
+0 days for NO2 pollutant 
+
+0 days for SO2 pollutant 
+</code></pre>
+</div>
+</div>
+<div id="405ae742-ff0b-475d-a90b-2a7559d4bef9" class="cell" data-execution_count="164">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"In 2025, residents of Hyderabad breathed air that is not complaint with W.H.O for </span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> idx,row <span class="kw">in</span> hyderabad_city_percentiles.iterrows():</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    pollutant <span class="op">=</span> row[<span class="st">'pollutant'</span>]</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    daily_averages <span class="op">=</span> hyderabad_city_dailyaverages[pollutant] <span class="co">#Daily city-averages of pollutant</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Checking if city missed the NAAQS on a day</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>    daily_averages_cross_WHO <span class="op">=</span> daily_averages <span class="op">&gt;</span> WHO_DAILY[pollutant]</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>    num_days <span class="op">=</span> daily_averages_cross_WHO.<span class="bu">sum</span>()</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>num_days<span class="sc">}</span><span class="ss"> days for </span><span class="sc">{</span>pollutant<span class="sc">}</span><span class="ss"> pollutant </span><span class="ch">\n</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>In 2025, residents of Hyderabad breathed air that is not complaint with W.H.O for 
+
+365 days for PM2.5 pollutant 
+
+365 days for PM10 pollutant 
+
+19 days for NO2 pollutant 
+
+0 days for SO2 pollutant 
+</code></pre>
+</div>
+</div>
+</section>
+<section id="summary" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="summary"><span class="header-section-number">3.4</span> Summary</h2>
+<p>In this tutorial, we learnt how to check if a city is complying with air quality standards - both NAAQS and W.H.O guidelines. We learnt that this compliance assessment is done using raw concentration data of each pollutant and not AQI. We learnt how to check compliance using both annual averages and daily averages.</p>
+<p>It should be noted that we analysed the compliance based on the monitoring data only. The official assessment of a city’s performance under the <a href="https://urbanemissions.info/india-air-quality/india-ncap-cities/">National Clean Air Program (NCAP)</a> also happens on the basis of monitoring data alone. In the previous tutorial we learnt that monitoring network of a city can spatially under-represent a city. That limitation would apply in this analysis as well.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/urbanemissionsinfo\.github\.io\/AQCourse");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../notebooks/Plotting_AQI_of_a_City.html" class="pagination-link" aria-label="Plotting AQI of a City">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Plotting AQI of a City</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2026 Urban Emissions</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

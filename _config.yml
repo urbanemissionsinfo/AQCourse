@@ -1,0 +1,9 @@
+version: 1
+project:
+  title: Air Quality Course
+  authors:
+    - name: Urban Emissions
+  keywords: [AQI, air quality, pollution]
+  toc:
+    - file: intro.md
+    - file: notebooks/01_Calculating_AQI.ipynb

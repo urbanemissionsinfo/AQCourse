@@ -1,0 +1,27 @@
+project:
+  type: book
+
+book:
+  title: "Air Quality Course"
+  author: "Urban Emissions"
+  cover-image: images/uelogo.png
+  favicon: images/favicon.png
+  site-url: https://urbanemissionsinfo.github.io/AQCourse
+  repo-url: https://github.com/urbanemissionsinfo/AQCourse
+  sharing: [twitter, linkedin]           
+  downloads: [pdf]
+  search: true
+  page-navigation: true                  # prev/next buttons at bottom
+  page-footer:
+    left: "© 2026 Urban Emissions"
+  chapters:
+    - index.qmd
+    - notebooks/Calculating_AQI.ipynb
+    - notebooks/Plotting_AQI_of_a_City.ipynb
+    - notebooks/Air_Quality_Standards.ipynb
+
+format:
+  html:
+    theme:
+      light: minty
+      dark: darkly
