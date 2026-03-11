@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Urban Emissions">
 
-<title>Air Quality Course</title>
+<title>4&nbsp; Filling the Gaps with Satellite images – Air Quality Course</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,33 +20,68 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./notebooks/Calculating_AQI.html" rel="next">
-<link href="./images/favicon.png" rel="icon" type="image/png">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-4d9afe2b8d18ee9fa5d0d57b5ed4214d.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-18e48916e66a9a8e2d6c438ebac6ca13.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-7e34ecb6a0e7991f0346b0751d4a7c3f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-18e48916e66a9a8e2d6c438ebac6ca13.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../notebooks/Air_Quality_Standards.html" rel="prev">
+<link href="../images/favicon.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-4d9afe2b8d18ee9fa5d0d57b5ed4214d.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-18e48916e66a9a8e2d6c438ebac6ca13.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-7e34ecb6a0e7991f0346b0751d4a7c3f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-18e48916e66a9a8e2d6c438ebac6ca13.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -250,7 +284,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Introduction</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notebooks/Filling_Gaps_Satellite.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Filling the Gaps with Satellite images</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -265,10 +299,10 @@ ul.task-list li input[type="checkbox"] {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Air Quality Course</a> 
+      <a href="../">Air Quality Course</a> 
         <div class="sidebar-tools-main tools-wide">
     <a href="https://github.com/urbanemissionsinfo/AQCourse" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
-    <a href="./Air-Quality-Course.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
+    <a href="../Air-Quality-Course.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
     <div class="dropdown">
       <a href="" title="Share" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Share"><i class="bi bi-share"></i></a>
       <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
@@ -299,31 +333,31 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introduction</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./notebooks/Calculating_AQI.html" class="sidebar-item-text sidebar-link">
+  <a href="../notebooks/Calculating_AQI.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Calculating Air Quality Index (AQI)</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./notebooks/Plotting_AQI_of_a_City.html" class="sidebar-item-text sidebar-link">
+  <a href="../notebooks/Plotting_AQI_of_a_City.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Plotting AQI of a City</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./notebooks/Air_Quality_Standards.html" class="sidebar-item-text sidebar-link">
+  <a href="../notebooks/Air_Quality_Standards.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Compliance with Air Quality Standards</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./notebooks/Filling_Gaps_Satellite.html" class="sidebar-item-text sidebar-link">
+  <a href="../notebooks/Filling_Gaps_Satellite.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Filling the Gaps with Satellite images</span></span></a>
   </div>
 </li>
@@ -337,7 +371,10 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#about-tropomi" id="toc-about-tropomi" class="nav-link active" data-scroll-target="#about-tropomi"><span class="header-section-number">4.1</span> About TROPOMI</a></li>
+  <li><a href="#downloading-tropomi-images-from-the-source" id="toc-downloading-tropomi-images-from-the-source" class="nav-link" data-scroll-target="#downloading-tropomi-images-from-the-source"><span class="header-section-number">4.2</span> Downloading TROPOMI images from the source</a></li>
+  <li><a href="#limitations-of-satellite-images" id="toc-limitations-of-satellite-images" class="nav-link" data-scroll-target="#limitations-of-satellite-images"><span class="header-section-number">4.3</span> Limitations of Satellite images</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">4.4</span> Summary</a></li>
   </ul>
 </nav>
     </div>
@@ -347,19 +384,13 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Air Quality Course</h1>
+<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Filling the Gaps with Satellite images</span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Urban Emissions </p>
-          </div>
-  </div>
     
   
     
@@ -370,15 +401,102 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-
-<section id="introduction" class="level1 unnumbered">
-<h1 class="unnumbered">Introduction</h1><p><img src="images/uelogo.png" title="Air Quality Course" class="quarto-cover-image nolightbox img-fluid"></p>
-<p>Course on Air Quality Analysis and Management</p>
+<p>In the previous tutorials we discussed the issue of monitoring data spatially under-representing a city. We specifically saw how Delhi, with India’s densest monitoring network, covers only <a href="https://www.indiaspend.com/pollution/two-thirds-of-delhi-does-not-have-reliable-air-quality-data-972167">35% of its geographical area</a>.<br> <img src="Filling_Gaps_Satellite_files/figure-html/b2f8e570-4e11-4d6f-9fa9-a828e2836f5f-1-8ff1f391-336c-4e53-bad3-8bcdbc320761.png" class="img-fluid" alt="aqi_stations_delhi.png"><br> In this tutorial we’ll learn how to fill gaps. There are several methods to fill these gaps. We’ll use satellite images from <code>SENTINEL-5P TROPOMI Sensor</code> to fill gaps in this tutorial. We’ll also learn about limitations of this method.</p>
+<section id="about-tropomi" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="about-tropomi"><span class="header-section-number">4.1</span> About TROPOMI</h2>
+<p>TROPOspheric Monitoring Instrument (TROPOMI) is a sensor aboard a satellite part of the European Space Agency’s <a href="https://dataspace.copernicus.eu/explore-data/data-collections/sentinel-data/sentinel-5p">Sentinel-5P</a> mission. The primary goal of TROPOMI is to provide daily global observations of key atmospheric constituents related to monitoring and forecasting air quality, the ozone layer, and climate change.</p>
+<p>The two crucial parameters to note when working with a satellite data are <code>spatial resolution</code> and <code>temporal resolution</code>.</p>
 <ol type="1">
-<li><a href="./notebooks/Calculating_AQI.html">Calculating Air Quality Index (AQI)</a></li>
-<li><a href="./notebooks/Plotting_AQI_of_a_City.html">Plotting AQI of a City</a></li>
-<li><a href="./notebooks/Air_Quality_Standards.html">Compliance with Air Quality Standards</a></li>
-<li><a href="./notebooks/Filling_Gaps_Satellite.html">Filling the gaps with Satellite images</a></li>
+<li>TROPOMI has daily observations of several pollutants like <code>NO2</code>, <code>O3</code>, <code>CO</code>, <code>HCHO</code> and <code>SO2</code>. The <code>temporal resolution</code> is thus: 24 hours.</li>
+<li><code>spatial resolution</code> is simply the size of the pixel in the stallite image. TROPOMI’s images has a pixel size of <code>~3.5 x 5.5 km</code>.</li>
+</ol>
+</section>
+<section id="downloading-tropomi-images-from-the-source" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="downloading-tropomi-images-from-the-source"><span class="header-section-number">4.2</span> Downloading TROPOMI images from the source</h2>
+<p>There are many satellite data providers who improve upon the basic TROPOMI layers. We’ll start with learning how to get TROPOMI images from the source: <a href="https://browser.dataspace.copernicus.eu/">Copernicus dataspace</a>. It is recommended to login to use all features of the portal.</p>
+<p>We’ll download <code>NO2</code> pollutant image. <code>NO2</code> pollutant is more reliable than other pollutants from TROPOMI. <code>NO2</code> has a lifetime of about a day. TROPOMI gives one picture of any region per day. So, each day’s <code>NO2</code> measurement can be interpreted as pollution on that day.</p>
+<p>After logging into to the [Copernicus dataspace], it is straight forward to download <code>NO2</code> pollutant image. <img src="Filling_Gaps_Satellite_files/figure-html/9765168b-863b-46e3-996f-d35619d763f7-2-1361b68c-2886-4508-82de-a6d554c196b1.png" class="img-fluid" alt="copernicus_dataspace.png"></p>
+<p>On the left panel: 1. Select the day 2. Select Configuration as <code>Atmosphere and Air Pollution</code> 3. Choose <code>NO2</code> Layer</p>
+<p>On the right panel: 1. Create an area of interest. You can either draw directly on the map, or upload airshed’s polygon in the form of <code>KML</code> or <code>GEOJSON</code> file. For this tutorial, I uploaded the Delhi state boundary. 2. Click on download. You can download the image in Basic <code>JPG/PNG</code> formats or in Analytical <code>TIF</code> formats. <code>TIF</code> images can be analysed using geospatial softwares like <code>QGIS</code>, <code>rasterio</code> etc.<br> <img src="Filling_Gaps_Satellite_files/figure-html/9765168b-863b-46e3-996f-d35619d763f7-1-1281968a-8a11-4f56-a29a-07889ac265b5.png" class="img-fluid" alt="copernicus_dataspace_download.png"></p>
+<p><code>Raw NO2</code> are the pixel level measurement of NO2. TROPOMI uses a unit of <code>mol/m2</code>. We’ll use the <code>Raw NO2</code> file to plot the satellite image of Delhi. This visualisation is also part of our <a href="https://urbanemissionsinfo.github.io/AirQualityVisuals/">Air Quality Visuals Course</a>: <a href="https://urbanemissionsinfo.github.io/AirQualityVisuals/notebooks/Plotting_SatelliteImages.html">Plotting Satellite images</a></p>
+<div id="fc1321f3-a204-40ce-8327-e386ec920f87" class="cell" data-execution_count="3">
+<details class="code-fold">
+<summary>Show hidden code that plots the Raw NO2 TIFF file</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> rasterio</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.colors <span class="im">as</span> mcolors</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> rasterio.plot <span class="im">import</span> show</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> geopandas <span class="im">as</span> gpd</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Load TIFF</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>tif_path <span class="op">=</span> <span class="st">"data/2026-03-07-00_00_2026-03-07-23_59_Sentinel-5P_NO2_NO2_(Raw).tiff"</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> rasterio.<span class="bu">open</span>(tif_path) <span class="im">as</span> src:</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    no2 <span class="op">=</span> src.read(<span class="dv">1</span>)                        <span class="co"># first band</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    no2 <span class="op">=</span> np.where(no2 <span class="op">==</span> src.nodata, np.nan, no2)  <span class="co"># mask nodata</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    extent <span class="op">=</span> [src.bounds.left, src.bounds.right, src.bounds.bottom, src.bounds.top]</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    crs <span class="op">=</span> src.crs</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Load admin boundaries — reproject to match raster CRS</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>delhi_districts <span class="op">=</span> gpd.read_file(<span class="st">'data/DELHI_DISTRICTS.geojson'</span>).to_crs(crs)</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>delhi_districts.head()</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">7</span>, <span class="dv">7</span>))</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>im <span class="op">=</span> ax.imshow(</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    no2,</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>    extent<span class="op">=</span>extent,</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>    cmap<span class="op">=</span><span class="st">'YlOrRd'</span>,</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>    origin<span class="op">=</span><span class="st">'upper'</span>,</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>    vmin<span class="op">=</span>np.nanpercentile(no2, <span class="dv">2</span>),   <span class="co"># clip outliers</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>    vmax<span class="op">=</span>np.nanpercentile(no2, <span class="dv">98</span>),</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="co"># Admin boundary overlay</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>delhi_districts.boundary.plot(ax<span class="op">=</span>ax, linewidth<span class="op">=</span><span class="fl">0.5</span>, color<span class="op">=</span><span class="st">'black'</span>)</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>plt.colorbar(im, ax<span class="op">=</span>ax, label<span class="op">=</span><span class="st">'NO₂ (mol/m²)'</span>)</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">'NO₂ Column Density - March 7th'</span>)</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'Longitude'</span>)</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'Latitude'</span>)</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="co">#plt.savefig('no2_map.png', dpi=150, bbox_inches='tight')</span></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Filling_Gaps_Satellite_files/figure-html/cell-2-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Thus we have filled the gaps in NO2 monitoring using TROPOMI’s NO2 data in Delhi.</p>
+</section>
+<section id="limitations-of-satellite-images" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="limitations-of-satellite-images"><span class="header-section-number">4.3</span> Limitations of Satellite images</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Filling_Gaps_Satellite_files/figure-html/53d976ad-1b44-483e-9fe6-6419c788e8cf-1-ee52d017-ebef-470a-ab38-ab169964945e.png" class="img-fluid figure-img"></p>
+<figcaption>satellite.png</figcaption>
+</figure>
+</div>
+<p>While satellite images help us get pollutant concentration in areas where there are no monitoring stations, there are a few limitations in relying completely on satellite images alone:</p>
+<ol type="1">
+<li>Satellite images give the value for the entire vertical column above the ground, while we are generally interested in the ambient measurements (2-10m height), where we breathe air.</li>
+<li>TROPOMI gives data of a region once per day, typically at the same time around <code>~13:30 local time</code>. It might thus under-bias short-lived pollutants if the satellite doesn’t pass over the region when the pollutant is live. For example, if the stubble in farms are burnt in the evenings, they could go un-detected. For this reason, <a href="https://www.business-standard.com/india-news/sc-asks-govt-to-procure-data-on-farm-fires-from-geo-stationary-satellites-124111801174_1.html">Supreme Court of India asked the government to purchase data from geo-stationary satellites to monitor farm fires</a></li>
+</ol>
+<p>Nevertheless, combining satellite data with ground-monitoring data and modelling data allows us to get a better understanding of air quality in a city.</p>
+</section>
+<section id="summary" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="summary"><span class="header-section-number">4.4</span> Summary</h2>
+<p>In this tutorial, we learnt that a city’s air quality monitoring network alone would result in a lot of gaps spatially. We then learnt to fill these gaps using satellite images - that of TROPOMI. We also learnt the limitations of satellite images.</p>
+<p>There are many other ways to access TROPOMI data:</p>
+<ol type="1">
+<li>You can use <a href="https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_S5P_OFFL_L3_NO2">Google Earth Engine (GEE)</a>. This code will help you to visualise and download TROPOMI data of any pollutant of any city/region: <a href="https://code.earthengine.google.com/53995a177b50a718b9455f651cae0bdf">TROPOMI Pollutants GEE Code</a></li>
+<li>There are applications on Google Earth Engine like <a href="jstnbraaten.users.earthengine.app/view/tropomi-explorer">Tropomi Explorer</a></li>
+<li>You could download the entire globe’s TROPOMI data in the form of <code>NetCDF</code> files from here: <a href="https://radiantearth.github.io/stac-browser/#/external/data-portal.s5p-pal.com/api/s5p-l3?.language=en">Radiant Earth STAC Browser</a></li>
 </ol>
 
 
@@ -800,11 +918,11 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="../notebooks/Air_Quality_Standards.html" class="pagination-link" aria-label="Compliance with Air Quality Standards">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Compliance with Air Quality Standards</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./notebooks/Calculating_AQI.html" class="pagination-link" aria-label="Calculating Air Quality Index (AQI)">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Calculating Air Quality Index (AQI)</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->

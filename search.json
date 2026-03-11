@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Air Quality Course",
     "section": "",
-    "text": "Introduction\nCourse on Air Quality Analysis and Management\n\nCalculating Air Quality Index (AQI)\nPlotting AQI of a City\nCompliance with Air Quality Standards",
+    "text": "Introduction\nCourse on Air Quality Analysis and Management\n\nCalculating Air Quality Index (AQI)\nPlotting AQI of a City\nCompliance with Air Quality Standards\nFilling the gaps with Satellite images",
     "crumbs": [
       "Introduction"
     ]
@@ -137,6 +137,56 @@
     "text": "3.4 Summary\nIn this tutorial, we learnt how to check if a city is complying with air quality standards - both NAAQS and W.H.O guidelines. We learnt that this compliance assessment is done using raw concentration data of each pollutant and not AQI. We learnt how to check compliance using both annual averages and daily averages.\nIt should be noted that we analysed the compliance based on the monitoring data only. The official assessment of a city’s performance under the National Clean Air Program (NCAP) also happens on the basis of monitoring data alone. In the previous tutorial we learnt that monitoring network of a city can spatially under-represent a city. That limitation would apply in this analysis as well.",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Compliance with Air Quality Standards</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/Filling_Gaps_Satellite.html",
+    "href": "notebooks/Filling_Gaps_Satellite.html",
+    "title": "4  Filling the Gaps with Satellite images",
+    "section": "",
+    "text": "4.1 About TROPOMI\nIn the previous tutorials we discussed the issue of monitoring data spatially under-representing a city. We specifically saw how Delhi, with India’s densest monitoring network, covers only 35% of its geographical area.  In this tutorial we’ll learn how to fill gaps. There are several methods to fill these gaps. We’ll use satellite images from SENTINEL-5P TROPOMI Sensor to fill gaps in this tutorial. We’ll also learn about limitations of this method.\nTROPOspheric Monitoring Instrument (TROPOMI) is a sensor aboard a satellite part of the European Space Agency’s Sentinel-5P mission. The primary goal of TROPOMI is to provide daily global observations of key atmospheric constituents related to monitoring and forecasting air quality, the ozone layer, and climate change.\nThe two crucial parameters to note when working with a satellite data are spatial resolution and temporal resolution.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Filling the Gaps with Satellite images</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/Filling_Gaps_Satellite.html#about-tropomi",
+    "href": "notebooks/Filling_Gaps_Satellite.html#about-tropomi",
+    "title": "4  Filling the Gaps with Satellite images",
+    "section": "",
+    "text": "TROPOMI has daily observations of several pollutants like NO2, O3, CO, HCHO and SO2. The temporal resolution is thus: 24 hours.\nspatial resolution is simply the size of the pixel in the stallite image. TROPOMI’s images has a pixel size of ~3.5 x 5.5 km.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Filling the Gaps with Satellite images</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/Filling_Gaps_Satellite.html#downloading-tropomi-images-from-the-source",
+    "href": "notebooks/Filling_Gaps_Satellite.html#downloading-tropomi-images-from-the-source",
+    "title": "4  Filling the Gaps with Satellite images",
+    "section": "4.2 Downloading TROPOMI images from the source",
+    "text": "4.2 Downloading TROPOMI images from the source\nThere are many satellite data providers who improve upon the basic TROPOMI layers. We’ll start with learning how to get TROPOMI images from the source: Copernicus dataspace. It is recommended to login to use all features of the portal.\nWe’ll download NO2 pollutant image. NO2 pollutant is more reliable than other pollutants from TROPOMI. NO2 has a lifetime of about a day. TROPOMI gives one picture of any region per day. So, each day’s NO2 measurement can be interpreted as pollution on that day.\nAfter logging into to the [Copernicus dataspace], it is straight forward to download NO2 pollutant image. \nOn the left panel: 1. Select the day 2. Select Configuration as Atmosphere and Air Pollution 3. Choose NO2 Layer\nOn the right panel: 1. Create an area of interest. You can either draw directly on the map, or upload airshed’s polygon in the form of KML or GEOJSON file. For this tutorial, I uploaded the Delhi state boundary. 2. Click on download. You can download the image in Basic JPG/PNG formats or in Analytical TIF formats. TIF images can be analysed using geospatial softwares like QGIS, rasterio etc. \nRaw NO2 are the pixel level measurement of NO2. TROPOMI uses a unit of mol/m2. We’ll use the Raw NO2 file to plot the satellite image of Delhi. This visualisation is also part of our Air Quality Visuals Course: Plotting Satellite images\n\n\nShow hidden code that plots the Raw NO2 TIFF file\nimport rasterio\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport matplotlib.colors as mcolors\nfrom rasterio.plot import show\nimport geopandas as gpd\n\n# Load TIFF\ntif_path = \"data/2026-03-07-00_00_2026-03-07-23_59_Sentinel-5P_NO2_NO2_(Raw).tiff\"\nwith rasterio.open(tif_path) as src:\n    no2 = src.read(1)                        # first band\n    no2 = np.where(no2 == src.nodata, np.nan, no2)  # mask nodata\n    extent = [src.bounds.left, src.bounds.right, src.bounds.bottom, src.bounds.top]\n    crs = src.crs\n\n# Load admin boundaries — reproject to match raster CRS\ndelhi_districts = gpd.read_file('data/DELHI_DISTRICTS.geojson').to_crs(crs)\ndelhi_districts.head()\n\n# Plot\nfig, ax = plt.subplots(figsize=(7, 7))\n\nim = ax.imshow(\n    no2,\n    extent=extent,\n    cmap='YlOrRd',\n    origin='upper',\n    vmin=np.nanpercentile(no2, 2),   # clip outliers\n    vmax=np.nanpercentile(no2, 98),\n)\n\n# Admin boundary overlay\ndelhi_districts.boundary.plot(ax=ax, linewidth=0.5, color='black')\n\nplt.colorbar(im, ax=ax, label='NO₂ (mol/m²)')\nax.set_title('NO₂ Column Density - March 7th')\nax.set_xlabel('Longitude')\nax.set_ylabel('Latitude')\nplt.tight_layout()\n#plt.savefig('no2_map.png', dpi=150, bbox_inches='tight')\nplt.show()\n\n\n\n\n\n\n\n\n\nThus we have filled the gaps in NO2 monitoring using TROPOMI’s NO2 data in Delhi.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Filling the Gaps with Satellite images</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/Filling_Gaps_Satellite.html#limitations-of-satellite-images",
+    "href": "notebooks/Filling_Gaps_Satellite.html#limitations-of-satellite-images",
+    "title": "4  Filling the Gaps with Satellite images",
+    "section": "4.3 Limitations of Satellite images",
+    "text": "4.3 Limitations of Satellite images\n\n\n\nsatellite.png\n\n\nWhile satellite images help us get pollutant concentration in areas where there are no monitoring stations, there are a few limitations in relying completely on satellite images alone:\n\nSatellite images give the value for the entire vertical column above the ground, while we are generally interested in the ambient measurements (2-10m height), where we breathe air.\nTROPOMI gives data of a region once per day, typically at the same time around ~13:30 local time. It might thus under-bias short-lived pollutants if the satellite doesn’t pass over the region when the pollutant is live. For example, if the stubble in farms are burnt in the evenings, they could go un-detected. For this reason, Supreme Court of India asked the government to purchase data from geo-stationary satellites to monitor farm fires\n\nNevertheless, combining satellite data with ground-monitoring data and modelling data allows us to get a better understanding of air quality in a city.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Filling the Gaps with Satellite images</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/Filling_Gaps_Satellite.html#summary",
+    "href": "notebooks/Filling_Gaps_Satellite.html#summary",
+    "title": "4  Filling the Gaps with Satellite images",
+    "section": "4.4 Summary",
+    "text": "4.4 Summary\nIn this tutorial, we learnt that a city’s air quality monitoring network alone would result in a lot of gaps spatially. We then learnt to fill these gaps using satellite images - that of TROPOMI. We also learnt the limitations of satellite images.\nThere are many other ways to access TROPOMI data:\n\nYou can use Google Earth Engine (GEE). This code will help you to visualise and download TROPOMI data of any pollutant of any city/region: TROPOMI Pollutants GEE Code\nThere are applications on Google Earth Engine like Tropomi Explorer\nYou could download the entire globe’s TROPOMI data in the form of NetCDF files from here: Radiant Earth STAC Browser",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Filling the Gaps with Satellite images</span>"
     ]
   }
 ]
