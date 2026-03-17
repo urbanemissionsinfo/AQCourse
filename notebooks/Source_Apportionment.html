@@ -112,6 +112,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+<script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@*/dist/embed-amd.js" crossorigin="anonymous"></script>
 
 
 </head>
@@ -386,8 +387,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#exploring-source-apportionment-data" id="toc-exploring-source-apportionment-data" class="nav-link active" data-scroll-target="#exploring-source-apportionment-data"><span class="header-section-number">6.1</span> Exploring source apportionment data</a></li>
-  <li><a href="#source-apportionment-pie" id="toc-source-apportionment-pie" class="nav-link" data-scroll-target="#source-apportionment-pie"><span class="header-section-number">6.2</span> Source apportionment pie</a></li>
+  <li><a href="#top-down-receptor-modeling-rm-based-source-apportionment" id="toc-top-down-receptor-modeling-rm-based-source-apportionment" class="nav-link active" data-scroll-target="#top-down-receptor-modeling-rm-based-source-apportionment"><span class="header-section-number">6.1</span> Top-down: Receptor Modeling (RM) based source apportionment</a>
+  <ul class="collapse">
+  <li><a href="#source-apportionment-pie" id="toc-source-apportionment-pie" class="nav-link" data-scroll-target="#source-apportionment-pie"><span class="header-section-number">6.1.1</span> Source apportionment pie</a></li>
+  </ul></li>
+  <li><a href="#bottom-up-emissions-based-source-apportionment" id="toc-bottom-up-emissions-based-source-apportionment" class="nav-link" data-scroll-target="#bottom-up-emissions-based-source-apportionment"><span class="header-section-number">6.2</span> Bottom-up: Emissions based Source Apportionment</a>
+  <ul class="collapse">
+  <li><a href="#scenario-building" id="toc-scenario-building" class="nav-link" data-scroll-target="#scenario-building"><span class="header-section-number">6.2.1</span> Scenario building</a></li>
+  </ul></li>
   <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">6.3</span> Summary</a></li>
   </ul>
 </nav>
@@ -422,10 +429,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>When is the pollution?</li>
 </ol>
 <p>But it is also important that we know the sources of the pollution in a city. Only by knowing sources that we can think of reducing ways to reduce pollution. We know about sources of pollution by conducting source apportionment studies.</p>
+<p>The source apportionment studies are not easy to conduct. They require a lot of skilled personnel for monitoring, data modeling, laboratory facilities and financial support. There are a few institutions that have the wherewithal to conduct source apportionment studies. There are two ways in which source apportionment can be done: 1. <strong>Top-down way: Using Receptor Modeling (RM)</strong> 2. <strong>Bottom-up way: Emissions Modeling.</strong></p>
 <p><a href="https://urbanemissions.info/wp-content/uploads/docs/Primer-What-is-Source-Apportionment-English.pdf">What is Source Apportionment? A Primer by UrbanEmissions.Info</a></p>
-<section id="exploring-source-apportionment-data" class="level2" data-number="6.1">
-<h2 data-number="6.1" class="anchored" data-anchor-id="exploring-source-apportionment-data"><span class="header-section-number">6.1</span> Exploring source apportionment data</h2>
-<p>The source apportionment studies are not easy to conduct. They require a lot of skilled personnel for monitoring, data modeling, laboratory facilities and financial support. There are a few institutions that have the wherewithal to conduct source apportionment studies. The World Health Organisation (W.H.O) collected source apportionment studies performed in various cities across the world between 1990-2014. This is a good dataset to explore source apportionment.</p>
+<section id="top-down-receptor-modeling-rm-based-source-apportionment" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="top-down-receptor-modeling-rm-based-source-apportionment"><span class="header-section-number">6.1</span> Top-down: Receptor Modeling (RM) based source apportionment</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Source_Apportionment_files/figure-html/cacc564d-efaf-479c-b8ca-be83f7934d9a-1-507698ca-7919-4337-aa38-e3264ea8863b.png" class="img-fluid figure-img"></p>
+<figcaption>SA_topdown.png</figcaption>
+</figure>
+</div>
+<p>The World Health Organisation (W.H.O) collected source apportionment studies performed in various cities across the world between 1990-2014. This is a good dataset to explore source apportionment.</p>
 <p><a href="https://www.who.int/data/gho/data/themes/air-pollution/source-apportionment-db">Database on source apportionment studies for particulate matter - W.H.O</a></p>
 <div id="bbb0b6cf-c1c3-4f2e-97ca-3039f7e02d42" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -595,22 +609,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>sources <span class="op">=</span> [<span class="st">'SEA SALT%'</span>, <span class="st">'DUST%'</span>, <span class="st">'TRAFFIC%'</span>, <span class="st">'INDUSTRY%'</span>, <span class="st">'BIOM. BURN./RES.%'</span>,</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>       <span class="st">'OTHER (unspecified-human origin)%'</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>There are two ways in which source apportionment can be done: 1. <strong>Top-down way: Using Receptor Modeling (RM)</strong></p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="Source_Apportionment_files/figure-html/68e531a7-2762-446f-aa51-8542b1d5a24b-2-0f648bcd-cc5c-4bc1-a879-b2a81944c08f.png" class="img-fluid figure-img"></p>
-<figcaption>SA_topdown.png</figcaption>
-</figure>
-</div>
-<ol start="3" type="1">
-<li><strong>Bottom-up way: Emissions Modeling.</strong></li>
-</ol>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="Source_Apportionment_files/figure-html/68e531a7-2762-446f-aa51-8542b1d5a24b-1-0bbbbc1d-33ec-4625-acf3-8ff375b3e861.png" class="img-fluid figure-img"></p>
-<figcaption>SA_bottomup.png</figcaption>
-</figure>
-</div>
 <p>The W.H.O database is a collection of all RM source apportionment studies. We can see that there are several methods of performing an RM study.</p>
 <div id="27f6b920-c7a3-4061-b5c4-83b892b65979" class="cell" data-execution_count="48">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>who_sources_db[<span class="st">'Methodology'</span>].unique()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -621,9 +619,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       dtype=object)</code></pre>
 </div>
 </div>
-</section>
-<section id="source-apportionment-pie" class="level2" data-number="6.2">
-<h2 data-number="6.2" class="anchored" data-anchor-id="source-apportionment-pie"><span class="header-section-number">6.2</span> Source apportionment pie</h2>
+<section id="source-apportionment-pie" class="level3" data-number="6.1.1">
+<h3 data-number="6.1.1" class="anchored" data-anchor-id="source-apportionment-pie"><span class="header-section-number">6.1.1</span> Source apportionment pie</h3>
 <p>Let’s learn to build a source apportionment pie for the city <code>Beijing</code> using the <code>2010</code> study.</p>
 <div id="b0a9ed14-caf4-40c8-b84a-34ce8a3f5ec7" class="cell" data-execution_count="45">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>required_columns  <span class="op">=</span> [<span class="st">'Site Location'</span>,<span class="st">'Country'</span>,<span class="st">'Site typology'</span>, <span class="st">'PM2.5 µgm-3 *'</span>, <span class="st">'Methodology'</span>, <span class="st">'Season'</span>]<span class="op">+</span>sources</span>
@@ -720,9 +717,257 @@ OTHER (unspecified-human origin) is 14.68 µg/m3</code></pre>
 </div>
 <p>We know that <code>W.H.O annual standard of PM2.5 is 5 µg/m3</code>. Thus, the least contributive source <code>DUST</code> alone was responsible in Beijing to cross the W.H.O standard. This gives us some insight on where to focus in reducing pollution.</p>
 </section>
+</section>
+<section id="bottom-up-emissions-based-source-apportionment" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="bottom-up-emissions-based-source-apportionment"><span class="header-section-number">6.2</span> Bottom-up: Emissions based Source Apportionment</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Source_Apportionment_files/figure-html/eb64d9bc-e998-4697-9ffa-8198b67f560d-1-7504fa74-91d7-45e2-b65e-4868f9cebd5f.png" class="img-fluid figure-img"></p>
+<figcaption>SA_bottomup.png</figcaption>
+</figure>
+</div>
+<p>Another way to estimate source contributions is from sector specific emissions in a city. The advantage of using Emissions based approach is that we can forecast emissions of a city and thus forecast future sources of air pollution.</p>
+<p>UrbanEmissions.Info performed emissions based source apportionment studies for various cities in India as part of the <a href="https://urbanemissions.info/india-apna/">Air Pollution Knowledge Assessment (APnA) City Program</a>. You can see the source apportionment pies of these cities, here: <a href="https://urbanemissionsinfo.github.io/source_apportionment/index.html">Link</a></p>
+<div id="e0952f9b-30e9-4e3f-8726-3c135e56d205" class="cell" data-execution_count="17">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>apna <span class="op">=</span> pd.read_csv(<span class="st">'data/APnA_50airsheds_PM25_Source_Apportionment_CAMxOutputs.csv'</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>apna.tail()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="17">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Airshed</th>
+<th data-quarto-table-cell-role="th">City</th>
+<th data-quarto-table-cell-role="th">Transport</th>
+<th data-quarto-table-cell-role="th">Residential</th>
+<th data-quarto-table-cell-role="th">Industrial</th>
+<th data-quarto-table-cell-role="th">Dust</th>
+<th data-quarto-table-cell-role="th">Waste</th>
+<th data-quarto-table-cell-role="th">Diesel Genset</th>
+<th data-quarto-table-cell-role="th">Brick Kiln</th>
+<th data-quarto-table-cell-role="th">Sea Salt</th>
+<th data-quarto-table-cell-role="th">External</th>
+<th data-quarto-table-cell-role="th">study_year</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">44</th>
+<td>45</td>
+<td>Nagpur</td>
+<td>17.20%</td>
+<td>6.80%</td>
+<td>26.70%</td>
+<td>10.90%</td>
+<td>11.60%</td>
+<td>1.80%</td>
+<td>3.20%</td>
+<td>NaN</td>
+<td>21.40%</td>
+<td>2017</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">45</th>
+<td>46</td>
+<td>Patna</td>
+<td>14.80%</td>
+<td>14.60%</td>
+<td>11.20%</td>
+<td>12.10%</td>
+<td>12.90%</td>
+<td>5.40%</td>
+<td>9.30%</td>
+<td>NaN</td>
+<td>19.20%</td>
+<td>2017</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">46</th>
+<td>47</td>
+<td>Pune-Pimpri-Chinchwad</td>
+<td>24.00%</td>
+<td>5.80%</td>
+<td>9.80%</td>
+<td>23.40%</td>
+<td>6.40%</td>
+<td>2.80%</td>
+<td>2.60%</td>
+<td>NaN</td>
+<td>24.70%</td>
+<td>2017</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">47</th>
+<td>48</td>
+<td>Raipur-Durg-Bhillai</td>
+<td>17.20%</td>
+<td>11.80%</td>
+<td>22.80%</td>
+<td>11.50%</td>
+<td>6.20%</td>
+<td>2.80%</td>
+<td>1.40%</td>
+<td>NaN</td>
+<td>25.80%</td>
+<td>2017</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">48</th>
+<td>49</td>
+<td>Ranchi</td>
+<td>21.10%</td>
+<td>18.00%</td>
+<td>1.10%</td>
+<td>14.10%</td>
+<td>12.20%</td>
+<td>1.30%</td>
+<td>3.20%</td>
+<td>NaN</td>
+<td>28.50%</td>
+<td>2017</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>We can note that this study identified more sources than the previous one: <code>Transport</code>, <code>Residential</code>, <code>Dust</code>, <code>Waste</code>, <code>Diesel Genset</code>, <code>Brick Kiln</code>, <code>Sea Salt</code> and <code>External</code>.</p>
+<div id="d0c4cb3b-8a09-460a-a6c8-0683a78d93dd" class="cell" data-execution_count="18">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>sources <span class="op">=</span>  [<span class="st">'Transport'</span>, <span class="st">'Residential'</span>, <span class="st">'Industrial'</span>, <span class="st">'Dust'</span>, <span class="st">'Waste'</span>, <span class="st">'Diesel Genset'</span>, <span class="st">'Brick Kiln'</span>, <span class="st">'Sea Salt'</span>, <span class="st">'External'</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<section id="scenario-building" class="level3" data-number="6.2.1">
+<h3 data-number="6.2.1" class="anchored" data-anchor-id="scenario-building"><span class="header-section-number">6.2.1</span> Scenario building</h3>
+<p>When we have source apportionment data, we can also build various scenarios of air pollution. We will build a scenario for the city of Mumbai. You can download the APnA leaflet for Mumbai from here: <a href="https://urbanemissions.info/wp-content/uploads/apna/docs/india_apna_2019_mumbai.pdf">Mumbai APnA 2019</a>.</p>
+<p>In 2018, the annual average PM2.5 concentration in Mumbai was 51.5 µg/m3. We can obtain source contributions from the APnA dataset.</p>
+<div id="3df1ea92-d859-4c2b-8163-ce01ba1ae546" class="cell" data-execution_count="76">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>pm25_mumbai <span class="op">=</span> <span class="fl">51.5</span> <span class="co">#µg/m3</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>mumbai_sources <span class="op">=</span> apna[apna.City <span class="op">==</span><span class="st">'Mumbai'</span>]</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>mumbai_sources</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="76">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Airshed</th>
+<th data-quarto-table-cell-role="th">City</th>
+<th data-quarto-table-cell-role="th">Transport</th>
+<th data-quarto-table-cell-role="th">Residential</th>
+<th data-quarto-table-cell-role="th">Industrial</th>
+<th data-quarto-table-cell-role="th">Dust</th>
+<th data-quarto-table-cell-role="th">Waste</th>
+<th data-quarto-table-cell-role="th">Diesel Genset</th>
+<th data-quarto-table-cell-role="th">Brick Kiln</th>
+<th data-quarto-table-cell-role="th">Sea Salt</th>
+<th data-quarto-table-cell-role="th">External</th>
+<th data-quarto-table-cell-role="th">study_year</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">17</th>
+<td>18</td>
+<td>Mumbai</td>
+<td>16.40%</td>
+<td>3.20%</td>
+<td>15.00%</td>
+<td>12.60%</td>
+<td>3.80%</td>
+<td>1.90%</td>
+<td>2.30%</td>
+<td>12.10%</td>
+<td>32.60%</td>
+<td>2019</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="b8622988-e0f5-4e24-8a02-22a9683bf0d7" class="cell" data-execution_count="80">
+<details class="code-fold">
+<summary>Show hidden code that builds the scenario player</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> ipywidgets <span class="im">as</span> widgets</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> display</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Source contributions in #µg/m3</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>base_contrib <span class="op">=</span> mumbai_sources[sources].T</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>base_contrib.columns <span class="op">=</span> [<span class="st">'source_contribution'</span>]</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>base_contrib <span class="op">=</span> base_contrib.source_contribution.<span class="bu">str</span>[:<span class="op">-</span><span class="dv">1</span>].astype(<span class="bu">float</span>)<span class="op">*</span>pm25_mumbai<span class="op">/</span><span class="dv">100</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>pm25_mumbai_ <span class="op">=</span> <span class="bu">round</span>(base_contrib.<span class="bu">sum</span>(),<span class="dv">2</span>)</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>sliders <span class="op">=</span> {}</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> col <span class="kw">in</span> sources:</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>    sliders[col] <span class="op">=</span> widgets.FloatSlider(</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>        value<span class="op">=</span><span class="dv">0</span>, <span class="bu">min</span><span class="op">=</span><span class="dv">0</span>, <span class="bu">max</span><span class="op">=</span><span class="dv">100</span>, step<span class="op">=</span><span class="dv">1</span>,</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>        description<span class="op">=</span>col,</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>        continuous_update<span class="op">=</span><span class="va">False</span></span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> update(<span class="op">**</span>reductions):</span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>    new_contrib <span class="op">=</span> base_contrib.copy()</span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> source, reduction <span class="kw">in</span> reductions.items():</span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>        new_contrib[source] <span class="op">*=</span> (<span class="dv">1</span> <span class="op">-</span> reduction<span class="op">/</span><span class="dv">100</span>)</span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a>    new_total <span class="op">=</span> <span class="bu">round</span>(new_contrib.<span class="bu">sum</span>(),<span class="dv">2</span>)</span>
+<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a>    <span class="co"># ---- PIE CHART ----</span></span>
+<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a>    plt.figure()</span>
+<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a>    <span class="co"># # optional: remove very small slices for clarity</span></span>
+<span id="cb13-30"><a href="#cb13-30" aria-hidden="true" tabindex="-1"></a>    <span class="co"># plot_data = new_contrib[new_contrib &gt; 2]</span></span>
+<span id="cb13-31"><a href="#cb13-31" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb13-32"><a href="#cb13-32" aria-hidden="true" tabindex="-1"></a>    plt.pie(</span>
+<span id="cb13-33"><a href="#cb13-33" aria-hidden="true" tabindex="-1"></a>        new_contrib,</span>
+<span id="cb13-34"><a href="#cb13-34" aria-hidden="true" tabindex="-1"></a>        labels<span class="op">=</span>new_contrib.index,</span>
+<span id="cb13-35"><a href="#cb13-35" aria-hidden="true" tabindex="-1"></a>        autopct<span class="op">=</span><span class="st">'</span><span class="sc">%1.1f%%</span><span class="st">'</span>,</span>
+<span id="cb13-36"><a href="#cb13-36" aria-hidden="true" tabindex="-1"></a>        startangle<span class="op">=</span><span class="dv">90</span></span>
+<span id="cb13-37"><a href="#cb13-37" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb13-38"><a href="#cb13-38" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb13-39"><a href="#cb13-39" aria-hidden="true" tabindex="-1"></a>    plt.title(<span class="ss">f"New Total PM2.5: </span><span class="sc">{</span>new_total<span class="sc">:.2f}</span><span class="ss"> µg/m³"</span>)</span>
+<span id="cb13-40"><a href="#cb13-40" aria-hidden="true" tabindex="-1"></a>    plt.axis(<span class="st">'equal'</span>)  <span class="co"># keeps it circular</span></span>
+<span id="cb13-41"><a href="#cb13-41" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb13-42"><a href="#cb13-42" aria-hidden="true" tabindex="-1"></a>    plt.show()</span>
+<span id="cb13-43"><a href="#cb13-43" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb13-44"><a href="#cb13-44" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Original: </span><span class="sc">{</span>pm25_mumbai_<span class="sc">:.2f}</span><span class="ss"> µg/m³"</span>)</span>
+<span id="cb13-45"><a href="#cb13-45" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"New: </span><span class="sc">{</span>new_total<span class="sc">:.2f}</span><span class="ss"> µg/m³"</span>)</span>
+<span id="cb13-46"><a href="#cb13-46" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Reduction: </span><span class="sc">{</span>pm25_mumbai_ <span class="op">-</span> new_total<span class="sc">}</span><span class="ss"> µg/m³"</span>)</span>
+<span id="cb13-47"><a href="#cb13-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-48"><a href="#cb13-48" aria-hidden="true" tabindex="-1"></a>ui <span class="op">=</span> widgets.VBox(<span class="bu">list</span>(sliders.values()))</span>
+<span id="cb13-49"><a href="#cb13-49" aria-hidden="true" tabindex="-1"></a>out <span class="op">=</span> widgets.interactive_output(update, sliders)</span>
+<span id="cb13-50"><a href="#cb13-50" aria-hidden="true" tabindex="-1"></a>title <span class="op">=</span> widgets.HTML(<span class="st">"&lt;h3&gt;Adjust Source Reductions (%)&lt;/h3&gt;"</span>)</span>
+<span id="cb13-51"><a href="#cb13-51" aria-hidden="true" tabindex="-1"></a>display(title, ui, out)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"b58784ef65594c7ea7353eb464445105","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"3c45e0858fc741dfa9a735b1090e118c","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"b4aef71bb39249de97e8fc8970ad9cda","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+</div>
+<p>We can thus play with various scenarios and see when the city of <code>Mumbai</code> can meet the Air Quality Standards. The above is one such scenario when we can observe that Mumbai’s PM2.5 annual average met NAAQS of 40µg/m³. Ofcourse, if the specified reductions are practical or not is another debate. But with these scenario players we can start thinking about solutions to the air pollution problem</p>
+</section>
+</section>
 <section id="summary" class="level2" data-number="6.3">
 <h2 data-number="6.3" class="anchored" data-anchor-id="summary"><span class="header-section-number">6.3</span> Summary</h2>
-<p>In this tutorial, we learnt what is source apportionment and various methods of performing source apportionment studies. We explored the database on source apportionment studies and worked with Beijing’s data to create a source apportionment pie.</p>
+<p>In this tutorial, we learnt what is source apportionment and various methods of performing source apportionment studies. We explored the database on source apportionment studies and worked with Beijing’s data to create a source apportionment pie. We then built a scenario player using Mumbai’s emission based source apportionment study and saw how Mumbai can reach NAAQS standard of 40 µg/m³.</p>
 
 
 </section>
