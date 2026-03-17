@@ -727,7 +727,7 @@ OTHER (unspecified-human origin) is 14.68 µg/m3</code></pre>
 </figure>
 </div>
 <p>Another way to estimate source contributions is from sector specific emissions in a city. The advantage of using Emissions based approach is that we can forecast emissions of a city and thus forecast future sources of air pollution.</p>
-<p>UrbanEmissions.Info performed emissions based source apportionment studies for various cities in India as part of the <a href="https://urbanemissions.info/india-apna/">Air Pollution Knowledge Assessment (APnA) City Program</a>. You can see the source apportionment pies of these cities, here: <a href="https://urbanemissionsinfo.github.io/source_apportionment/index.html">Link</a></p>
+<p>UrbanEmissions.Info performed emissions based PM2.5 source apportionment studies for various cities in India as part of the <a href="https://urbanemissions.info/india-apna/">Air Pollution Knowledge Assessment (APnA) City Program</a>. You can see the source apportionment pies of these cities, here: <a href="https://urbanemissionsinfo.github.io/source_apportionment/index.html">Link</a></p>
 <div id="e0952f9b-30e9-4e3f-8726-3c135e56d205" class="cell" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>apna <span class="op">=</span> pd.read_csv(<span class="st">'data/APnA_50airsheds_PM25_Source_Apportionment_CAMxOutputs.csv'</span>)</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>apna.tail()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -891,74 +891,99 @@ OTHER (unspecified-human origin) is 14.68 µg/m3</code></pre>
 </div>
 </div>
 </div>
-<div id="b8622988-e0f5-4e24-8a02-22a9683bf0d7" class="cell" data-execution_count="80">
+<div id="18f5aa6f-a95f-4e00-92fc-ec8ee152f633" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Percentage reduction in each source</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>reductions<span class="op">=</span>{<span class="st">'Transport'</span>:<span class="dv">30</span>,<span class="st">'Residential'</span>:<span class="dv">40</span>, <span class="st">'Industrial'</span>:<span class="dv">35</span>, <span class="st">'Dust'</span>:<span class="dv">50</span>, <span class="st">'Waste'</span>:<span class="dv">60</span>, <span class="st">'Diesel Genset'</span>:<span class="dv">50</span>,</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>            <span class="st">'Brick Kiln'</span>:<span class="dv">80</span>, <span class="st">'Sea Salt'</span>:<span class="dv">0</span>, <span class="st">'External'</span>:<span class="dv">0</span>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="b8622988-e0f5-4e24-8a02-22a9683bf0d7" class="cell" data-execution_count="88">
 <details class="code-fold">
 <summary>Show hidden code that builds the scenario player</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> ipywidgets <span class="im">as</span> widgets</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> display</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Source contributions in #µg/m3</span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>base_contrib <span class="op">=</span> mumbai_sources[sources].T</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>base_contrib.columns <span class="op">=</span> [<span class="st">'source_contribution'</span>]</span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>base_contrib <span class="op">=</span> base_contrib.source_contribution.<span class="bu">str</span>[:<span class="op">-</span><span class="dv">1</span>].astype(<span class="bu">float</span>)<span class="op">*</span>pm25_mumbai<span class="op">/</span><span class="dv">100</span></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>pm25_mumbai_ <span class="op">=</span> <span class="bu">round</span>(base_contrib.<span class="bu">sum</span>(),<span class="dv">2</span>)</span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>sliders <span class="op">=</span> {}</span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> col <span class="kw">in</span> sources:</span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>    sliders[col] <span class="op">=</span> widgets.FloatSlider(</span>
-<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>        value<span class="op">=</span><span class="dv">0</span>, <span class="bu">min</span><span class="op">=</span><span class="dv">0</span>, <span class="bu">max</span><span class="op">=</span><span class="dv">100</span>, step<span class="op">=</span><span class="dv">1</span>,</span>
-<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>        description<span class="op">=</span>col,</span>
-<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>        continuous_update<span class="op">=</span><span class="va">False</span></span>
-<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> update(<span class="op">**</span>reductions):</span>
-<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>    new_contrib <span class="op">=</span> base_contrib.copy()</span>
-<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> source, reduction <span class="kw">in</span> reductions.items():</span>
-<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>        new_contrib[source] <span class="op">*=</span> (<span class="dv">1</span> <span class="op">-</span> reduction<span class="op">/</span><span class="dv">100</span>)</span>
-<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a>    new_total <span class="op">=</span> <span class="bu">round</span>(new_contrib.<span class="bu">sum</span>(),<span class="dv">2</span>)</span>
-<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a>    <span class="co"># ---- PIE CHART ----</span></span>
-<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a>    plt.figure()</span>
-<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a>    <span class="co"># # optional: remove very small slices for clarity</span></span>
-<span id="cb13-30"><a href="#cb13-30" aria-hidden="true" tabindex="-1"></a>    <span class="co"># plot_data = new_contrib[new_contrib &gt; 2]</span></span>
-<span id="cb13-31"><a href="#cb13-31" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb13-32"><a href="#cb13-32" aria-hidden="true" tabindex="-1"></a>    plt.pie(</span>
-<span id="cb13-33"><a href="#cb13-33" aria-hidden="true" tabindex="-1"></a>        new_contrib,</span>
-<span id="cb13-34"><a href="#cb13-34" aria-hidden="true" tabindex="-1"></a>        labels<span class="op">=</span>new_contrib.index,</span>
-<span id="cb13-35"><a href="#cb13-35" aria-hidden="true" tabindex="-1"></a>        autopct<span class="op">=</span><span class="st">'</span><span class="sc">%1.1f%%</span><span class="st">'</span>,</span>
-<span id="cb13-36"><a href="#cb13-36" aria-hidden="true" tabindex="-1"></a>        startangle<span class="op">=</span><span class="dv">90</span></span>
-<span id="cb13-37"><a href="#cb13-37" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb13-38"><a href="#cb13-38" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb13-39"><a href="#cb13-39" aria-hidden="true" tabindex="-1"></a>    plt.title(<span class="ss">f"New Total PM2.5: </span><span class="sc">{</span>new_total<span class="sc">:.2f}</span><span class="ss"> µg/m³"</span>)</span>
-<span id="cb13-40"><a href="#cb13-40" aria-hidden="true" tabindex="-1"></a>    plt.axis(<span class="st">'equal'</span>)  <span class="co"># keeps it circular</span></span>
-<span id="cb13-41"><a href="#cb13-41" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb13-42"><a href="#cb13-42" aria-hidden="true" tabindex="-1"></a>    plt.show()</span>
-<span id="cb13-43"><a href="#cb13-43" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb13-44"><a href="#cb13-44" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Original: </span><span class="sc">{</span>pm25_mumbai_<span class="sc">:.2f}</span><span class="ss"> µg/m³"</span>)</span>
-<span id="cb13-45"><a href="#cb13-45" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"New: </span><span class="sc">{</span>new_total<span class="sc">:.2f}</span><span class="ss"> µg/m³"</span>)</span>
-<span id="cb13-46"><a href="#cb13-46" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Reduction: </span><span class="sc">{</span>pm25_mumbai_ <span class="op">-</span> new_total<span class="sc">}</span><span class="ss"> µg/m³"</span>)</span>
-<span id="cb13-47"><a href="#cb13-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-48"><a href="#cb13-48" aria-hidden="true" tabindex="-1"></a>ui <span class="op">=</span> widgets.VBox(<span class="bu">list</span>(sliders.values()))</span>
-<span id="cb13-49"><a href="#cb13-49" aria-hidden="true" tabindex="-1"></a>out <span class="op">=</span> widgets.interactive_output(update, sliders)</span>
-<span id="cb13-50"><a href="#cb13-50" aria-hidden="true" tabindex="-1"></a>title <span class="op">=</span> widgets.HTML(<span class="st">"&lt;h3&gt;Adjust Source Reductions (%)&lt;/h3&gt;"</span>)</span>
-<span id="cb13-51"><a href="#cb13-51" aria-hidden="true" tabindex="-1"></a>display(title, ui, out)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> ipywidgets <span class="im">as</span> widgets</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> display</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Source contributions in #µg/m3</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>base_contrib <span class="op">=</span> mumbai_sources[sources].T</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>base_contrib.columns <span class="op">=</span> [<span class="st">'source_contribution'</span>]</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>base_contrib <span class="op">=</span> base_contrib.source_contribution.<span class="bu">str</span>[:<span class="op">-</span><span class="dv">1</span>].astype(<span class="bu">float</span>)<span class="op">*</span>pm25_mumbai<span class="op">/</span><span class="dv">100</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>pm25_mumbai_ <span class="op">=</span> <span class="bu">round</span>(base_contrib.<span class="bu">sum</span>(),<span class="dv">2</span>)</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>sliders <span class="op">=</span> {}</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> col <span class="kw">in</span> sources:</span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>    sliders[col] <span class="op">=</span> widgets.FloatSlider(</span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>        value<span class="op">=</span>reductions[col], <span class="bu">min</span><span class="op">=</span><span class="dv">0</span>, <span class="bu">max</span><span class="op">=</span><span class="dv">100</span>, step<span class="op">=</span><span class="dv">1</span>,</span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>        description<span class="op">=</span>col,</span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>        continuous_update<span class="op">=</span><span class="va">False</span></span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> update(<span class="op">**</span>reductions):</span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>    new_contrib <span class="op">=</span> base_contrib.copy()</span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> source, reduction <span class="kw">in</span> reductions.items():</span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>        new_contrib[source] <span class="op">*=</span> (<span class="dv">1</span> <span class="op">-</span> reduction<span class="op">/</span><span class="dv">100</span>)</span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a>    new_total <span class="op">=</span> <span class="bu">round</span>(new_contrib.<span class="bu">sum</span>(),<span class="dv">2</span>)</span>
+<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a>    <span class="co"># ---- PIE CHART ----</span></span>
+<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a>    plt.figure()</span>
+<span id="cb14-30"><a href="#cb14-30" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb14-31"><a href="#cb14-31" aria-hidden="true" tabindex="-1"></a>    <span class="co"># # optional: remove very small slices for clarity</span></span>
+<span id="cb14-32"><a href="#cb14-32" aria-hidden="true" tabindex="-1"></a>    <span class="co"># plot_data = new_contrib[new_contrib &gt; 2]</span></span>
+<span id="cb14-33"><a href="#cb14-33" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb14-34"><a href="#cb14-34" aria-hidden="true" tabindex="-1"></a>    plt.pie(</span>
+<span id="cb14-35"><a href="#cb14-35" aria-hidden="true" tabindex="-1"></a>        new_contrib,</span>
+<span id="cb14-36"><a href="#cb14-36" aria-hidden="true" tabindex="-1"></a>        labels<span class="op">=</span>new_contrib.index,</span>
+<span id="cb14-37"><a href="#cb14-37" aria-hidden="true" tabindex="-1"></a>        autopct<span class="op">=</span><span class="st">'</span><span class="sc">%1.1f%%</span><span class="st">'</span>,</span>
+<span id="cb14-38"><a href="#cb14-38" aria-hidden="true" tabindex="-1"></a>        startangle<span class="op">=</span><span class="dv">90</span></span>
+<span id="cb14-39"><a href="#cb14-39" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb14-40"><a href="#cb14-40" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb14-41"><a href="#cb14-41" aria-hidden="true" tabindex="-1"></a>    plt.title(<span class="ss">f"New Total PM2.5: </span><span class="sc">{</span>new_total<span class="sc">:.2f}</span><span class="ss"> µg/m³"</span>)</span>
+<span id="cb14-42"><a href="#cb14-42" aria-hidden="true" tabindex="-1"></a>    plt.axis(<span class="st">'equal'</span>)  <span class="co"># keeps it circular</span></span>
+<span id="cb14-43"><a href="#cb14-43" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb14-44"><a href="#cb14-44" aria-hidden="true" tabindex="-1"></a>    plt.show()</span>
+<span id="cb14-45"><a href="#cb14-45" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb14-46"><a href="#cb14-46" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Original: </span><span class="sc">{</span>pm25_mumbai_<span class="sc">:.2f}</span><span class="ss"> µg/m³"</span>)</span>
+<span id="cb14-47"><a href="#cb14-47" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"New: </span><span class="sc">{</span>new_total<span class="sc">:.2f}</span><span class="ss"> µg/m³"</span>)</span>
+<span id="cb14-48"><a href="#cb14-48" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Reduction: </span><span class="sc">{</span>pm25_mumbai_ <span class="op">-</span> new_total<span class="sc">}</span><span class="ss"> µg/m³"</span>)</span>
+<span id="cb14-49"><a href="#cb14-49" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb14-50"><a href="#cb14-50" aria-hidden="true" tabindex="-1"></a>update(<span class="op">**</span>{k:reductions[k] <span class="cf">for</span> k <span class="kw">in</span> sliders})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Source_Apportionment_files/figure-html/cell-13-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Original: 51.45 µg/m³
+New: 39.70 µg/m³
+Reduction: 11.75 µg/m³</code></pre>
+</div>
+</div>
+<div id="bc0cfbea-09a8-42bf-b28b-303f7bd6459d" class="cell" data-execution_count="89">
+<details class="code-fold">
+<summary>Show hidden code to run scenario player in Colab/Jupyter</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>ui <span class="op">=</span> widgets.VBox(<span class="bu">list</span>(sliders.values()))</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>out <span class="op">=</span> widgets.interactive_output(update, sliders)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>title <span class="op">=</span> widgets.HTML(<span class="st">"&lt;h3&gt;Adjust Source Reductions (%)&lt;/h3&gt;"</span>)</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>display(title, ui, out)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"b58784ef65594c7ea7353eb464445105","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+{"model_id":"392f3672409e43f983a141ddc4deb090","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
 </script>
 </div>
 <div class="cell-output cell-output-display">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"3c45e0858fc741dfa9a735b1090e118c","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+{"model_id":"6c48f9a11eb84cba9226f3d0bd1e6e5e","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
 </script>
 </div>
 <div class="cell-output cell-output-display">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"b4aef71bb39249de97e8fc8970ad9cda","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+{"model_id":"54fb062b816444f896636dd7c529b414","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
 </script>
 </div>
 </div>
