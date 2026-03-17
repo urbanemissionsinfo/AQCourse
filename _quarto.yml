@@ -19,6 +19,9 @@ book:
     - notebooks/Calculating_AQI.ipynb
     - notebooks/Plotting_AQI_of_a_City.ipynb
     - notebooks/Air_Quality_Standards.ipynb
+    - notebooks/Filling_Gaps_Satellite.ipynb
+    - notebooks/Filling_Gaps_Modeling.ipynb
+    - notebooks/Source_Apportionment.ipynb
 
 format:
   html:

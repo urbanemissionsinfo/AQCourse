@@ -1,0 +1,1441 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>6&nbsp; Source Apportionment – Air Quality Course</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../notebooks/Filling_Gaps_Modeling.html" rel="prev">
+<link href="../images/favicon.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-4d9afe2b8d18ee9fa5d0d57b5ed4214d.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-18e48916e66a9a8e2d6c438ebac6ca13.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-7e34ecb6a0e7991f0346b0751d4a7c3f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-18e48916e66a9a8e2d6c438ebac6ca13.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+<script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@*/dist/embed-amd.js" crossorigin="anonymous"></script>
+
+
+</head>
+
+<body class="nav-sidebar floating quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notebooks/Source_Apportionment.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Source Apportionment</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Air Quality Course</a> 
+        <div class="sidebar-tools-main tools-wide">
+    <a href="https://github.com/urbanemissionsinfo/AQCourse" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="../Air-Quality-Course.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
+    <div class="dropdown">
+      <a href="" title="Share" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Share"><i class="bi bi-share"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://twitter.com/intent/tweet?url=|url|">
+              <i class="bi bi-twitter pe-1"></i>
+            Twitter
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://www.linkedin.com/sharing/share-offsite/?url=|url|">
+              <i class="bi bi-linkedin pe-1"></i>
+            LinkedIn
+            </a>
+          </li>
+      </ul>
+    </div>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/Calculating_AQI.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Calculating Air Quality Index (AQI)</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/Plotting_AQI_of_a_City.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Plotting AQI of a City</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/Air_Quality_Standards.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Compliance with Air Quality Standards</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/Filling_Gaps_Satellite.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Filling Gaps with Satellite images</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/Filling_Gaps_Modeling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Filling Gaps with model results</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/Source_Apportionment.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Source Apportionment</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#top-down-receptor-modeling-rm-based-source-apportionment" id="toc-top-down-receptor-modeling-rm-based-source-apportionment" class="nav-link active" data-scroll-target="#top-down-receptor-modeling-rm-based-source-apportionment"><span class="header-section-number">6.1</span> Top-down: Receptor Modeling (RM) based source apportionment</a>
+  <ul class="collapse">
+  <li><a href="#source-apportionment-pie" id="toc-source-apportionment-pie" class="nav-link" data-scroll-target="#source-apportionment-pie"><span class="header-section-number">6.1.1</span> Source apportionment pie</a></li>
+  </ul></li>
+  <li><a href="#bottom-up-emissions-based-source-apportionment" id="toc-bottom-up-emissions-based-source-apportionment" class="nav-link" data-scroll-target="#bottom-up-emissions-based-source-apportionment"><span class="header-section-number">6.2</span> Bottom-up: Emissions based Source Apportionment</a>
+  <ul class="collapse">
+  <li><a href="#scenario-building" id="toc-scenario-building" class="nav-link" data-scroll-target="#scenario-building"><span class="header-section-number">6.2.1</span> Scenario building</a></li>
+  </ul></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">6.3</span> Summary</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Source Apportionment</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>In the previous tutorials, we learnt to answer the following questions:</p>
+<ol type="1">
+<li>How much is the pollution?</li>
+<li>Where is the pollution? and</li>
+<li>When is the pollution?</li>
+</ol>
+<p>But it is also important that we know the sources of the pollution in a city. Only by knowing sources that we can think of reducing ways to reduce pollution. We know about sources of pollution by conducting source apportionment studies.</p>
+<p>The source apportionment studies are not easy to conduct. They require a lot of skilled personnel for monitoring, data modeling, laboratory facilities and financial support. There are a few institutions that have the wherewithal to conduct source apportionment studies. There are two ways in which source apportionment can be done: 1. <strong>Top-down way: Using Receptor Modeling (RM)</strong> 2. <strong>Bottom-up way: Emissions Modeling.</strong></p>
+<p><a href="https://urbanemissions.info/wp-content/uploads/docs/Primer-What-is-Source-Apportionment-English.pdf">What is Source Apportionment? A Primer by UrbanEmissions.Info</a></p>
+<section id="top-down-receptor-modeling-rm-based-source-apportionment" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="top-down-receptor-modeling-rm-based-source-apportionment"><span class="header-section-number">6.1</span> Top-down: Receptor Modeling (RM) based source apportionment</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Source_Apportionment_files/figure-html/cacc564d-efaf-479c-b8ca-be83f7934d9a-1-507698ca-7919-4337-aa38-e3264ea8863b.png" class="img-fluid figure-img"></p>
+<figcaption>SA_topdown.png</figcaption>
+</figure>
+</div>
+<p>The World Health Organisation (W.H.O) collected source apportionment studies performed in various cities across the world between 1990-2014. This is a good dataset to explore source apportionment.</p>
+<p><a href="https://www.who.int/data/gho/data/themes/air-pollution/source-apportionment-db">Database on source apportionment studies for particulate matter - W.H.O</a></p>
+<div id="bbb0b6cf-c1c3-4f2e-97ca-3039f7e02d42" class="cell" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>who_sources_db <span class="op">=</span> pd.read_csv(<span class="st">'data/database_source_apport_studies_v2_0_26_9_2015.csv'</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>who_sources_db.sample(<span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Site Location</th>
+<th data-quarto-table-cell-role="th">Population estimate *</th>
+<th data-quarto-table-cell-role="th">Country</th>
+<th data-quarto-table-cell-role="th">ISO 3 code</th>
+<th data-quarto-table-cell-role="th">Country Region</th>
+<th data-quarto-table-cell-role="th">continent</th>
+<th data-quarto-table-cell-role="th">Latitude</th>
+<th data-quarto-table-cell-role="th">Longitude</th>
+<th data-quarto-table-cell-role="th">Site typology</th>
+<th data-quarto-table-cell-role="th">PM10 µgm-3 *</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">Reference author</th>
+<th data-quarto-table-cell-role="th">Reference year</th>
+<th data-quarto-table-cell-role="th">Study year</th>
+<th data-quarto-table-cell-role="th">Season</th>
+<th data-quarto-table-cell-role="th">SEA SALT%</th>
+<th data-quarto-table-cell-role="th">DUST%</th>
+<th data-quarto-table-cell-role="th">TRAFFIC%</th>
+<th data-quarto-table-cell-role="th">INDUSTRY%</th>
+<th data-quarto-table-cell-role="th">BIOM. BURN./RES.%</th>
+<th data-quarto-table-cell-role="th">OTHER (unspecified-human origin)%</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">293</th>
+<td>Santander</td>
+<td>1,78,475</td>
+<td>Spain</td>
+<td>ESP</td>
+<td>Southwestern Europe</td>
+<td>EU</td>
+<td>43.47</td>
+<td>-3.81</td>
+<td>urban</td>
+<td>NaN</td>
+<td>...</td>
+<td>Moreno171,172</td>
+<td>2011.0</td>
+<td>2007/8</td>
+<td>year</td>
+<td>13.0</td>
+<td>1.0</td>
+<td>37.0</td>
+<td>7.0</td>
+<td>NaN</td>
+<td>42.0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">503</th>
+<td>Rio de Janeiro</td>
+<td>63,20,000</td>
+<td>Brazil</td>
+<td>BRA</td>
+<td>Brazil</td>
+<td>SA</td>
+<td>-22.90</td>
+<td>-43.21</td>
+<td>urban</td>
+<td>NaN</td>
+<td>...</td>
+<td>Godoy5</td>
+<td>2009.0</td>
+<td>2003/2005</td>
+<td>year</td>
+<td>NaN</td>
+<td>36.0</td>
+<td>29.0</td>
+<td>35.0</td>
+<td>NaN</td>
+<td>0.0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">439</th>
+<td>Corpus Christi</td>
+<td>3,12,195</td>
+<td>USA</td>
+<td>USA</td>
+<td>USA</td>
+<td>NaN</td>
+<td>27.42</td>
+<td>-97.29</td>
+<td>rural</td>
+<td>NaN</td>
+<td>...</td>
+<td>Subramoney116</td>
+<td>2013.0</td>
+<td>2003/2005</td>
+<td>year</td>
+<td>15.0</td>
+<td>4.0</td>
+<td>26.0</td>
+<td>NaN</td>
+<td>3.0</td>
+<td>52.0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">270</th>
+<td>La Linea</td>
+<td>64,645</td>
+<td>Spain</td>
+<td>ESP</td>
+<td>Southwestern Europe</td>
+<td>EU</td>
+<td>36.16</td>
+<td>-5.35</td>
+<td>urban-industrial</td>
+<td>NaN</td>
+<td>...</td>
+<td>Amato128–131</td>
+<td>2014.0</td>
+<td>2003/2010</td>
+<td>year</td>
+<td>9.0</td>
+<td>5.0</td>
+<td>25.0</td>
+<td>14.0</td>
+<td>NaN</td>
+<td>47.0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">492</th>
+<td>Jamari(†)</td>
+<td>&lt; 50</td>
+<td>Brazil</td>
+<td>BRA</td>
+<td>Brazil</td>
+<td>SA</td>
+<td>-9.20</td>
+<td>-63.17</td>
+<td>rural</td>
+<td>105.0</td>
+<td>...</td>
+<td>Artaxo2,3</td>
+<td>1998.0</td>
+<td>1995</td>
+<td>fall</td>
+<td>5.9</td>
+<td>21.3</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>54.0</td>
+<td>18.8</td>
+</tr>
+</tbody>
+</table>
+
+<p>5 rows × 22 columns</p>
+</div>
+</div>
+</div>
+<p><code>SEA SALT</code>, <code>DUST</code>, <code>TRAFFIC</code>, <code>INDUSTRY</code>, <code>BIOMASS BURNING/RESIDENTIAL</code> and <code>OTHERS</code> are the sources recognised in this database for each city.</p>
+<div id="e62f1629-95ea-49b5-93ae-80a17a4c5b6a" class="cell" data-execution_count="47">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>sources <span class="op">=</span> [<span class="st">'SEA SALT%'</span>, <span class="st">'DUST%'</span>, <span class="st">'TRAFFIC%'</span>, <span class="st">'INDUSTRY%'</span>, <span class="st">'BIOM. BURN./RES.%'</span>,</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>       <span class="st">'OTHER (unspecified-human origin)%'</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>The W.H.O database is a collection of all RM source apportionment studies. We can see that there are several methods of performing an RM study.</p>
+<div id="27f6b920-c7a3-4061-b5c4-83b892b65979" class="cell" data-execution_count="48">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>who_sources_db[<span class="st">'Methodology'</span>].unique()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="48">
+<pre><code>array(['PCA', 'CMB', 'PMF', 'UNMIX', 'APCS', 'FA', 'LENSCHOW', 'ME',
+       'PCA-MLR', 'PCA/APCS', 'CMF', 'COPREM', 'APEG', 'PCFA', 'APCFA',
+       'MC', 'PMF-ME', 'PMF-UNMIX', 'CMB/UNMIX', 'APCA', 'APFA', nan],
+      dtype=object)</code></pre>
+</div>
+</div>
+<section id="source-apportionment-pie" class="level3" data-number="6.1.1">
+<h3 data-number="6.1.1" class="anchored" data-anchor-id="source-apportionment-pie"><span class="header-section-number">6.1.1</span> Source apportionment pie</h3>
+<p>Let’s learn to build a source apportionment pie for the city <code>Beijing</code> using the <code>2010</code> study.</p>
+<div id="b0a9ed14-caf4-40c8-b84a-34ce8a3f5ec7" class="cell" data-execution_count="45">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>required_columns  <span class="op">=</span> [<span class="st">'Site Location'</span>,<span class="st">'Country'</span>,<span class="st">'Site typology'</span>, <span class="st">'PM2.5 µgm-3 *'</span>, <span class="st">'Methodology'</span>, <span class="st">'Season'</span>]<span class="op">+</span>sources</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>city <span class="op">=</span> <span class="st">'Beijing'</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>year <span class="op">=</span> <span class="st">'2010'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="5153e656-8107-4754-9ae1-cf76b52ac8a8" class="cell" data-execution_count="77">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>Beijing_2010_SA <span class="op">=</span> who_sources_db[(who_sources_db[<span class="st">'Site Location'</span>]<span class="op">==</span>city)<span class="op">&amp;</span>(who_sources_db[<span class="st">'Study year'</span>]<span class="op">==</span>year)][required_columns]</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>Beijing_2010_SA</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="77">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Site Location</th>
+<th data-quarto-table-cell-role="th">Country</th>
+<th data-quarto-table-cell-role="th">Site typology</th>
+<th data-quarto-table-cell-role="th">PM2.5 µgm-3 *</th>
+<th data-quarto-table-cell-role="th">Methodology</th>
+<th data-quarto-table-cell-role="th">Season</th>
+<th data-quarto-table-cell-role="th">SEA SALT%</th>
+<th data-quarto-table-cell-role="th">DUST%</th>
+<th data-quarto-table-cell-role="th">TRAFFIC%</th>
+<th data-quarto-table-cell-role="th">INDUSTRY%</th>
+<th data-quarto-table-cell-role="th">BIOM. BURN./RES.%</th>
+<th data-quarto-table-cell-role="th">OTHER (unspecified-human origin)%</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">98</th>
+<td>Beijing</td>
+<td>China</td>
+<td>urban</td>
+<td>55</td>
+<td>PMF</td>
+<td>year</td>
+<td>NaN</td>
+<td>10.4</td>
+<td>29.7</td>
+<td>22.0</td>
+<td>11.2</td>
+<td>26.7</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>From this source apportionment study, we can infer the following details:</p>
+<ol type="1">
+<li>The annual PM2.5 concentration in Beijing in 2010 was 55 µg/m3.</li>
+<li>The source apportionment study was performed by the <code>PMF</code> method (Positive Matrix Factorization). It is a Receptor Modeling (RM) method. You can read more about it here: <a href="https://www.epa.gov/air-research/positive-matrix-factorization-model-environmental-data-analyses">Positive Matrix Factorization Model for Environmental Data Analyses | US EPA</a></li>
+<li><code>TRAFFIC</code> is the major source of PM2.5 followed by<code>INDUSTRY</code>, <code>BIOMASS BURNING/RESIDENTIAL</code> and <code>DUST</code>.</li>
+</ol>
+<div id="dec33049-55d2-4b29-b83d-eb781ddbe5a4" class="cell" data-execution_count="91">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>source_contributions <span class="op">=</span> <span class="bu">list</span>(Beijing_2010_SA[sources].dropna(axis<span class="op">=</span><span class="dv">1</span>).values.flatten())</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>sources <span class="op">=</span> Beijing_2010_SA[sources].dropna(axis<span class="op">=</span><span class="dv">1</span>).columns</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>ax.pie(source_contributions,</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>       labels<span class="op">=</span>sources,</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>       autopct<span class="op">=</span><span class="st">'</span><span class="sc">%1.1f%%</span><span class="st">'</span>)</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Source_Apportionment_files/figure-html/cell-7-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>We can also calculate the contributions of each source to PM2.5 in µg/m3 by multiplying the total PM2.5 concentration with source percentage.</p>
+<div id="fc4bc8f0-f8be-4950-9c64-9a5a950dd917" class="cell" data-execution_count="106">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>pm25 <span class="op">=</span> <span class="bu">float</span>(Beijing_2010_SA[<span class="st">'PM2.5 µgm-3 *'</span>].values[<span class="dv">0</span>])</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Beijing's annual PM2.5 concentration in 2010 is </span><span class="sc">{</span>pm25<span class="sc">}</span><span class="ss"> µg/m3 </span><span class="ch">\n</span><span class="ss"> Of which, the contribution of:"</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> source, contribution <span class="kw">in</span> <span class="bu">zip</span>(sources,source_contributions):</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>source[:<span class="op">-</span><span class="dv">1</span>]<span class="sc">}</span><span class="ss"> is </span><span class="sc">{</span><span class="bu">round</span>(contribution<span class="op">*</span>pm25<span class="op">/</span><span class="dv">100</span>,<span class="dv">2</span>)<span class="sc">}</span><span class="ss"> µg/m3"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Beijing's annual PM2.5 concentration in 2010 is 55.0 µg/m3 
+ Of which, the contribution of:
+DUST is 5.72 µg/m3
+TRAFFIC is 16.34 µg/m3
+INDUSTRY is 12.1 µg/m3
+BIOM. BURN./RES. is 6.16 µg/m3
+OTHER (unspecified-human origin) is 14.68 µg/m3</code></pre>
+</div>
+</div>
+<p>We know that <code>W.H.O annual standard of PM2.5 is 5 µg/m3</code>. Thus, the least contributive source <code>DUST</code> alone was responsible in Beijing to cross the W.H.O standard. This gives us some insight on where to focus in reducing pollution.</p>
+</section>
+</section>
+<section id="bottom-up-emissions-based-source-apportionment" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="bottom-up-emissions-based-source-apportionment"><span class="header-section-number">6.2</span> Bottom-up: Emissions based Source Apportionment</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Source_Apportionment_files/figure-html/eb64d9bc-e998-4697-9ffa-8198b67f560d-1-7504fa74-91d7-45e2-b65e-4868f9cebd5f.png" class="img-fluid figure-img"></p>
+<figcaption>SA_bottomup.png</figcaption>
+</figure>
+</div>
+<p>Another way to estimate source contributions is from sector specific emissions in a city. The advantage of using Emissions based approach is that we can forecast emissions of a city and thus forecast future sources of air pollution.</p>
+<p>UrbanEmissions.Info performed emissions based PM2.5 source apportionment studies for various cities in India as part of the <a href="https://urbanemissions.info/india-apna/">Air Pollution Knowledge Assessment (APnA) City Program</a>. You can see the source apportionment pies of these cities, here: <a href="https://urbanemissionsinfo.github.io/source_apportionment/index.html">Link</a></p>
+<div id="e0952f9b-30e9-4e3f-8726-3c135e56d205" class="cell" data-execution_count="17">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>apna <span class="op">=</span> pd.read_csv(<span class="st">'data/APnA_50airsheds_PM25_Source_Apportionment_CAMxOutputs.csv'</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>apna.tail()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="17">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Airshed</th>
+<th data-quarto-table-cell-role="th">City</th>
+<th data-quarto-table-cell-role="th">Transport</th>
+<th data-quarto-table-cell-role="th">Residential</th>
+<th data-quarto-table-cell-role="th">Industrial</th>
+<th data-quarto-table-cell-role="th">Dust</th>
+<th data-quarto-table-cell-role="th">Waste</th>
+<th data-quarto-table-cell-role="th">Diesel Genset</th>
+<th data-quarto-table-cell-role="th">Brick Kiln</th>
+<th data-quarto-table-cell-role="th">Sea Salt</th>
+<th data-quarto-table-cell-role="th">External</th>
+<th data-quarto-table-cell-role="th">study_year</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">44</th>
+<td>45</td>
+<td>Nagpur</td>
+<td>17.20%</td>
+<td>6.80%</td>
+<td>26.70%</td>
+<td>10.90%</td>
+<td>11.60%</td>
+<td>1.80%</td>
+<td>3.20%</td>
+<td>NaN</td>
+<td>21.40%</td>
+<td>2017</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">45</th>
+<td>46</td>
+<td>Patna</td>
+<td>14.80%</td>
+<td>14.60%</td>
+<td>11.20%</td>
+<td>12.10%</td>
+<td>12.90%</td>
+<td>5.40%</td>
+<td>9.30%</td>
+<td>NaN</td>
+<td>19.20%</td>
+<td>2017</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">46</th>
+<td>47</td>
+<td>Pune-Pimpri-Chinchwad</td>
+<td>24.00%</td>
+<td>5.80%</td>
+<td>9.80%</td>
+<td>23.40%</td>
+<td>6.40%</td>
+<td>2.80%</td>
+<td>2.60%</td>
+<td>NaN</td>
+<td>24.70%</td>
+<td>2017</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">47</th>
+<td>48</td>
+<td>Raipur-Durg-Bhillai</td>
+<td>17.20%</td>
+<td>11.80%</td>
+<td>22.80%</td>
+<td>11.50%</td>
+<td>6.20%</td>
+<td>2.80%</td>
+<td>1.40%</td>
+<td>NaN</td>
+<td>25.80%</td>
+<td>2017</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">48</th>
+<td>49</td>
+<td>Ranchi</td>
+<td>21.10%</td>
+<td>18.00%</td>
+<td>1.10%</td>
+<td>14.10%</td>
+<td>12.20%</td>
+<td>1.30%</td>
+<td>3.20%</td>
+<td>NaN</td>
+<td>28.50%</td>
+<td>2017</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>We can note that this study identified more sources than the previous one: <code>Transport</code>, <code>Residential</code>, <code>Dust</code>, <code>Waste</code>, <code>Diesel Genset</code>, <code>Brick Kiln</code>, <code>Sea Salt</code> and <code>External</code>.</p>
+<div id="d0c4cb3b-8a09-460a-a6c8-0683a78d93dd" class="cell" data-execution_count="18">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>sources <span class="op">=</span>  [<span class="st">'Transport'</span>, <span class="st">'Residential'</span>, <span class="st">'Industrial'</span>, <span class="st">'Dust'</span>, <span class="st">'Waste'</span>, <span class="st">'Diesel Genset'</span>, <span class="st">'Brick Kiln'</span>, <span class="st">'Sea Salt'</span>, <span class="st">'External'</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<section id="scenario-building" class="level3" data-number="6.2.1">
+<h3 data-number="6.2.1" class="anchored" data-anchor-id="scenario-building"><span class="header-section-number">6.2.1</span> Scenario building</h3>
+<p>When we have source apportionment data, we can also build various scenarios of air pollution. We will build a scenario for the city of Mumbai. You can download the APnA leaflet for Mumbai from here: <a href="https://urbanemissions.info/wp-content/uploads/apna/docs/india_apna_2019_mumbai.pdf">Mumbai APnA 2019</a>.</p>
+<p>In 2018, the annual average PM2.5 concentration in Mumbai was 51.5 µg/m3. We can obtain source contributions from the APnA dataset.</p>
+<div id="3df1ea92-d859-4c2b-8163-ce01ba1ae546" class="cell" data-execution_count="76">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>pm25_mumbai <span class="op">=</span> <span class="fl">51.5</span> <span class="co">#µg/m3</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>mumbai_sources <span class="op">=</span> apna[apna.City <span class="op">==</span><span class="st">'Mumbai'</span>]</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>mumbai_sources</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="76">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Airshed</th>
+<th data-quarto-table-cell-role="th">City</th>
+<th data-quarto-table-cell-role="th">Transport</th>
+<th data-quarto-table-cell-role="th">Residential</th>
+<th data-quarto-table-cell-role="th">Industrial</th>
+<th data-quarto-table-cell-role="th">Dust</th>
+<th data-quarto-table-cell-role="th">Waste</th>
+<th data-quarto-table-cell-role="th">Diesel Genset</th>
+<th data-quarto-table-cell-role="th">Brick Kiln</th>
+<th data-quarto-table-cell-role="th">Sea Salt</th>
+<th data-quarto-table-cell-role="th">External</th>
+<th data-quarto-table-cell-role="th">study_year</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">17</th>
+<td>18</td>
+<td>Mumbai</td>
+<td>16.40%</td>
+<td>3.20%</td>
+<td>15.00%</td>
+<td>12.60%</td>
+<td>3.80%</td>
+<td>1.90%</td>
+<td>2.30%</td>
+<td>12.10%</td>
+<td>32.60%</td>
+<td>2019</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="18f5aa6f-a95f-4e00-92fc-ec8ee152f633" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Percentage reduction in each source</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>reductions<span class="op">=</span>{<span class="st">'Transport'</span>:<span class="dv">30</span>,<span class="st">'Residential'</span>:<span class="dv">40</span>, <span class="st">'Industrial'</span>:<span class="dv">35</span>, <span class="st">'Dust'</span>:<span class="dv">50</span>, <span class="st">'Waste'</span>:<span class="dv">60</span>, <span class="st">'Diesel Genset'</span>:<span class="dv">50</span>,</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>            <span class="st">'Brick Kiln'</span>:<span class="dv">80</span>, <span class="st">'Sea Salt'</span>:<span class="dv">0</span>, <span class="st">'External'</span>:<span class="dv">0</span>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="b8622988-e0f5-4e24-8a02-22a9683bf0d7" class="cell" data-execution_count="88">
+<details class="code-fold">
+<summary>Show hidden code that builds the scenario player</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> ipywidgets <span class="im">as</span> widgets</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> display</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Source contributions in #µg/m3</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>base_contrib <span class="op">=</span> mumbai_sources[sources].T</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>base_contrib.columns <span class="op">=</span> [<span class="st">'source_contribution'</span>]</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>base_contrib <span class="op">=</span> base_contrib.source_contribution.<span class="bu">str</span>[:<span class="op">-</span><span class="dv">1</span>].astype(<span class="bu">float</span>)<span class="op">*</span>pm25_mumbai<span class="op">/</span><span class="dv">100</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>pm25_mumbai_ <span class="op">=</span> <span class="bu">round</span>(base_contrib.<span class="bu">sum</span>(),<span class="dv">2</span>)</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>sliders <span class="op">=</span> {}</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> col <span class="kw">in</span> sources:</span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>    sliders[col] <span class="op">=</span> widgets.FloatSlider(</span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>        value<span class="op">=</span>reductions[col], <span class="bu">min</span><span class="op">=</span><span class="dv">0</span>, <span class="bu">max</span><span class="op">=</span><span class="dv">100</span>, step<span class="op">=</span><span class="dv">1</span>,</span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>        description<span class="op">=</span>col,</span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>        continuous_update<span class="op">=</span><span class="va">False</span></span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> update(<span class="op">**</span>reductions):</span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>    new_contrib <span class="op">=</span> base_contrib.copy()</span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> source, reduction <span class="kw">in</span> reductions.items():</span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>        new_contrib[source] <span class="op">*=</span> (<span class="dv">1</span> <span class="op">-</span> reduction<span class="op">/</span><span class="dv">100</span>)</span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a>    new_total <span class="op">=</span> <span class="bu">round</span>(new_contrib.<span class="bu">sum</span>(),<span class="dv">2</span>)</span>
+<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a>    <span class="co"># ---- PIE CHART ----</span></span>
+<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a>    plt.figure()</span>
+<span id="cb14-30"><a href="#cb14-30" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb14-31"><a href="#cb14-31" aria-hidden="true" tabindex="-1"></a>    <span class="co"># # optional: remove very small slices for clarity</span></span>
+<span id="cb14-32"><a href="#cb14-32" aria-hidden="true" tabindex="-1"></a>    <span class="co"># plot_data = new_contrib[new_contrib &gt; 2]</span></span>
+<span id="cb14-33"><a href="#cb14-33" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb14-34"><a href="#cb14-34" aria-hidden="true" tabindex="-1"></a>    plt.pie(</span>
+<span id="cb14-35"><a href="#cb14-35" aria-hidden="true" tabindex="-1"></a>        new_contrib,</span>
+<span id="cb14-36"><a href="#cb14-36" aria-hidden="true" tabindex="-1"></a>        labels<span class="op">=</span>new_contrib.index,</span>
+<span id="cb14-37"><a href="#cb14-37" aria-hidden="true" tabindex="-1"></a>        autopct<span class="op">=</span><span class="st">'</span><span class="sc">%1.1f%%</span><span class="st">'</span>,</span>
+<span id="cb14-38"><a href="#cb14-38" aria-hidden="true" tabindex="-1"></a>        startangle<span class="op">=</span><span class="dv">90</span></span>
+<span id="cb14-39"><a href="#cb14-39" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb14-40"><a href="#cb14-40" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb14-41"><a href="#cb14-41" aria-hidden="true" tabindex="-1"></a>    plt.title(<span class="ss">f"New Total PM2.5: </span><span class="sc">{</span>new_total<span class="sc">:.2f}</span><span class="ss"> µg/m³"</span>)</span>
+<span id="cb14-42"><a href="#cb14-42" aria-hidden="true" tabindex="-1"></a>    plt.axis(<span class="st">'equal'</span>)  <span class="co"># keeps it circular</span></span>
+<span id="cb14-43"><a href="#cb14-43" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb14-44"><a href="#cb14-44" aria-hidden="true" tabindex="-1"></a>    plt.show()</span>
+<span id="cb14-45"><a href="#cb14-45" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb14-46"><a href="#cb14-46" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Original: </span><span class="sc">{</span>pm25_mumbai_<span class="sc">:.2f}</span><span class="ss"> µg/m³"</span>)</span>
+<span id="cb14-47"><a href="#cb14-47" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"New: </span><span class="sc">{</span>new_total<span class="sc">:.2f}</span><span class="ss"> µg/m³"</span>)</span>
+<span id="cb14-48"><a href="#cb14-48" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Reduction: </span><span class="sc">{</span>pm25_mumbai_ <span class="op">-</span> new_total<span class="sc">}</span><span class="ss"> µg/m³"</span>)</span>
+<span id="cb14-49"><a href="#cb14-49" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb14-50"><a href="#cb14-50" aria-hidden="true" tabindex="-1"></a>update(<span class="op">**</span>{k:reductions[k] <span class="cf">for</span> k <span class="kw">in</span> sliders})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Source_Apportionment_files/figure-html/cell-13-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Original: 51.45 µg/m³
+New: 39.70 µg/m³
+Reduction: 11.75 µg/m³</code></pre>
+</div>
+</div>
+<div id="bc0cfbea-09a8-42bf-b28b-303f7bd6459d" class="cell" data-execution_count="89">
+<details class="code-fold">
+<summary>Show hidden code to run scenario player in Colab/Jupyter</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>ui <span class="op">=</span> widgets.VBox(<span class="bu">list</span>(sliders.values()))</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>out <span class="op">=</span> widgets.interactive_output(update, sliders)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>title <span class="op">=</span> widgets.HTML(<span class="st">"&lt;h3&gt;Adjust Source Reductions (%)&lt;/h3&gt;"</span>)</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>display(title, ui, out)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"392f3672409e43f983a141ddc4deb090","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"6c48f9a11eb84cba9226f3d0bd1e6e5e","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"54fb062b816444f896636dd7c529b414","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+</div>
+<p>We can thus play with various scenarios and see when the city of <code>Mumbai</code> can meet the Air Quality Standards. The above is one such scenario when we can observe that Mumbai’s PM2.5 annual average met NAAQS of 40µg/m³. Ofcourse, if the specified reductions are practical or not is another debate. But with these scenario players we can start thinking about solutions to the air pollution problem</p>
+</section>
+</section>
+<section id="summary" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="summary"><span class="header-section-number">6.3</span> Summary</h2>
+<p>In this tutorial, we learnt what is source apportionment and various methods of performing source apportionment studies. We explored the database on source apportionment studies and worked with Beijing’s data to create a source apportionment pie. We then built a scenario player using Mumbai’s emission based source apportionment study and saw how Mumbai can reach NAAQS standard of 40 µg/m³.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/urbanemissionsinfo\.github\.io\/AQCourse");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../notebooks/Filling_Gaps_Modeling.html" class="pagination-link" aria-label="Filling Gaps with model results">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Filling Gaps with model results</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2026 Urban Emissions</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
