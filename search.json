@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Air Quality Course",
     "section": "",
-    "text": "Introduction\nCourse on Air Quality Analysis and Management\n\nCalculating Air Quality Index (AQI)\nPlotting AQI of a City\nCompliance with Air Quality Standards\nFilling gaps with Satellite images\nFilling gaps with Model Results",
+    "text": "Introduction\nCourse on Air Quality Analysis and Management\n\nCalculating Air Quality Index (AQI)\nPlotting AQI of a City\nCompliance with Air Quality Standards\nFilling gaps with Satellite images\nFilling gaps with Model Results\nSource Apportionment",
     "crumbs": [
       "Introduction"
     ]
@@ -237,6 +237,46 @@
     "text": "5.5 Summary\nIn this tutorial, we learnt about model outputs and how to work with NetCDF files. We learnt to crop and plot model results to a geography of interest. We also learnt how we can analyse model results to ask various research and policy questions.",
     "crumbs": [
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Filling Gaps with model results</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/Source_Apportionment.html",
+    "href": "notebooks/Source_Apportionment.html",
+    "title": "6  Source Apportionment",
+    "section": "",
+    "text": "6.1 Exploring source apportionment data\nIn the previous tutorials, we learnt to answer the following questions:\nBut it is also important that we know the sources of the pollution in a city. Only by knowing sources that we can think of reducing ways to reduce pollution. We know about sources of pollution by conducting source apportionment studies.\nWhat is Source Apportionment? A Primer by UrbanEmissions.Info\nThe source apportionment studies are not easy to conduct. They require a lot of skilled personnel for monitoring, data modeling, laboratory facilities and financial support. There are a few institutions that have the wherewithal to conduct source apportionment studies. The World Health Organisation (W.H.O) collected source apportionment studies performed in various cities across the world between 1990-2014. This is a good dataset to explore source apportionment.\nDatabase on source apportionment studies for particulate matter - W.H.O\nimport pandas as pd\nwho_sources_db = pd.read_csv('data/database_source_apport_studies_v2_0_26_9_2015.csv')\nwho_sources_db.sample(5)\n\n\n\n\n\n\n\n\nSite Location\nPopulation estimate *\nCountry\nISO 3 code\nCountry Region\ncontinent\nLatitude\nLongitude\nSite typology\nPM10 µgm-3 *\n...\nReference author\nReference year\nStudy year\nSeason\nSEA SALT%\nDUST%\nTRAFFIC%\nINDUSTRY%\nBIOM. BURN./RES.%\nOTHER (unspecified-human origin)%\n\n\n\n\n293\nSantander\n1,78,475\nSpain\nESP\nSouthwestern Europe\nEU\n43.47\n-3.81\nurban\nNaN\n...\nMoreno171,172\n2011.0\n2007/8\nyear\n13.0\n1.0\n37.0\n7.0\nNaN\n42.0\n\n\n503\nRio de Janeiro\n63,20,000\nBrazil\nBRA\nBrazil\nSA\n-22.90\n-43.21\nurban\nNaN\n...\nGodoy5\n2009.0\n2003/2005\nyear\nNaN\n36.0\n29.0\n35.0\nNaN\n0.0\n\n\n439\nCorpus Christi\n3,12,195\nUSA\nUSA\nUSA\nNaN\n27.42\n-97.29\nrural\nNaN\n...\nSubramoney116\n2013.0\n2003/2005\nyear\n15.0\n4.0\n26.0\nNaN\n3.0\n52.0\n\n\n270\nLa Linea\n64,645\nSpain\nESP\nSouthwestern Europe\nEU\n36.16\n-5.35\nurban-industrial\nNaN\n...\nAmato128–131\n2014.0\n2003/2010\nyear\n9.0\n5.0\n25.0\n14.0\nNaN\n47.0\n\n\n492\nJamari(†)\n&lt; 50\nBrazil\nBRA\nBrazil\nSA\n-9.20\n-63.17\nrural\n105.0\n...\nArtaxo2,3\n1998.0\n1995\nfall\n5.9\n21.3\nNaN\nNaN\n54.0\n18.8\n\n\n\n\n5 rows × 22 columns\nSEA SALT, DUST, TRAFFIC, INDUSTRY, BIOMASS BURNING/RESIDENTIAL and OTHERS are the sources recognised in this database for each city.\nsources = ['SEA SALT%', 'DUST%', 'TRAFFIC%', 'INDUSTRY%', 'BIOM. BURN./RES.%',\n       'OTHER (unspecified-human origin)%']\nThere are two ways in which source apportionment can be done: 1. Top-down way: Using Receptor Modeling (RM)\nThe W.H.O database is a collection of all RM source apportionment studies. We can see that there are several methods of performing an RM study.\nwho_sources_db['Methodology'].unique()\n\narray(['PCA', 'CMB', 'PMF', 'UNMIX', 'APCS', 'FA', 'LENSCHOW', 'ME',\n       'PCA-MLR', 'PCA/APCS', 'CMF', 'COPREM', 'APEG', 'PCFA', 'APCFA',\n       'MC', 'PMF-ME', 'PMF-UNMIX', 'CMB/UNMIX', 'APCA', 'APFA', nan],\n      dtype=object)",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Source Apportionment</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/Source_Apportionment.html#exploring-source-apportionment-data",
+    "href": "notebooks/Source_Apportionment.html#exploring-source-apportionment-data",
+    "title": "6  Source Apportionment",
+    "section": "",
+    "text": "SA_topdown.png\n\n\n\nBottom-up way: Emissions Modeling.\n\n\n\n\nSA_bottomup.png",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Source Apportionment</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/Source_Apportionment.html#source-apportionment-pie",
+    "href": "notebooks/Source_Apportionment.html#source-apportionment-pie",
+    "title": "6  Source Apportionment",
+    "section": "6.2 Source apportionment pie",
+    "text": "6.2 Source apportionment pie\nLet’s learn to build a source apportionment pie for the city Beijing using the 2010 study.\n\nrequired_columns  = ['Site Location','Country','Site typology', 'PM2.5 µgm-3 *', 'Methodology', 'Season']+sources\ncity = 'Beijing'\nyear = '2010'\n\n\nBeijing_2010_SA = who_sources_db[(who_sources_db['Site Location']==city)&(who_sources_db['Study year']==year)][required_columns]\nBeijing_2010_SA\n\n\n\n\n\n\n\n\nSite Location\nCountry\nSite typology\nPM2.5 µgm-3 *\nMethodology\nSeason\nSEA SALT%\nDUST%\nTRAFFIC%\nINDUSTRY%\nBIOM. BURN./RES.%\nOTHER (unspecified-human origin)%\n\n\n\n\n98\nBeijing\nChina\nurban\n55\nPMF\nyear\nNaN\n10.4\n29.7\n22.0\n11.2\n26.7\n\n\n\n\n\n\n\nFrom this source apportionment study, we can infer the following details:\n\nThe annual PM2.5 concentration in Beijing in 2010 was 55 µg/m3.\nThe source apportionment study was performed by the PMF method (Positive Matrix Factorization). It is a Receptor Modeling (RM) method. You can read more about it here: Positive Matrix Factorization Model for Environmental Data Analyses | US EPA\nTRAFFIC is the major source of PM2.5 followed byINDUSTRY, BIOMASS BURNING/RESIDENTIAL and DUST.\n\n\nimport matplotlib.pyplot as plt\nsource_contributions = list(Beijing_2010_SA[sources].dropna(axis=1).values.flatten())\nsources = Beijing_2010_SA[sources].dropna(axis=1).columns\n\nfig, ax = plt.subplots()\nax.pie(source_contributions,\n       labels=sources,\n       autopct='%1.1f%%')\nplt.show()\n\n\n\n\n\n\n\n\nWe can also calculate the contributions of each source to PM2.5 in µg/m3 by multiplying the total PM2.5 concentration with source percentage.\n\npm25 = float(Beijing_2010_SA['PM2.5 µgm-3 *'].values[0])\n\nprint(f\"Beijing's annual PM2.5 concentration in 2010 is {pm25} µg/m3 \\n Of which, the contribution of:\")\nfor source, contribution in zip(sources,source_contributions):\n    print(f\"{source[:-1]} is {round(contribution*pm25/100,2)} µg/m3\")\n\nBeijing's annual PM2.5 concentration in 2010 is 55.0 µg/m3 \n Of which, the contribution of:\nDUST is 5.72 µg/m3\nTRAFFIC is 16.34 µg/m3\nINDUSTRY is 12.1 µg/m3\nBIOM. BURN./RES. is 6.16 µg/m3\nOTHER (unspecified-human origin) is 14.68 µg/m3\n\n\nWe know that W.H.O annual standard of PM2.5 is 5 µg/m3. Thus, the least contributive source DUST alone was responsible in Beijing to cross the W.H.O standard. This gives us some insight on where to focus in reducing pollution.",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Source Apportionment</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/Source_Apportionment.html#summary",
+    "href": "notebooks/Source_Apportionment.html#summary",
+    "title": "6  Source Apportionment",
+    "section": "6.3 Summary",
+    "text": "6.3 Summary\nIn this tutorial, we learnt what is source apportionment and various methods of performing source apportionment studies. We explored the database on source apportionment studies and worked with Beijing’s data to create a source apportionment pie.",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Source Apportionment</span>"
     ]
   }
 ]
