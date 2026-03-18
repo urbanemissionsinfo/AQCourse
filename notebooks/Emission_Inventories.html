@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>4&nbsp; Filling Gaps with Satellite images – Air Quality Course</title>
+<title>7&nbsp; Emission Inventories – Air Quality Course</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -58,15 +58,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../notebooks/Filling_Gaps_Modeling.html" rel="next">
-<link href="../notebooks/Air_Quality_Standards.html" rel="prev">
+<link href="../notebooks/Source_Apportionment.html" rel="prev">
 <link href="../images/favicon.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -110,7 +109,39 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
 
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -285,7 +316,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notebooks/Filling_Gaps_Satellite.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Filling Gaps with Satellite images</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notebooks/Emission_Inventories.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Emission Inventories</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -358,7 +389,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../notebooks/Filling_Gaps_Satellite.html" class="sidebar-item-text sidebar-link active">
+  <a href="../notebooks/Filling_Gaps_Satellite.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Filling Gaps with Satellite images</span></span></a>
   </div>
 </li>
@@ -376,7 +407,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../notebooks/Emission_Inventories.html" class="sidebar-item-text sidebar-link">
+  <a href="../notebooks/Emission_Inventories.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Emission Inventories</span></span></a>
   </div>
 </li>
@@ -390,10 +421,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#about-tropomi" id="toc-about-tropomi" class="nav-link active" data-scroll-target="#about-tropomi"><span class="header-section-number">4.1</span> About TROPOMI</a></li>
-  <li><a href="#downloading-tropomi-images-from-the-source" id="toc-downloading-tropomi-images-from-the-source" class="nav-link" data-scroll-target="#downloading-tropomi-images-from-the-source"><span class="header-section-number">4.2</span> Downloading TROPOMI images from the source</a></li>
-  <li><a href="#limitations-of-satellite-images" id="toc-limitations-of-satellite-images" class="nav-link" data-scroll-target="#limitations-of-satellite-images"><span class="header-section-number">4.3</span> Limitations of Satellite images</a></li>
-  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">4.4</span> Summary</a></li>
+  <li><a href="#what-are-emissions" id="toc-what-are-emissions" class="nav-link active" data-scroll-target="#what-are-emissions"><span class="header-section-number">7.1</span> What are emissions?</a>
+  <ul class="collapse">
+  <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example"><span class="header-section-number">7.1.1</span> Example:</a></li>
+  </ul></li>
+  <li><a href="#uks-national-atmospheric-emissions-inventory-naei" id="toc-uks-national-atmospheric-emissions-inventory-naei" class="nav-link" data-scroll-target="#uks-national-atmospheric-emissions-inventory-naei"><span class="header-section-number">7.2</span> UK’s National Atmospheric Emissions Inventory (NAEI)</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">7.3</span> Summary</a></li>
   </ul>
 </nav>
     </div>
@@ -403,7 +436,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Filling Gaps with Satellite images</span></h1>
+<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Emission Inventories</span></h1>
 </div>
 
 
@@ -420,102 +453,277 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>In the previous tutorials we discussed the issue of monitoring data spatially under-representing a city. We specifically saw how Delhi, with India’s densest monitoring network, covers only <a href="https://www.indiaspend.com/pollution/two-thirds-of-delhi-does-not-have-reliable-air-quality-data-972167">35% of its geographical area</a>.<br> <img src="Filling_Gaps_Satellite_files/figure-html/b2f8e570-4e11-4d6f-9fa9-a828e2836f5f-1-8ff1f391-336c-4e53-bad3-8bcdbc320761.png" class="img-fluid" alt="aqi_stations_delhi.png"><br> In this tutorial we’ll learn how to fill gaps. There are several methods to fill these gaps. We’ll use satellite images from <code>SENTINEL-5P TROPOMI Sensor</code> to fill gaps in this tutorial. We’ll also learn about limitations of this method.</p>
-<section id="about-tropomi" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="about-tropomi"><span class="header-section-number">4.1</span> About TROPOMI</h2>
-<p>TROPOspheric Monitoring Instrument (TROPOMI) is a sensor aboard a satellite part of the European Space Agency’s <a href="https://dataspace.copernicus.eu/explore-data/data-collections/sentinel-data/sentinel-5p">Sentinel-5P</a> mission. The primary goal of TROPOMI is to provide daily global observations of key atmospheric constituents related to monitoring and forecasting air quality, the ozone layer, and climate change.</p>
-<p>The two crucial parameters to note when working with a satellite data are <code>spatial resolution</code> and <code>temporal resolution</code>.</p>
-<ol type="1">
-<li>TROPOMI has daily observations of several pollutants like <code>NO2</code>, <code>O3</code>, <code>CO</code>, <code>HCHO</code> and <code>SO2</code>. The <code>temporal resolution</code> is thus: 24 hours.</li>
-<li><code>spatial resolution</code> is simply the size of the pixel in the stallite image. TROPOMI’s images has a pixel size of <code>~3.5 x 5.5 km</code>.</li>
-</ol>
+<p>In the previous tutorial, we learnt that one way to perform a source apportionment study in a city is the bottom-up Emissions modeling way. In this tutorial, we will learn how to build an emission inventory for a city.</p>
+<section id="what-are-emissions" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="what-are-emissions"><span class="header-section-number">7.1</span> What are emissions?</h2>
+<p>Across this course we have dealt with data on <strong>pollutant concentrations</strong>, whose units are in µg/m3 or ppm. Concentration is thus the amount of pollutant present in unit volume of ambient air that we are breathing.</p>
+<p>On the other hand, Emissions is the amount of pollutant directly emitted by a source. These sources could be vehicles, waste burning, biomass burning, etc., that we saw in the previous tutorial. The units of Emissions are thus in kgs or tonnes per day.</p>
+<p>There is a simple equation that helps us calculate emissions from any source.</p>
+<p><span class="math display">\[ Emissions = Activity * Emission Factor \]</span></p>
+<p>For each source, <span class="math inline">\(Activity\)</span> could be defined differently. 1. For Transport, it could be number of litres of fuel burnt, or number of kilometres travelled by vehicles. 2. For Waste Burning, it is the amount of waste burnt.</p>
+<p><span class="math inline">\(Emission Factor\)</span> is the amount of emissions released per unit activity. These factors vary for each source and activity. They are determined through lab-experiments and field studies. We can find emission factors of required pollutant from literature.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Emission_Inventories_files/figure-html/569261ce-25a2-443e-8ec1-8b608c32fa0d-1-b27d750c-f9aa-453c-a84a-ce3778f5965b.png" class="img-fluid figure-img"></p>
+<figcaption>emissions_equation.png</figcaption>
+</figure>
+</div>
+<p>Each pollutant of interest would have an <span class="math inline">\(Emission Factor\)</span> for each <span class="math inline">\(Activity\)</span></p>
+<section id="example" class="level3" data-number="7.1.1">
+<h3 data-number="7.1.1" class="anchored" data-anchor-id="example"><span class="header-section-number">7.1.1</span> Example:</h3>
+<blockquote class="blockquote">
+<p>A city has 20,000 vehicles. Average speed of vehicles is 20 kmph. The Carbon Monoxide CO) Emission Factor is 2.7 g/km. What is the Emission Rate of CO in this city?</p>
+</blockquote>
+<p>Here, we will define <span class="math inline">\(Activity\)</span> as Kilometres travelled per hour. When we multiply that <span class="math inline">\(Activity\)</span> with the given <span class="math inline">\(Emission Factor\)</span>, we would obtain Emission Rate in grams per hours (g/hr).</p>
+<div id="88e3e47e-d50b-46b1-a924-d6e964b26034" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>num_vehicles <span class="op">=</span> <span class="dv">20000</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>avg_speed <span class="op">=</span> <span class="dv">20</span> <span class="co">#kmph</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>activity <span class="op">=</span> num_vehicles <span class="op">*</span> avg_speed <span class="co">#km per hour</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Vehicular activity: Vehicles in the city travelled </span><span class="sc">{</span>activity<span class="sc">}</span><span class="ss"> km per hour"</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>co_ef <span class="op">=</span> <span class="fl">2.7</span> <span class="co">#g/km</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>emission_rate <span class="op">=</span> activity <span class="op">*</span> co_ef <span class="co">#g per hour</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Emission Rate: Vehicles in the city emit </span><span class="sc">{</span>emission_rate<span class="op">/</span><span class="dv">1000</span><span class="sc">}</span><span class="ss"> kilograms of CO per hour"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Vehicular activity: Vehicles in the city travelled 400000 km per hour
+Emission Rate: Vehicles in the city emit 1080.0 kilograms of CO per hour</code></pre>
+</div>
+</div>
+<p>Thus we have calculated the emission rate of Carbon Monoxide (CO) from all vehicles in the city. If we repeat this exercise for all other sources, we would build the CO Emission Inventory for the city and also identify all the sources of CO.</p>
 </section>
-<section id="downloading-tropomi-images-from-the-source" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="downloading-tropomi-images-from-the-source"><span class="header-section-number">4.2</span> Downloading TROPOMI images from the source</h2>
-<p>There are many satellite data providers who improve upon the basic TROPOMI layers. We’ll start with learning how to get TROPOMI images from the source: <a href="https://browser.dataspace.copernicus.eu/">Copernicus dataspace</a>. It is recommended to login to use all features of the portal.</p>
-<p>We’ll download <code>NO2</code> pollutant image. <code>NO2</code> pollutant is more reliable than other pollutants from TROPOMI. <code>NO2</code> has a lifetime of about a day. TROPOMI gives one picture of any region per day. So, each day’s <code>NO2</code> measurement can be interpreted as pollution on that day.</p>
-<p>After logging into to the [Copernicus dataspace], it is straight forward to download <code>NO2</code> pollutant image. <img src="Filling_Gaps_Satellite_files/figure-html/9765168b-863b-46e3-996f-d35619d763f7-2-1361b68c-2886-4508-82de-a6d554c196b1.png" class="img-fluid" alt="copernicus_dataspace.png"></p>
-<p>On the left panel: 1. Select the day 2. Select Configuration as <code>Atmosphere and Air Pollution</code> 3. Choose <code>NO2</code> Layer</p>
-<p>On the right panel: 1. Create an area of interest. You can either draw directly on the map, or upload airshed’s polygon in the form of <code>KML</code> or <code>GEOJSON</code> file. For this tutorial, I uploaded the Delhi state boundary. 2. Click on download. You can download the image in Basic <code>JPG/PNG</code> formats or in Analytical <code>TIF</code> formats. <code>TIF</code> images can be analysed using geospatial softwares like <code>QGIS</code>, <code>rasterio</code> etc.<br> <img src="Filling_Gaps_Satellite_files/figure-html/9765168b-863b-46e3-996f-d35619d763f7-1-1281968a-8a11-4f56-a29a-07889ac265b5.png" class="img-fluid" alt="copernicus_dataspace_download.png"></p>
-<p><code>Raw NO2</code> are the pixel level measurement of NO2. TROPOMI uses a unit of <code>mol/m2</code>. We’ll use the <code>Raw NO2</code> file to plot the satellite image of Delhi. This visualisation is also part of our <a href="https://urbanemissionsinfo.github.io/AirQualityVisuals/">Air Quality Visuals Course</a>: <a href="https://urbanemissionsinfo.github.io/AirQualityVisuals/notebooks/Plotting_SatelliteImages.html">Plotting Satellite images</a></p>
-<div id="fc1321f3-a204-40ce-8327-e386ec920f87" class="cell" data-execution_count="3">
+</section>
+<section id="uks-national-atmospheric-emissions-inventory-naei" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="uks-national-atmospheric-emissions-inventory-naei"><span class="header-section-number">7.2</span> UK’s National Atmospheric Emissions Inventory (NAEI)</h2>
+<p>A few countries developed such Emission Inventories for various pollutants. The complexity of emission inventories depends upon the granularity of the emissions data. In the above example, we calculated CO emissions for the entire city. But with better datasets, we could calculate it for each 1 sq.km grid in the city. This is what the <a href="https://naei.energysecurity.gov.uk/air-pollutants/air-pollutant-emissions-data">UK’s National Atmospheric Emissions Inventory (NAEI)</a> achieved.</p>
+<p>We can also download this gridded data from here: <a href="https://naei.energysecurity.gov.uk/data/maps/download-gridded-emissions">UK NAEI Gridded Emissions data download</a>. I downloaded CO Emissions data for 2023.</p>
+<div id="beb02069-effa-4a6f-a431-53b5104b4287" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> geopandas <span class="im">as</span> gpd</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>co_point_sources <span class="op">=</span> gpd.read_file(<span class="st">'data/naei23_co_2023/point_sources_layer/point_sources_CO_2023.shp'</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>co_point_sources.sample(<span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Year</th>
+<th data-quarto-table-cell-role="th">PollID</th>
+<th data-quarto-table-cell-role="th">Poll_Name</th>
+<th data-quarto-table-cell-role="th">PlantID</th>
+<th data-quarto-table-cell-role="th">Site</th>
+<th data-quarto-table-cell-role="th">Easting</th>
+<th data-quarto-table-cell-role="th">Northing</th>
+<th data-quarto-table-cell-role="th">Operator</th>
+<th data-quarto-table-cell-role="th">SectorID</th>
+<th data-quarto-table-cell-role="th">Sector</th>
+<th data-quarto-table-cell-role="th">Emission</th>
+<th data-quarto-table-cell-role="th">Unit</th>
+<th data-quarto-table-cell-role="th">Country</th>
+<th data-quarto-table-cell-role="th">Datatype</th>
+<th data-quarto-table-cell-role="th">geometry</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">1419</th>
+<td>2023</td>
+<td>4</td>
+<td>Carbon Monoxide</td>
+<td>11059</td>
+<td>Ferrybridge</td>
+<td>447940.0</td>
+<td>425500.0</td>
+<td>Lafarge Plasterboard Ltd</td>
+<td>4</td>
+<td>Other mineral industries</td>
+<td>11.346540</td>
+<td>Tonnes</td>
+<td>England</td>
+<td>M</td>
+<td>POINT (447940 425500)</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1272</th>
+<td>2023</td>
+<td>4</td>
+<td>Carbon Monoxide</td>
+<td>9647</td>
+<td>Grangemouth</td>
+<td>291649.0</td>
+<td>681450.0</td>
+<td>Dalkia Plc</td>
+<td>10</td>
+<td>Chemical industry</td>
+<td>8.373685</td>
+<td>Tonnes</td>
+<td>Scotland</td>
+<td>M</td>
+<td>POINT (291649 681450)</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2605</th>
+<td>2023</td>
+<td>4</td>
+<td>Carbon Monoxide</td>
+<td>43248</td>
+<td>Equus UK Topco Limited</td>
+<td>509265.0</td>
+<td>431660.0</td>
+<td>Equus UK Topco Limited</td>
+<td>10</td>
+<td>Chemical industry</td>
+<td>3.091166</td>
+<td>Tonnes</td>
+<td>England</td>
+<td>M</td>
+<td>POINT (509265 431660)</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1303</th>
+<td>2023</td>
+<td>4</td>
+<td>Carbon Monoxide</td>
+<td>9751</td>
+<td>East Kilbride</td>
+<td>261059.0</td>
+<td>654957.0</td>
+<td>Coca-Cola Enterprises Ltd</td>
+<td>5</td>
+<td>Food, drink &amp; tobacco industry</td>
+<td>7.703571</td>
+<td>Tonnes</td>
+<td>Scotland</td>
+<td>M</td>
+<td>POINT (261059 654957)</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">1562</th>
+<td>2023</td>
+<td>4</td>
+<td>Carbon Monoxide</td>
+<td>11918</td>
+<td>Hill of Tramaud Generating Station</td>
+<td>395290.0</td>
+<td>813494.0</td>
+<td>Sita Holding UK Ltd</td>
+<td>22</td>
+<td>Construction</td>
+<td>6.847015</td>
+<td>Tonnes</td>
+<td>Scotland</td>
+<td>O</td>
+<td>POINT (395290 813494)</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="61acfddb-1e51-417c-b1da-d3c877967f74" class="cell" data-execution_count="9">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>co_point_sources.Sector.unique()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="9">
+<pre><code>array(['Mechanical engineering', 'Non-ferrous metal industries',
+       'Waste collection, treatment &amp; disposal', 'Chemical industry',
+       'Other industries', 'Electrical engineering',
+       'Paper, printing &amp; publishing industries',
+       'Processing &amp; distribution of petroleum products',
+       'Food, drink &amp; tobacco industry', 'Vehicles', 'Miscellaneous',
+       'Water &amp; sewerage', 'Lime', 'Cement', 'Other mineral industries',
+       'Textiles, clothing, leather &amp; footwear', 'Commercial',
+       'Processing &amp; distribution of natural gas',
+       'Oil &amp; gas exploration and production', 'Iron &amp; steel industries',
+       'Other fuel production', 'Major power producers',
+       'Minor power producers', 'Public administration',
+       'Agriculture, forestry &amp; fishing', 'Construction'], dtype=object)</code></pre>
+</div>
+</div>
+<p>We can see that it is a detailed information on how many tonnes of CO emitted by each point source in 2023. We can plot these points on a map with the size of the point representing the amount of emissions.</p>
+<div id="f4ea7016-c9c3-41d5-b549-c2ab64ffec12" class="cell" data-execution_count="25">
 <details class="code-fold">
-<summary>Show hidden code that plots the Raw NO2 TIFF file</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> rasterio</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.colors <span class="im">as</span> mcolors</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> rasterio.plot <span class="im">import</span> show</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> geopandas <span class="im">as</span> gpd</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Load TIFF</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>tif_path <span class="op">=</span> <span class="st">"data/2026-03-07-00_00_2026-03-07-23_59_Sentinel-5P_NO2_NO2_(Raw).tiff"</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> rasterio.<span class="bu">open</span>(tif_path) <span class="im">as</span> src:</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    no2 <span class="op">=</span> src.read(<span class="dv">1</span>)                        <span class="co"># first band</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    no2 <span class="op">=</span> np.where(no2 <span class="op">==</span> src.nodata, np.nan, no2)  <span class="co"># mask nodata</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    extent <span class="op">=</span> [src.bounds.left, src.bounds.right, src.bounds.bottom, src.bounds.top]</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    crs <span class="op">=</span> src.crs</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Load admin boundaries — reproject to match raster CRS</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>delhi_districts <span class="op">=</span> gpd.read_file(<span class="st">'data/DELHI_DISTRICTS.geojson'</span>).to_crs(crs)</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>delhi_districts.head()</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot</span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">7</span>, <span class="dv">7</span>))</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>im <span class="op">=</span> ax.imshow(</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    no2,</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>    extent<span class="op">=</span>extent,</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>    cmap<span class="op">=</span><span class="st">'YlOrRd'</span>,</span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>    origin<span class="op">=</span><span class="st">'upper'</span>,</span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>    vmin<span class="op">=</span>np.nanpercentile(no2, <span class="dv">2</span>),   <span class="co"># clip outliers</span></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>    vmax<span class="op">=</span>np.nanpercentile(no2, <span class="dv">98</span>),</span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="co"># Admin boundary overlay</span></span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>delhi_districts.boundary.plot(ax<span class="op">=</span>ax, linewidth<span class="op">=</span><span class="fl">0.5</span>, color<span class="op">=</span><span class="st">'black'</span>)</span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>plt.colorbar(im, ax<span class="op">=</span>ax, label<span class="op">=</span><span class="st">'NO₂ (mol/m²)'</span>)</span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">'NO₂ Column Density - March 7th'</span>)</span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'Longitude'</span>)</span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'Latitude'</span>)</span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="co">#plt.savefig('no2_map.png', dpi=150, bbox_inches='tight')</span></span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<summary>Show hidden code that plots CO point sources</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>uk <span class="op">=</span> gpd.read_file(<span class="st">'data/uk_regions.geojson'</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">8</span>))</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>uk.plot(ax<span class="op">=</span>ax, color<span class="op">=</span><span class="st">"white"</span>, edgecolor<span class="op">=</span><span class="st">"black"</span>, linewidth<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>co_point_sources.to_crs(uk.crs).plot(ax<span class="op">=</span>ax, markersize<span class="op">=</span>co_point_sources[<span class="st">'Emission'</span>]<span class="op">/</span><span class="dv">50</span>, color<span class="op">=</span><span class="st">'red'</span>)</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Carbon Monoxide Point Sources in UK | 2023'</span>)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Filling_Gaps_Satellite_files/figure-html/cell-2-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="Emission_Inventories_files/figure-html/cell-5-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>Thus we have filled the gaps in NO2 monitoring using TROPOMI’s NO2 data in Delhi.</p>
-</section>
-<section id="limitations-of-satellite-images" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="limitations-of-satellite-images"><span class="header-section-number">4.3</span> Limitations of Satellite images</h2>
-<div class="quarto-figure quarto-figure-center">
+<p>This point sources emission information is then distributed to each 1 sq.km grid in UK using specialised models. This is called <code>Gridded Emissions Data</code> and they are made available in <code>TIFF</code> format.</p>
+<div id="cad74590-d12c-42ee-b5aa-9d77eba3c508" class="cell" data-execution_count="35">
+<details class="code-fold">
+<summary>Show hidden code that plots the CO Gridded Emissions TIFF file</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> rasterio</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.colors <span class="im">as</span> mcolors</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> rasterio.plot <span class="im">import</span> show</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> geopandas <span class="im">as</span> gpd</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Load TIFF</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>tif_path <span class="op">=</span> <span class="st">"./data/naei23_co_2023/GeoTIFF_layers/totalco23_2023.tif"</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> rasterio.<span class="bu">open</span>(tif_path) <span class="im">as</span> src:</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    co <span class="op">=</span> src.read(<span class="dv">1</span>)                        <span class="co"># first band</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    co <span class="op">=</span> np.where(co <span class="op">==</span> src.nodata, np.nan, co)  <span class="co"># mask nodata</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>    extent <span class="op">=</span> [src.bounds.left, src.bounds.right, src.bounds.bottom, src.bounds.top]</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>    crs <span class="op">=</span> src.crs</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Load admin boundaries — reproject to match raster CRS</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>uk <span class="op">=</span> gpd.read_file(<span class="st">'data/uk_regions.geojson'</span>).to_crs(crs)</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot</span></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">7</span>, <span class="dv">7</span>))</span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>im <span class="op">=</span> ax.imshow(</span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>    co,</span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>    extent<span class="op">=</span>extent,</span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>    cmap<span class="op">=</span><span class="st">'YlOrRd'</span>,</span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>    origin<span class="op">=</span><span class="st">'upper'</span>,</span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>    vmin<span class="op">=</span>np.nanpercentile(co, <span class="dv">2</span>),   <span class="co"># clip outliers</span></span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>    vmax<span class="op">=</span>np.nanpercentile(co, <span class="dv">98</span>),</span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a><span class="co"># Admin boundary overlay</span></span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a>uk.boundary.plot(ax<span class="op">=</span>ax, linewidth<span class="op">=</span><span class="fl">0.5</span>, color<span class="op">=</span><span class="st">'black'</span>)</span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>plt.colorbar(im, ax<span class="op">=</span>ax, label<span class="op">=</span><span class="st">'CO (tonnes)'</span>)</span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">'CO Gridded Emissions - UK - 2023'</span>)</span>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a>plt.axis(<span class="st">'off'</span>)</span>
+<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a><span class="co">#plt.savefig('co_griddedemissions.png', dpi=150, bbox_inches='tight')</span></span>
+<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
 <figure class="figure">
-<p><img src="Filling_Gaps_Satellite_files/figure-html/53d976ad-1b44-483e-9fe6-6419c788e8cf-1-ee52d017-ebef-470a-ab38-ab169964945e.png" class="img-fluid figure-img"></p>
-<figcaption>satellite.png</figcaption>
+<p><img src="Emission_Inventories_files/figure-html/cell-6-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
-<p>While satellite images help us get pollutant concentration in areas where there are no monitoring stations, there are a few limitations in relying completely on satellite images alone:</p>
-<ol type="1">
-<li>Satellite images give the value for the entire vertical column above the ground, while we are generally interested in the ambient measurements (2-10m height), where we breathe air.</li>
-<li>TROPOMI gives data of a region once per day, typically at the same time around <code>~13:30 local time</code>. It might thus under-bias short-lived pollutants if the satellite doesn’t pass over the region when the pollutant is live. For example, if the stubble in farms are burnt in the evenings, they could go un-detected. For this reason, <a href="https://www.business-standard.com/india-news/sc-asks-govt-to-procure-data-on-farm-fires-from-geo-stationary-satellites-124111801174_1.html">Supreme Court of India asked the government to purchase data from geo-stationary satellites to monitor farm fires</a></li>
-</ol>
-<p>Nevertheless, combining satellite data with ground-monitoring data and modelling data allows us to get a better understanding of air quality in a city.</p>
+</div>
+</div>
+<p>This visualisation is also part of our <a href="https://urbanemissionsinfo.github.io/AirQualityVisuals/">Air Quality Visuals Course</a>: <a href="https://urbanemissionsinfo.github.io/AirQualityVisuals/notebooks/Plotting_SatelliteImages.html">Plotting Satellite images</a></p>
+<p>The UK’s NAEI created a portal to explore such gridded emissions of each pollutant. You can check it out here: <a href="https://naei.energysecurity.gov.uk/emissionsapp/">UK Emissions Interactive Map</a></p>
 </section>
-<section id="summary" class="level2" data-number="4.4">
-<h2 data-number="4.4" class="anchored" data-anchor-id="summary"><span class="header-section-number">4.4</span> Summary</h2>
-<p>In this tutorial, we learnt that a city’s air quality monitoring network alone would result in a lot of gaps spatially. We then learnt to fill these gaps using satellite images - that of TROPOMI. We also learnt the limitations of satellite images.</p>
-<p>There are many other ways to access TROPOMI data:</p>
-<ol type="1">
-<li>You can use <a href="https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_S5P_OFFL_L3_NO2">Google Earth Engine (GEE)</a>. This code will help you to visualise and download TROPOMI data of any pollutant of any city/region: <a href="https://code.earthengine.google.com/53995a177b50a718b9455f651cae0bdf">TROPOMI Pollutants GEE Code</a></li>
-<li>There are applications on Google Earth Engine like <a href="jstnbraaten.users.earthengine.app/view/tropomi-explorer">Tropomi Explorer</a></li>
-<li>You could download the entire globe’s TROPOMI data in the form of <code>NetCDF</code> files from here: <a href="https://radiantearth.github.io/stac-browser/#/external/data-portal.s5p-pal.com/api/s5p-l3?.language=en">Radiant Earth STAC Browser</a></li>
+<section id="summary" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="summary"><span class="header-section-number">7.3</span> Summary</h2>
+<p>In this tutorial, we learnt how to calculate amount of emissions of a pollutant by each source using the fundamental equation of <span class="math inline">\(Activity * Emission Factor\)</span>. We then explored the <a href="https://naei.energysecurity.gov.uk/air-pollutants/air-pollutant-emissions-data">UK’s National Atmospheric Emissions Inventory (NAEI)</a> and learnt about <code>Gridded Emissions Datasets</code>.</p>
+<p>Other Emission Inventories: 1. <a href="https://www.epa.gov/air-emissions-inventories/get-air-emissions-data-0">National Emission Inventory of USA by US EPA</a></p>
+<ol start="3" type="1">
+<li><a href="https://urbanemissions.info/india-emissions-inventory/">India’s Emission Inventory by UrbanEmissions.Info</a></li>
 </ol>
 
 
@@ -937,14 +1145,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../notebooks/Air_Quality_Standards.html" class="pagination-link" aria-label="Compliance with Air Quality Standards">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Compliance with Air Quality Standards</span></span>
+      <a href="../notebooks/Source_Apportionment.html" class="pagination-link" aria-label="Source Apportionment">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Source Apportionment</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../notebooks/Filling_Gaps_Modeling.html" class="pagination-link" aria-label="Filling Gaps with model results">
-        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Filling Gaps with model results</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->
