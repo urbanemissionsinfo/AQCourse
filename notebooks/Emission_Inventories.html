@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../notebooks/HealthImpacts_LifeExpectancy.html" rel="next">
 <link href="../notebooks/Source_Apportionment.html" rel="prev">
 <link href="../images/favicon.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
@@ -411,6 +412,12 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Emission Inventories</span></span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/HealthImpacts_LifeExpectancy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Health Impacts | Life Expectancy</span></span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -460,7 +467,10 @@ window.Quarto = {
 <p>On the other hand, Emissions is the amount of pollutant directly emitted by a source. These sources could be vehicles, waste burning, biomass burning, etc., that we saw in the previous tutorial. The units of Emissions are thus in kgs or tonnes per day.</p>
 <p>There is a simple equation that helps us calculate emissions from any source.</p>
 <p><span class="math display">\[ Emissions = Activity * Emission Factor \]</span></p>
-<p>For each source, <span class="math inline">\(Activity\)</span> could be defined differently. 1. For Transport, it could be number of litres of fuel burnt, or number of kilometres travelled by vehicles. 2. For Waste Burning, it is the amount of waste burnt.</p>
+<p>For each source, <span class="math inline">\(Activity\)</span> could be defined differently. 1. For Transport, it could be number of litres of fuel burnt, or number of kilometres travelled by vehicles.</p>
+<ol start="2" type="1">
+<li>For Waste Burning, it is the amount of waste burnt.</li>
+</ol>
 <p><span class="math inline">\(Emission Factor\)</span> is the amount of emissions released per unit activity. These factors vary for each source and activity. They are determined through lab-experiments and field studies. We can find emission factors of required pollutant from literature.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -722,8 +732,9 @@ Emission Rate: Vehicles in the city emit 1080.0 kilograms of CO per hour</code><
 <h2 data-number="7.3" class="anchored" data-anchor-id="summary"><span class="header-section-number">7.3</span> Summary</h2>
 <p>In this tutorial, we learnt how to calculate amount of emissions of a pollutant by each source using the fundamental equation of <span class="math inline">\(Activity * Emission Factor\)</span>. We then explored the <a href="https://naei.energysecurity.gov.uk/air-pollutants/air-pollutant-emissions-data">UK’s National Atmospheric Emissions Inventory (NAEI)</a> and learnt about <code>Gridded Emissions Datasets</code>.</p>
 <p>Other Emission Inventories: 1. <a href="https://www.epa.gov/air-emissions-inventories/get-air-emissions-data-0">National Emission Inventory of USA by US EPA</a></p>
-<ol start="3" type="1">
-<li><a href="https://urbanemissions.info/india-emissions-inventory/">India’s Emission Inventory by UrbanEmissions.Info</a></li>
+<ol start="2" type="1">
+<li><p><a href="https://urbanemissions.info/india-emissions-inventory/">India’s Emission Inventory by UrbanEmissions.Info</a></p></li>
+<li><p><a href="https://edgar.jrc.ec.europa.eu/dataset_ap81">Emissions Database for Global Atmospheric Research (EDGAR) by European Commission</a>: We can find global emission inventory here.</p></li>
 </ol>
 
 
@@ -1150,6 +1161,9 @@ Emission Rate: Vehicles in the city emit 1080.0 kilograms of CO per hour</code><
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="../notebooks/HealthImpacts_LifeExpectancy.html" class="pagination-link" aria-label="Health Impacts | Life Expectancy">
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Health Impacts | Life Expectancy</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->
