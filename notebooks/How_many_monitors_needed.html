@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>4&nbsp; Filling Gaps with Satellite images – Air Quality Course</title>
+<title>8&nbsp; How many monitors are needed in an airshed? – Air Quality Course</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -65,8 +65,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../notebooks/Filling_Gaps_Modeling.html" rel="next">
-<link href="../notebooks/Air_Quality_Standards.html" rel="prev">
+<link href="../notebooks/HealthImpacts_LifeExpectancy.html" rel="next">
+<link href="../notebooks/Emission_Inventories.html" rel="prev">
 <link href="../images/favicon.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -285,7 +285,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notebooks/Filling_Gaps_Satellite.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Filling Gaps with Satellite images</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notebooks/How_many_monitors_needed.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">How many monitors are needed in an airshed?</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -358,7 +358,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../notebooks/Filling_Gaps_Satellite.html" class="sidebar-item-text sidebar-link active">
+  <a href="../notebooks/Filling_Gaps_Satellite.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Filling Gaps with Satellite images</span></span></a>
   </div>
 </li>
@@ -382,7 +382,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../notebooks/How_many_monitors_needed.html" class="sidebar-item-text sidebar-link">
+  <a href="../notebooks/How_many_monitors_needed.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">How many monitors are needed in an airshed?</span></span></a>
   </div>
 </li>
@@ -402,10 +402,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#about-tropomi" id="toc-about-tropomi" class="nav-link active" data-scroll-target="#about-tropomi"><span class="header-section-number">4.1</span> About TROPOMI</a></li>
-  <li><a href="#downloading-tropomi-images-from-the-source" id="toc-downloading-tropomi-images-from-the-source" class="nav-link" data-scroll-target="#downloading-tropomi-images-from-the-source"><span class="header-section-number">4.2</span> Downloading TROPOMI images from the source</a></li>
-  <li><a href="#limitations-of-satellite-images" id="toc-limitations-of-satellite-images" class="nav-link" data-scroll-target="#limitations-of-satellite-images"><span class="header-section-number">4.3</span> Limitations of Satellite images</a></li>
-  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">4.4</span> Summary</a></li>
+  <li><a href="#cpcb-guidelines" id="toc-cpcb-guidelines" class="nav-link active" data-scroll-target="#cpcb-guidelines"><span class="header-section-number">8.1</span> CPCB guidelines</a></li>
+  <li><a href="#calculating-population-from-landscan" id="toc-calculating-population-from-landscan" class="nav-link" data-scroll-target="#calculating-population-from-landscan"><span class="header-section-number">8.2</span> Calculating population from Landscan</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">8.3</span> Summary</a></li>
   </ul>
 </nav>
     </div>
@@ -415,7 +414,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Filling Gaps with Satellite images</span></h1>
+<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">How many monitors are needed in an airshed?</span></h1>
 </div>
 
 
@@ -432,103 +431,210 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>In the previous tutorials we discussed the issue of monitoring data spatially under-representing a city. We specifically saw how Delhi, with India’s densest monitoring network, covers only <a href="https://www.indiaspend.com/pollution/two-thirds-of-delhi-does-not-have-reliable-air-quality-data-972167">35% of its geographical area</a>.<br> <img src="Filling_Gaps_Satellite_files/figure-html/b2f8e570-4e11-4d6f-9fa9-a828e2836f5f-1-8ff1f391-336c-4e53-bad3-8bcdbc320761.png" class="img-fluid" alt="aqi_stations_delhi.png"><br> In this tutorial we’ll learn how to fill gaps. There are several methods to fill these gaps. We’ll use satellite images from <code>SENTINEL-5P TROPOMI Sensor</code> to fill gaps in this tutorial. We’ll also learn about limitations of this method.</p>
-<section id="about-tropomi" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="about-tropomi"><span class="header-section-number">4.1</span> About TROPOMI</h2>
-<p>TROPOspheric Monitoring Instrument (TROPOMI) is a sensor aboard a satellite part of the European Space Agency’s <a href="https://dataspace.copernicus.eu/explore-data/data-collections/sentinel-data/sentinel-5p">Sentinel-5P</a> mission. The primary goal of TROPOMI is to provide daily global observations of key atmospheric constituents related to monitoring and forecasting air quality, the ozone layer, and climate change.</p>
-<p>The two crucial parameters to note when working with a satellite data are <code>spatial resolution</code> and <code>temporal resolution</code>.</p>
-<ol type="1">
-<li>TROPOMI has daily observations of several pollutants like <code>NO2</code>, <code>O3</code>, <code>CO</code>, <code>HCHO</code> and <code>SO2</code>. The <code>temporal resolution</code> is thus: 24 hours.</li>
-<li><code>spatial resolution</code> is simply the size of the pixel in the stallite image. TROPOMI’s images has a pixel size of <code>~3.5 x 5.5 km</code>.</li>
-</ol>
-</section>
-<section id="downloading-tropomi-images-from-the-source" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="downloading-tropomi-images-from-the-source"><span class="header-section-number">4.2</span> Downloading TROPOMI images from the source</h2>
-<p>There are many satellite data providers who improve upon the basic TROPOMI layers. We’ll start with learning how to get TROPOMI images from the source: <a href="https://browser.dataspace.copernicus.eu/">Copernicus dataspace</a>. It is recommended to login to use all features of the portal.</p>
-<p>We’ll download <code>NO2</code> pollutant image. <code>NO2</code> pollutant is more reliable than other pollutants from TROPOMI. <code>NO2</code> has a lifetime of about a day. TROPOMI gives one picture of any region per day. So, each day’s <code>NO2</code> measurement can be interpreted as pollution on that day.</p>
-<p>After logging into to the [Copernicus dataspace], it is straight forward to download <code>NO2</code> pollutant image. <img src="Filling_Gaps_Satellite_files/figure-html/9765168b-863b-46e3-996f-d35619d763f7-2-1361b68c-2886-4508-82de-a6d554c196b1.png" class="img-fluid" alt="copernicus_dataspace.png"></p>
-<p>On the left panel: 1. Select the day 2. Select Configuration as <code>Atmosphere and Air Pollution</code> 3. Choose <code>NO2</code> Layer</p>
-<p>On the right panel: 1. Create an area of interest. You can either draw directly on the map, or upload airshed’s polygon in the form of <code>KML</code> or <code>GEOJSON</code> file. For this tutorial, I uploaded the Delhi state boundary. 2. Click on download. You can download the image in Basic <code>JPG/PNG</code> formats or in Analytical <code>TIF</code> formats. <code>TIF</code> images can be analysed using geospatial softwares like <code>QGIS</code>, <code>rasterio</code> etc.<br> <img src="Filling_Gaps_Satellite_files/figure-html/9765168b-863b-46e3-996f-d35619d763f7-1-1281968a-8a11-4f56-a29a-07889ac265b5.png" class="img-fluid" alt="copernicus_dataspace_download.png"></p>
-<p><code>Raw NO2</code> are the pixel level measurement of NO2. TROPOMI uses a unit of <code>mol/m2</code>. We’ll use the <code>Raw NO2</code> file to plot the satellite image of Delhi. This visualisation is also part of our <a href="https://urbanemissionsinfo.github.io/AirQualityVisuals/">Air Quality Visuals Course</a>: <a href="https://urbanemissionsinfo.github.io/AirQualityVisuals/notebooks/Plotting_SatelliteImages.html">Plotting Satellite images</a></p>
-<div id="fc1321f3-a204-40ce-8327-e386ec920f87" class="cell" data-execution_count="3">
+<p>We’ve already learnt in previous tutorials that a single monitor represents only about 10 sq.km of area. <img src="How_many_monitors_needed_files/figure-html/9c95b53c-2619-4418-a364-c3a32e357de1-1-1b57642e-9107-45ff-878d-0729e6851b95.png" class="img-fluid" alt="station_area.png"></p>
+<p>Hence we would need more number of monitors to represent air quality of the entire airshed or a city. In this tutorial, we will learn about CPCB guidelines that estimate the minimum number of monitors needed in an airshed to give a representative value of air quality.</p>
+<p>You can also visualise this tool here to find out the number of monitors required in any airshed: <a href="https://urbanemissionsinfo.github.io/MonitoringNeeds/">Monitoring Needs</a></p>
+<section id="cpcb-guidelines" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="cpcb-guidelines"><span class="header-section-number">8.1</span> CPCB guidelines</h2>
+<p>In India, CPCB gave guidelines to determine number of monitors an airshed needs. These guidelines only use <code>population</code> as a factor. Different pollutants would require different number of stations as shown in the picture below:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="How_many_monitors_needed_files/figure-html/9867bf9c-5244-41d6-b8af-0840fd491db1-1-284e76d8-0760-403e-aaa7-08e43b673b0b.png" class="img-fluid figure-img"></p>
+<figcaption>cpcb_num_monitors_guidelines.png</figcaption>
+</figure>
+</div>
+<div id="86b2877d-1901-47b2-9d58-a6d00a5724b5" class="cell" data-execution_count="1">
 <details class="code-fold">
-<summary>Show hidden code that plots the Raw NO2 TIFF file</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> rasterio</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.colors <span class="im">as</span> mcolors</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> rasterio.plot <span class="im">import</span> show</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> geopandas <span class="im">as</span> gpd</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Load TIFF</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>tif_path <span class="op">=</span> <span class="st">"data/2026-03-07-00_00_2026-03-07-23_59_Sentinel-5P_NO2_NO2_(Raw).tiff"</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> rasterio.<span class="bu">open</span>(tif_path) <span class="im">as</span> src:</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    no2 <span class="op">=</span> src.read(<span class="dv">1</span>)                        <span class="co"># first band</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    no2 <span class="op">=</span> np.where(no2 <span class="op">==</span> src.nodata, np.nan, no2)  <span class="co"># mask nodata</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    extent <span class="op">=</span> [src.bounds.left, src.bounds.right, src.bounds.bottom, src.bounds.top]</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    crs <span class="op">=</span> src.crs</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Load admin boundaries — reproject to match raster CRS</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>delhi_districts <span class="op">=</span> gpd.read_file(<span class="st">'data/DELHI_DISTRICTS.geojson'</span>).to_crs(crs)</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>delhi_districts.head()</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot</span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">7</span>, <span class="dv">7</span>))</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>im <span class="op">=</span> ax.imshow(</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    no2,</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>    extent<span class="op">=</span>extent,</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>    cmap<span class="op">=</span><span class="st">'YlOrRd'</span>,</span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>    origin<span class="op">=</span><span class="st">'upper'</span>,</span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>    vmin<span class="op">=</span>np.nanpercentile(no2, <span class="dv">2</span>),   <span class="co"># clip outliers</span></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>    vmax<span class="op">=</span>np.nanpercentile(no2, <span class="dv">98</span>),</span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="co"># Admin boundary overlay</span></span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>delhi_districts.boundary.plot(ax<span class="op">=</span>ax, linewidth<span class="op">=</span><span class="fl">0.5</span>, color<span class="op">=</span><span class="st">'black'</span>)</span>
+<summary>Show hidden function that calculates number of monitors asper CPCB guidelines</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> num_monitors_cpcb(pollutant, population):</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> pollutant <span class="op">==</span> <span class="st">'spm'</span>:</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        num_station <span class="op">=</span> [<span class="dv">4</span>]</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> population <span class="op">&lt;</span> <span class="dv">100000</span>:</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="bu">int</span>(<span class="bu">sum</span>(num_station))</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="dv">1000000</span> <span class="op">&lt;</span> population:</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>            num_station.append(np.floor(<span class="dv">4</span> <span class="op">+</span> <span class="fl">0.6</span><span class="op">*</span><span class="dv">900000</span><span class="op">/</span><span class="dv">100000</span>)<span class="op">+</span><span class="dv">1</span>)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>            num_station.append(np.floor(<span class="dv">4</span> <span class="op">+</span> <span class="fl">0.6</span><span class="op">*</span>(population<span class="op">-</span><span class="dv">100000</span>)<span class="op">/</span><span class="dv">100000</span>)<span class="op">+</span><span class="dv">1</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="dv">5000000</span> <span class="op">&lt;</span> population:</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>            num_station.append(np.floor(<span class="fl">7.5</span> <span class="op">+</span> <span class="fl">0.25</span><span class="op">*</span><span class="dv">4000000</span><span class="op">/</span><span class="dv">100000</span>)<span class="op">+</span><span class="dv">1</span>)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>            num_station.append(np.floor(<span class="fl">7.5</span> <span class="op">+</span> <span class="fl">0.25</span><span class="op">*</span>(population<span class="op">-</span><span class="dv">1000000</span>)<span class="op">/</span><span class="dv">100000</span>)<span class="op">+</span><span class="dv">1</span>)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="dv">5000000</span> <span class="op">&lt;</span> population:</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>            num_station.append(np.floor(<span class="dv">12</span> <span class="op">+</span> <span class="fl">0.16</span><span class="op">*</span>(population<span class="op">-</span><span class="dv">5000000</span>)<span class="op">/</span><span class="dv">100000</span>)<span class="op">+</span><span class="dv">1</span>)</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> pollutant <span class="op">==</span> <span class="st">'so2'</span>:</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>        num_station <span class="op">=</span> [<span class="dv">3</span>]</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> population <span class="op">&lt;</span> <span class="dv">100000</span>:</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="bu">int</span>(<span class="bu">sum</span>(num_station))</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="dv">1000000</span> <span class="op">&lt;</span> population:</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>            num_station.append(np.floor(<span class="fl">2.5</span> <span class="op">+</span> <span class="fl">0.5</span><span class="op">*</span><span class="dv">900000</span><span class="op">/</span><span class="dv">100000</span>)<span class="op">+</span><span class="dv">1</span>)</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>            num_station.append(np.floor(<span class="fl">2.5</span> <span class="op">+</span> <span class="fl">0.5</span><span class="op">*</span>(population<span class="op">-</span><span class="dv">100000</span>)<span class="op">/</span><span class="dv">100000</span>)<span class="op">+</span><span class="dv">1</span>)</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="dv">10000000</span> <span class="op">&lt;</span> population:</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>            num_station.append(np.floor(<span class="dv">6</span> <span class="op">+</span> <span class="fl">0.15</span><span class="op">*</span><span class="dv">9000000</span><span class="op">/</span><span class="dv">100000</span>)<span class="op">+</span><span class="dv">1</span>)</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>            num_station.append(np.floor(<span class="dv">6</span> <span class="op">+</span> <span class="fl">0.15</span><span class="op">*</span>(population<span class="op">-</span><span class="dv">1000000</span>)<span class="op">/</span><span class="dv">100000</span>)<span class="op">+</span><span class="dv">1</span>)</span>
 <span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>plt.colorbar(im, ax<span class="op">=</span>ax, label<span class="op">=</span><span class="st">'NO₂ (mol/m²)'</span>)</span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">'NO₂ Column Density - March 7th'</span>)</span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'Longitude'</span>)</span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'Latitude'</span>)</span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="co">#plt.savefig('no2_map.png', dpi=150, bbox_inches='tight')</span></span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="dv">10000000</span> <span class="op">&lt;</span> population:</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>            num_station.append(<span class="dv">20</span>)</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> pollutant <span class="op">==</span> <span class="st">'no2'</span>:</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>        num_station <span class="op">=</span> [<span class="dv">4</span>]</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> population <span class="op">&lt;</span> <span class="dv">100000</span>:</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="bu">int</span>(<span class="bu">sum</span>(num_station))</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="dv">1000000</span> <span class="op">&lt;</span> population:</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>            num_station.append(np.floor(<span class="dv">4</span> <span class="op">+</span> <span class="fl">0.6</span><span class="op">*</span><span class="dv">900000</span><span class="op">/</span><span class="dv">100000</span>)<span class="op">+</span><span class="dv">1</span>)</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>            num_station.append(np.floor(<span class="dv">4</span> <span class="op">+</span> <span class="fl">0.6</span><span class="op">*</span>(population<span class="op">-</span><span class="dv">100000</span>)<span class="op">/</span><span class="dv">100000</span>)<span class="op">+</span><span class="dv">1</span>)</span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="dv">1000000</span> <span class="op">&lt;</span> population:</span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>            num_station.append(<span class="dv">10</span>)</span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> pollutant <span class="op">==</span> <span class="st">'co'</span>:</span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>        num_station <span class="op">=</span> [<span class="dv">1</span>]</span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> population <span class="op">&lt;</span> <span class="dv">100000</span>:</span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="bu">int</span>(<span class="bu">sum</span>(num_station))</span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="dv">5000000</span> <span class="op">&lt;</span> population:</span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>            num_station.append(np.floor(<span class="dv">1</span> <span class="op">+</span> <span class="fl">0.15</span><span class="op">*</span><span class="dv">4900000</span><span class="op">/</span><span class="dv">100000</span>)<span class="op">+</span><span class="dv">1</span>)</span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>            num_station.append(np.floor(<span class="dv">1</span> <span class="op">+</span> <span class="fl">0.15</span><span class="op">*</span>(population<span class="op">-</span><span class="dv">100000</span>)<span class="op">/</span><span class="dv">100000</span>)<span class="op">+</span><span class="dv">1</span>)</span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="dv">5000000</span> <span class="op">&lt;</span> population:</span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>            num_station.append(np.floor(<span class="dv">6</span> <span class="op">+</span> <span class="fl">0.05</span><span class="op">*</span>(population<span class="op">-</span><span class="dv">5000000</span>)<span class="op">/</span><span class="dv">100000</span>)<span class="op">+</span><span class="dv">1</span>)</span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">int</span>(<span class="bu">sum</span>(num_station))</span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>        </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<div id="c56e0cf0-938a-43c6-908f-7d7227c554cb" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>num_monitors_cpcb(pollutant<span class="op">=</span><span class="st">'spm'</span>,population<span class="op">=</span><span class="dv">5200000</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<pre><code>45</code></pre>
+</div>
+</div>
+<div id="bd407c6a-8367-473f-a3b8-57cc3b2e6b6a" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>num_monitors_cpcb(pollutant<span class="op">=</span><span class="st">'so2'</span>,population<span class="op">=</span><span class="dv">5200000</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<pre><code>24</code></pre>
+</div>
+</div>
+</section>
+<section id="calculating-population-from-landscan" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="calculating-population-from-landscan"><span class="header-section-number">8.2</span> Calculating population from Landscan</h2>
+<p>We can dynamically calculate population of any given airshed using the population raster from <a href="https://landscan.ornl.gov/">Landscan</a>. We downloaded the <code>Landscan Global 2024</code> file, which is a raster image containing population data in ~1km resolution.</p>
+<div id="3e223959-300d-4de2-8247-724ca2b8097d" class="cell" data-execution_count="4">
+<details class="code-fold">
+<summary>Show hidden code that plots the landscan population raster</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> rasterio</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.colors <span class="im">as</span> mcolors</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> rasterio.plot <span class="im">import</span> show</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> geopandas <span class="im">as</span> gpd</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Load TIFF</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>tif_path <span class="op">=</span> <span class="st">"data/landscan-india-2024.tif"</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> rasterio.<span class="bu">open</span>(tif_path) <span class="im">as</span> src:</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    population <span class="op">=</span> src.read(<span class="dv">1</span>)                        <span class="co"># first band</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    population <span class="op">=</span> np.where(population<span class="op">&lt;</span><span class="dv">0</span>, np.nan, population)  <span class="co"># mask nodata encoded as negative</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    extent <span class="op">=</span> [src.bounds.left, src.bounds.right, src.bounds.bottom, src.bounds.top]</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    crs <span class="op">=</span> src.crs</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Load admin boundaries — reproject to match raster CRS</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>INDIA_STATES <span class="op">=</span> gpd.read_file(<span class="st">'data/INDIA_STATES.geojson'</span>).to_crs(crs)</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>INDIA_STATES.head()</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot</span></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">7</span>, <span class="dv">7</span>))</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>im <span class="op">=</span> ax.imshow(</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>    population,</span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>    extent<span class="op">=</span>extent,</span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>    cmap<span class="op">=</span><span class="st">'YlOrRd'</span>,</span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>    origin<span class="op">=</span><span class="st">'upper'</span>,</span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>    vmin<span class="op">=</span>np.nanpercentile(population, <span class="dv">2</span>),   <span class="co"># clip outliers</span></span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>    vmax<span class="op">=</span>np.nanpercentile(population, <span class="dv">98</span>),</span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a><span class="co"># Admin boundary overlay</span></span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>INDIA_STATES.boundary.plot(ax<span class="op">=</span>ax, linewidth<span class="op">=</span><span class="fl">0.5</span>, color<span class="op">=</span><span class="st">'black'</span>)</span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>plt.colorbar(im, ax<span class="op">=</span>ax, label<span class="op">=</span><span class="st">'Population'</span>)</span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">'Population - Landscan 2024'</span>)</span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'Longitude'</span>)</span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'Latitude'</span>)</span>
+<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a><span class="co">#plt.savefig('no2_map.png', dpi=150, bbox_inches='tight')</span></span>
+<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Filling_Gaps_Satellite_files/figure-html/cell-2-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="How_many_monitors_needed_files/figure-html/cell-5-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>Thus we have filled the gaps in NO2 monitoring using TROPOMI’s NO2 data in Delhi.</p>
-</section>
-<section id="limitations-of-satellite-images" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="limitations-of-satellite-images"><span class="header-section-number">4.3</span> Limitations of Satellite images</h2>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="Filling_Gaps_Satellite_files/figure-html/53d976ad-1b44-483e-9fe6-6419c788e8cf-1-ee52d017-ebef-470a-ab38-ab169964945e.png" class="img-fluid figure-img"></p>
-<figcaption>satellite.png</figcaption>
-</figure>
+<p>We can crop this raster to any given airshed. You can download airsheds for India’s NCAP cities from here: <a href="https://urbanemissions.info/india-air-quality/india-ncap-city-airsheds/">Designated Airsheds of 131 India’s NCAP cities | UEInfo</a>. In this tutorial, we work with <code>Mumbai</code> airshed. <code>Mumbai</code> airshed is a big airshed of 6400 sq.km and it also includes <code>Badlapur</code>, <code>Navi Mumbai</code>, <code>Thane</code>, <code>Ulhas Nagar</code> and <code>Vasai Virar</code>.</p>
+<div id="2e00ba4e-8a84-4a65-9890-5d0f6b755260" class="cell" data-execution_count="5">
+<details class="code-fold">
+<summary>Show hidden code that crops the landscan population raster to airshed</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Crop the raster to the airshed</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> rasterio.mask <span class="im">import</span> mask</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>tif_path <span class="op">=</span> <span class="st">"data/landscan-india-2024.tif"</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> rasterio.<span class="bu">open</span>(tif_path) <span class="im">as</span> src:</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>     <span class="co">#We'll use this for all other rasters </span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    target_crs <span class="op">=</span> src.crs</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    target_transform <span class="op">=</span> src.transform</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    target_width <span class="op">=</span> src.width</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    target_height <span class="op">=</span> src.height</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    mumbai_airshed <span class="op">=</span> gpd.read_file(<span class="st">'data/grids_mumbai.kml'</span>)</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Ensure that both Mumbai file and Population raster file has same CRS</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>    mumbai_airshed <span class="op">=</span> mumbai_airshed.to_crs(src.crs)</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>    out_image, out_transform <span class="op">=</span> mask(src, mumbai_airshed.geometry, crop<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>    out_meta <span class="op">=</span> src.meta.copy()</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Update metadata for the new clipped file</span></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>out_meta.update({</span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>    <span class="st">"driver"</span>: <span class="st">"GTiff"</span>,</span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>    <span class="st">"height"</span>: out_image.shape[<span class="dv">1</span>],</span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>    <span class="st">"width"</span>: out_image.shape[<span class="dv">2</span>],</span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>    <span class="st">"transform"</span>: out_transform</span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a><span class="co">#Save the result</span></span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> rasterio.<span class="bu">open</span>(<span class="st">"data/landscan-airshed.tif"</span>, <span class="st">"w"</span>, <span class="op">**</span>out_meta) <span class="im">as</span> dest:</span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>    dest.write(out_image)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 </div>
-<p>While satellite images help us get pollutant concentration in areas where there are no monitoring stations, there are a few limitations in relying completely on satellite images alone:</p>
-<ol type="1">
-<li>Satellite images give the value for the entire vertical column above the ground, while we are generally interested in the ambient measurements (2-10m height), where we breathe air.</li>
-<li>TROPOMI gives data of a region once per day, typically at the same time around <code>~13:30 local time</code>. It might thus under-bias short-lived pollutants if the satellite doesn’t pass over the region when the pollutant is live. For example, if the stubble in farms are burnt in the evenings, they could go un-detected. For this reason, <a href="https://www.business-standard.com/india-news/sc-asks-govt-to-procure-data-on-farm-fires-from-geo-stationary-satellites-124111801174_1.html">Supreme Court of India asked the government to purchase data from geo-stationary satellites to monitor farm fires</a></li>
-</ol>
-<p>Nevertheless, combining satellite data with ground-monitoring data and modelling data allows us to get a better understanding of air quality in a city.</p>
+<div id="8d693d8b-6d5c-42b9-bb0c-ca6b6ee2b9c0" class="cell" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>population_airshed <span class="op">=</span> np.where(out_image<span class="op">&lt;</span><span class="dv">0</span>, np.nan, out_image)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'The population of Mumbai airshed is </span><span class="sc">{</span><span class="bu">round</span>(np.nansum(population_airshed)<span class="op">/</span><span class="dv">1000000</span>,<span class="dv">2</span>)<span class="sc">}</span><span class="ss"> Million'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>The population of Mumbai airshed is 26.95 Million</code></pre>
+</div>
+</div>
+<p>We can now send this population value to the <code>num_monitors_cpcb</code> function to calculate number of monitors required as per CPCB to get a representative value of air quality.</p>
+<div id="265e1cac-a22a-4a4d-aac9-12c3ea1ee397" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>num_monitors_cpcb(pollutant<span class="op">=</span><span class="st">'spm'</span>,population<span class="op">=</span>np.nansum(population_airshed))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<pre><code>80</code></pre>
+</div>
+</div>
+<p>Mumbai airshed thus requires a minimum of <code>80 monitors</code> as per CPCB thumb rule to get representative value of <code>Suspended Partiulate Matter</code></p>
 </section>
-<section id="summary" class="level2" data-number="4.4">
-<h2 data-number="4.4" class="anchored" data-anchor-id="summary"><span class="header-section-number">4.4</span> Summary</h2>
-<p>In this tutorial, we learnt that a city’s air quality monitoring network alone would result in a lot of gaps spatially. We then learnt to fill these gaps using satellite images - that of TROPOMI. We also learnt the limitations of satellite images.</p>
-<p>There are many other ways to access TROPOMI data:</p>
-<ol type="1">
-<li>You can use <a href="https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_S5P_OFFL_L3_NO2">Google Earth Engine (GEE)</a>. This code will help you to visualise and download TROPOMI data of any pollutant of any city/region: <a href="https://code.earthengine.google.com/53995a177b50a718b9455f651cae0bdf">TROPOMI Pollutants GEE Code</a></li>
-<li>There are applications on Google Earth Engine like <a href="jstnbraaten.users.earthengine.app/view/tropomi-explorer">Tropomi Explorer</a></li>
-<li>You could download the entire globe’s TROPOMI data in the form of <code>NetCDF</code> files from here: <a href="https://radiantearth.github.io/stac-browser/#/external/data-portal.s5p-pal.com/api/s5p-l3?.language=en">Radiant Earth STAC Browser</a></li>
-</ol>
+<section id="summary" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="summary"><span class="header-section-number">8.3</span> Summary</h2>
+<p>In this tutorial we learnt to use CPCB guidelines to estimate the minimum number of monitors required in an airshed for each pollutant. These guidelines are solely based on the population of the airshed. We thus learnt to calculate the population of the airshed from <a href="https://landscan.ornl.gov/">Landscan</a> rasters and then estimate the monitoring needs.</p>
+<p>Note that this estimate is the minimum number of monitors required. In the next tutorial, we will apply <code>urban correction factor</code> to get better estimates.</p>
 
 
 </section>
@@ -949,13 +1055,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../notebooks/Air_Quality_Standards.html" class="pagination-link" aria-label="Compliance with Air Quality Standards">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Compliance with Air Quality Standards</span></span>
+      <a href="../notebooks/Emission_Inventories.html" class="pagination-link" aria-label="Emission Inventories">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Emission Inventories</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../notebooks/Filling_Gaps_Modeling.html" class="pagination-link" aria-label="Filling Gaps with model results">
-        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Filling Gaps with model results</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../notebooks/HealthImpacts_LifeExpectancy.html" class="pagination-link" aria-label="Health Impacts | Life Expectancy">
+        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Health Impacts | Life Expectancy</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

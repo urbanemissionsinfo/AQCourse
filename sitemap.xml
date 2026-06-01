@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://urbanemissionsinfo.github.io/AQCourse/index.html</loc>
-    <lastmod>2026-04-29T18:17:13.298Z</lastmod>
+    <lastmod>2026-06-01T12:10:20.157Z</lastmod>
   </url>
   <url>
     <loc>https://urbanemissionsinfo.github.io/AQCourse/notebooks/Calculating_AQI.html</loc>
@@ -33,7 +33,11 @@
     <lastmod>2026-03-19T07:29:25.492Z</lastmod>
   </url>
   <url>
+    <loc>https://urbanemissionsinfo.github.io/AQCourse/notebooks/How_many_monitors_needed.html</loc>
+    <lastmod>2026-06-01T12:05:09.019Z</lastmod>
+  </url>
+  <url>
     <loc>https://urbanemissionsinfo.github.io/AQCourse/notebooks/HealthImpacts_LifeExpectancy.html</loc>
-    <lastmod>2026-04-29T18:20:32.451Z</lastmod>
+    <lastmod>2026-04-29T18:22:32.662Z</lastmod>
   </url>
 </urlset>
