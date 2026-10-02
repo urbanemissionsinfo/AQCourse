@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://urbanemissionsinfo.github.io/AQCourse/index.html</loc>
-    <lastmod>2026-08-08T00:52:54.430Z</lastmod>
+    <lastmod>2026-10-02T07:15:20.257Z</lastmod>
   </url>
   <url>
     <loc>https://urbanemissionsinfo.github.io/AQCourse/notebooks/Calculating_AQI.html</loc>
@@ -22,7 +22,7 @@
   </url>
   <url>
     <loc>https://urbanemissionsinfo.github.io/AQCourse/notebooks/Filling_Gaps_Modeling.html</loc>
-    <lastmod>2026-03-18T10:53:40.278Z</lastmod>
+    <lastmod>2026-08-19T14:27:05.197Z</lastmod>
   </url>
   <url>
     <loc>https://urbanemissionsinfo.github.io/AQCourse/notebooks/Source_Apportionment.html</loc>
@@ -43,5 +43,9 @@
   <url>
     <loc>https://urbanemissionsinfo.github.io/AQCourse/notebooks/OpenAQ.html</loc>
     <lastmod>2026-08-08T00:56:37.416Z</lastmod>
+  </url>
+  <url>
+    <loc>https://urbanemissionsinfo.github.io/AQCourse/notebooks/ReadingAir.html</loc>
+    <lastmod>2026-10-02T07:20:33.143Z</lastmod>
   </url>
 </urlset>
