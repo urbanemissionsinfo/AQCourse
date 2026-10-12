@@ -421,9 +421,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#city-daily-statistics" id="toc-city-daily-statistics" class="nav-link" data-scroll-target="#city-daily-statistics"><span class="header-section-number">11.3</span> City Daily Statistics</a></li>
   <li><a href="#city-monthly-statistics" id="toc-city-monthly-statistics" class="nav-link" data-scroll-target="#city-monthly-statistics"><span class="header-section-number">11.4</span> City Monthly Statistics</a></li>
   <li><a href="#city-annual-statistics" id="toc-city-annual-statistics" class="nav-link" data-scroll-target="#city-annual-statistics"><span class="header-section-number">11.5</span> City Annual Statistics</a></li>
-  <li><a href="#temporal-trends" id="toc-temporal-trends" class="nav-link" data-scroll-target="#temporal-trends"><span class="header-section-number">11.6</span> Temporal trends</a></li>
-  <li><a href="#spatial-heterogeniety" id="toc-spatial-heterogeniety" class="nav-link" data-scroll-target="#spatial-heterogeniety"><span class="header-section-number">11.7</span> Spatial Heterogeniety</a></li>
-  <li><a href="#extreme-values-and-pollution-episodes" id="toc-extreme-values-and-pollution-episodes" class="nav-link" data-scroll-target="#extreme-values-and-pollution-episodes"><span class="header-section-number">11.8</span> Extreme Values and Pollution Episodes</a></li>
+  <li><a href="#spatial-heterogeniety" id="toc-spatial-heterogeniety" class="nav-link" data-scroll-target="#spatial-heterogeniety"><span class="header-section-number">11.6</span> Spatial Heterogeniety</a></li>
   </ul>
 </nav>
     </div>
@@ -455,11 +453,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="preparing-the-dataset" class="level2" data-number="11.1">
 <h2 data-number="11.1" class="anchored" data-anchor-id="preparing-the-dataset"><span class="header-section-number">11.1</span> Preparing the dataset</h2>
 <p>This excel file has multiple sheets. Each sheet has houurly data on PM2.5 from each station. The sheet names represent the name of station.</p>
-<div id="000b65fb-a02f-49b1-a994-cd02ad1b0417" class="cell" data-execution_count="84">
+<div id="000b65fb-a02f-49b1-a994-cd02ad1b0417" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pd.read_csv(<span class="st">'data/AddisAbaba_hourly_stations_2024.csv'</span>)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>data.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="84">
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pd.read_csv(<span class="st">'data/AddisAbaba_hourly_stations_2024.csv'</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>data.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
 <div>
 
 
@@ -533,7 +532,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="c4c543ff-dd36-40da-a831-880852274d4e" class="cell" data-execution_count="85">
+<div id="c4c543ff-dd36-40da-a831-880852274d4e" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'pm2.5'</span>] <span class="op">=</span> (data[<span class="st">'pm2.5_a'</span>] <span class="op">+</span> data[<span class="st">'pm2.5_b'</span>])<span class="op">/</span><span class="dv">2</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'Date'</span>] <span class="op">=</span> pd.to_datetime(data[<span class="st">'Date'</span>])</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'year'</span>] <span class="op">=</span> data.Date.dt.year</span>
@@ -541,8 +540,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'day'</span>] <span class="op">=</span> data.Date.dt.day</span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'hour'</span>] <span class="op">=</span> data.Date.dt.hour</span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'day_of_year'</span>] <span class="op">=</span> data.Date.dt.dayofyear</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>data.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="85">
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'DN'</span>] <span class="op">=</span> np.where((data[<span class="st">'hour'</span>]<span class="op">&gt;=</span><span class="dv">6</span>) <span class="op">&amp;</span> (data[<span class="st">'hour'</span>]<span class="op">&lt;=</span><span class="dv">20</span>), <span class="st">"D"</span>, <span class="st">"N"</span>)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>data.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="2">
 <div>
 
 
@@ -563,6 +563,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <th data-quarto-table-cell-role="th">day</th>
 <th data-quarto-table-cell-role="th">hour</th>
 <th data-quarto-table-cell-role="th">day_of_year</th>
+<th data-quarto-table-cell-role="th">DN</th>
 </tr>
 </thead>
 <tbody>
@@ -581,6 +582,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>1</td>
 <td>0</td>
 <td>1</td>
+<td>N</td>
 </tr>
 <tr class="even">
 <th data-quarto-table-cell-role="th">1</th>
@@ -597,6 +599,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>1</td>
 <td>1</td>
 <td>1</td>
+<td>N</td>
 </tr>
 <tr class="odd">
 <th data-quarto-table-cell-role="th">2</th>
@@ -613,6 +616,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>1</td>
 <td>2</td>
 <td>1</td>
+<td>N</td>
 </tr>
 <tr class="even">
 <th data-quarto-table-cell-role="th">3</th>
@@ -629,6 +633,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>1</td>
 <td>3</td>
 <td>1</td>
+<td>N</td>
 </tr>
 <tr class="odd">
 <th data-quarto-table-cell-role="th">4</th>
@@ -645,6 +650,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>1</td>
 <td>4</td>
 <td>1</td>
+<td>N</td>
 </tr>
 </tbody>
 </table>
@@ -656,11 +662,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="city-hourly-statistics" class="level2" data-number="11.2">
 <h2 data-number="11.2" class="anchored" data-anchor-id="city-hourly-statistics"><span class="header-section-number">11.2</span> City Hourly Statistics</h2>
 <p>A city’s hourly average PM2.5 is measured as the average of PM2.5 concentrations reported at all stations in the city.</p>
-<div id="13206add-2925-4d1e-bb19-8f7020091469" class="cell" data-execution_count="87">
+<div id="13206add-2925-4d1e-bb19-8f7020091469" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>city_hourly <span class="op">=</span> data.groupby([<span class="st">'year'</span>,<span class="st">'day_of_year'</span>,<span class="st">'hour'</span>])[[<span class="st">'pm2.5'</span>]].mean().reset_index()</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>city_hourly <span class="op">=</span> city_hourly.rename(columns <span class="op">=</span> {<span class="st">'pm2.5'</span>:<span class="st">'pm25_avg'</span>})</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>city_hourly.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="87">
+<div class="cell-output cell-output-display" data-execution_count="3">
 <div>
 
 
@@ -717,11 +723,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Its obvious that at a given hour, different stations report different concentrations. The variation between these concentrations is also an useful measure. Its also useful to know the number of stations used to calculate these statistics.</p>
-<div id="1cb5f922-2c5c-4964-bd59-cac7fdb06977" class="cell" data-execution_count="88">
+<div id="1cb5f922-2c5c-4964-bd59-cac7fdb06977" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>city_hourly[<span class="st">'pm25_std'</span>] <span class="op">=</span> data.groupby([<span class="st">'year'</span>,<span class="st">'day_of_year'</span>,<span class="st">'hour'</span>])[[<span class="st">'pm2.5'</span>]].std().reset_index()[<span class="st">'pm2.5'</span>]</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>city_hourly[<span class="st">'num_stations'</span>] <span class="op">=</span> data.groupby([<span class="st">'year'</span>,<span class="st">'day_of_year'</span>,<span class="st">'hour'</span>])[[<span class="st">'pm2.5'</span>]].count()[<span class="st">'pm2.5'</span>].reset_index()[<span class="st">'pm2.5'</span>]</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>city_hourly.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="88">
+<div class="cell-output cell-output-display" data-execution_count="4">
 <div>
 
 
@@ -789,7 +795,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="e191acf5-3640-443c-ac94-6f917fafeadb" class="cell" data-execution_count="89">
+<div id="e191acf5-3640-443c-ac94-6f917fafeadb" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Show hidden code that plots city hourly PM2.5 avg</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -837,21 +843,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>We can see that most hourly averages of the city fall within a narrow range, but there are a few exceptional spikes. We can use percentiles and box-plots to represent them.</p>
-<div id="63eccecd-787e-48cf-b09e-056fd3f5f601" class="cell" data-execution_count="90">
+<div id="63eccecd-787e-48cf-b09e-056fd3f5f601" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 5 percentile - city hourly average</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>city_hourly[<span class="st">'pm25_avg'</span>].quantile(<span class="fl">0.05</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="90">
+<div class="cell-output cell-output-display" data-execution_count="6">
 <pre><code>14.274052678571428</code></pre>
 </div>
 </div>
-<div id="1e366946-618f-4386-94ce-e261479f0116" class="cell" data-execution_count="91">
+<div id="1e366946-618f-4386-94ce-e261479f0116" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 95 percentile - city hourly average</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>city_hourly[<span class="st">'pm25_avg'</span>].quantile(<span class="fl">0.95</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="91">
+<div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>83.66718571428571</code></pre>
 </div>
 </div>
-<div id="11163eb3-4d1f-4323-a309-ee9e647231db" class="cell" data-execution_count="92">
+<div id="11163eb3-4d1f-4323-a309-ee9e647231db" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">15</span>, <span class="dv">6</span>))</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>plt.boxplot(city_hourly[<span class="st">'pm25_avg'</span>], vert<span class="op">=</span><span class="va">False</span>, showmeans<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"PM2.5 (µg/m³)"</span>)</span>
@@ -870,10 +876,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="city-daily-statistics" class="level2" data-number="11.3">
 <h2 data-number="11.3" class="anchored" data-anchor-id="city-daily-statistics"><span class="header-section-number">11.3</span> City Daily Statistics</h2>
 <p>When we have station hourly data, it is better to use that to calculate city daily statistics. If we use city hourly averages to calculate daily average, each hour’s average gets equally weighted. But we know that if an hour’s average is calculated from more number of stations, it is better. Hence, City average PM2.5 concentration on any day is the average of all station hourly values on that day.</p>
-<div id="0a81507f-cfcb-4cfa-8718-b8bb91a196e5" class="cell" data-execution_count="103">
+<div id="0a81507f-cfcb-4cfa-8718-b8bb91a196e5" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>city_daily <span class="op">=</span> data.groupby([<span class="st">'year'</span>,<span class="st">'day_of_year'</span>])[<span class="st">'pm2.5'</span>].agg([<span class="st">'mean'</span>,<span class="st">'std'</span>,<span class="st">'count'</span>]).reset_index()</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>city_daily.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="103">
+<div class="cell-output cell-output-display" data-execution_count="9">
 <div>
 
 
@@ -935,7 +941,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="b4ab8e32-02bb-4a9d-b708-682f15c0ecbe" class="cell" data-execution_count="94">
+<div id="b4ab8e32-02bb-4a9d-b708-682f15c0ecbe" class="cell" data-execution_count="10">
 <details class="code-fold">
 <summary>Show hidden code that plots city daily PM2.5 avg</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create actual datetime</span></span>
@@ -982,27 +988,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>We can apply W.H.O’s Air Quality Standards at daily statistics. W.H.O recommended a daily average level of 15 µg/m³ for PM2.5 As per W.H.O, a city should meet these daily averages on <code>99% of the days</code>. We can see that Addis Ababa meets this target in less than 1% of days.</p>
-<div id="b28e2b13-dc4e-4e4b-a4b9-cc1021fc3c31" class="cell" data-execution_count="95">
+<div id="b28e2b13-dc4e-4e4b-a4b9-cc1021fc3c31" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>(city_daily[<span class="st">'mean'</span>]<span class="op">&lt;</span><span class="dv">15</span>).mean()<span class="op">*</span><span class="dv">100</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="95">
+<div class="cell-output cell-output-display" data-execution_count="11">
 <pre><code>0.9523809523809524</code></pre>
 </div>
 </div>
-<div id="428bbf67-1cf9-4026-ac3c-3471a1b8ad9d" class="cell" data-execution_count="96">
+<div id="428bbf67-1cf9-4026-ac3c-3471a1b8ad9d" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 5 percentile - city hourly average</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>city_daily[<span class="st">'mean'</span>].quantile(<span class="fl">0.05</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="96">
+<div class="cell-output cell-output-display" data-execution_count="12">
 <pre><code>20.070973771880293</code></pre>
 </div>
 </div>
-<div id="41075eae-ae28-48e8-bfaa-4462a508fd7c" class="cell" data-execution_count="97">
+<div id="41075eae-ae28-48e8-bfaa-4462a508fd7c" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 95 percentile - city hourly average</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>city_daily[<span class="st">'mean'</span>].quantile(<span class="fl">0.95</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="97">
+<div class="cell-output cell-output-display" data-execution_count="13">
 <pre><code>67.27227463787735</code></pre>
 </div>
 </div>
-<div id="82972851-d811-4cf6-aa21-8d1cde3365e9" class="cell" data-execution_count="98">
+<div id="82972851-d811-4cf6-aa21-8d1cde3365e9" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">15</span>, <span class="dv">6</span>))</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>plt.boxplot(city_daily[<span class="st">'mean'</span>], vert<span class="op">=</span><span class="va">False</span>, showmeans<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"PM2.5 (µg/m³)"</span>)</span>
@@ -1017,14 +1023,150 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
+<p>Within a day, we can also start making diurnal analysis - comparing day and night</p>
+<div id="3bfd861d-9542-4578-837d-cc12e95a3822" class="cell" data-execution_count="15">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>city_daily_diurnal <span class="op">=</span> data.groupby([<span class="st">'year'</span>,<span class="st">'day_of_year'</span>,<span class="st">'DN'</span>])[<span class="st">'pm2.5'</span>].agg([<span class="st">'mean'</span>,<span class="st">'std'</span>,<span class="st">'count'</span>]).reset_index()</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>city_daily_diurnal.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="15">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">year</th>
+<th data-quarto-table-cell-role="th">day_of_year</th>
+<th data-quarto-table-cell-role="th">DN</th>
+<th data-quarto-table-cell-role="th">mean</th>
+<th data-quarto-table-cell-role="th">std</th>
+<th data-quarto-table-cell-role="th">count</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>2024</td>
+<td>1</td>
+<td>D</td>
+<td>22.675828</td>
+<td>8.755595</td>
+<td>122</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>2024</td>
+<td>1</td>
+<td>N</td>
+<td>35.174140</td>
+<td>22.332102</td>
+<td>68</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>2024</td>
+<td>2</td>
+<td>D</td>
+<td>25.366575</td>
+<td>8.803188</td>
+<td>106</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>2024</td>
+<td>2</td>
+<td>N</td>
+<td>39.870923</td>
+<td>27.925978</td>
+<td>65</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>2024</td>
+<td>3</td>
+<td>D</td>
+<td>29.655708</td>
+<td>9.548785</td>
+<td>89</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="a7cee4d6-7fa0-4c9d-a5f2-90ec344bc3eb" class="cell" data-execution_count="16">
+<details class="code-fold">
+<summary>Show hidden code that plots city daily PM2.5 avg - diurnal</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create actual datetime</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>city_daily_diurnal[<span class="st">'time'</span>] <span class="op">=</span> (</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    pd.to_datetime(city_daily_diurnal[<span class="st">'year'</span>].astype(<span class="bu">str</span>), <span class="bu">format</span><span class="op">=</span><span class="st">'%Y'</span>)</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> pd.to_timedelta(city_daily_diurnal[<span class="st">'day_of_year'</span>] <span class="op">-</span> <span class="dv">1</span>, unit<span class="op">=</span><span class="st">'D'</span>)</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>city_daily_diurnal <span class="op">=</span> city_daily_diurnal.sort_values(<span class="st">'time'</span>)</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot</span></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">15</span>, <span class="dv">6</span>))</span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>city_daily_day <span class="op">=</span> city_daily_diurnal[city_daily_diurnal[<span class="st">'DN'</span>]<span class="op">==</span><span class="st">'D'</span>]</span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>plt.plot(</span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>    city_daily_day[<span class="st">'time'</span>],</span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>    city_daily_day[<span class="st">'mean'</span>],</span>
+<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a>    label<span class="op">=</span><span class="st">'Mean PM2.5 - Day'</span>,</span>
+<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a>    linewidth<span class="op">=</span><span class="fl">1.5</span></span>
+<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-20"><a href="#cb21-20" aria-hidden="true" tabindex="-1"></a>plt.fill_between(</span>
+<span id="cb21-21"><a href="#cb21-21" aria-hidden="true" tabindex="-1"></a>    city_daily_day[<span class="st">'time'</span>],</span>
+<span id="cb21-22"><a href="#cb21-22" aria-hidden="true" tabindex="-1"></a>    city_daily_day[<span class="st">'mean'</span>] <span class="op">-</span> city_daily_day[<span class="st">'std'</span>],</span>
+<span id="cb21-23"><a href="#cb21-23" aria-hidden="true" tabindex="-1"></a>    city_daily_day[<span class="st">'mean'</span>] <span class="op">+</span> city_daily_day[<span class="st">'std'</span>],</span>
+<span id="cb21-24"><a href="#cb21-24" aria-hidden="true" tabindex="-1"></a>    alpha<span class="op">=</span><span class="fl">0.3</span>,</span>
+<span id="cb21-25"><a href="#cb21-25" aria-hidden="true" tabindex="-1"></a>    label<span class="op">=</span><span class="st">'±1 Standard Deviation'</span></span>
+<span id="cb21-26"><a href="#cb21-26" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb21-27"><a href="#cb21-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-28"><a href="#cb21-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-29"><a href="#cb21-29" aria-hidden="true" tabindex="-1"></a>city_daily_night <span class="op">=</span> city_daily_diurnal[city_daily_diurnal[<span class="st">'DN'</span>]<span class="op">==</span><span class="st">'N'</span>]</span>
+<span id="cb21-30"><a href="#cb21-30" aria-hidden="true" tabindex="-1"></a>plt.plot(</span>
+<span id="cb21-31"><a href="#cb21-31" aria-hidden="true" tabindex="-1"></a>    city_daily_night[<span class="st">'time'</span>],</span>
+<span id="cb21-32"><a href="#cb21-32" aria-hidden="true" tabindex="-1"></a>    city_daily_night[<span class="st">'mean'</span>],</span>
+<span id="cb21-33"><a href="#cb21-33" aria-hidden="true" tabindex="-1"></a>    label<span class="op">=</span><span class="st">'Mean PM2.5 - Night'</span>,</span>
+<span id="cb21-34"><a href="#cb21-34" aria-hidden="true" tabindex="-1"></a>    linewidth<span class="op">=</span><span class="fl">1.5</span></span>
+<span id="cb21-35"><a href="#cb21-35" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb21-36"><a href="#cb21-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-37"><a href="#cb21-37" aria-hidden="true" tabindex="-1"></a>plt.fill_between(</span>
+<span id="cb21-38"><a href="#cb21-38" aria-hidden="true" tabindex="-1"></a>    city_daily_night[<span class="st">'time'</span>],</span>
+<span id="cb21-39"><a href="#cb21-39" aria-hidden="true" tabindex="-1"></a>    city_daily_night[<span class="st">'mean'</span>] <span class="op">-</span> city_daily_night[<span class="st">'std'</span>],</span>
+<span id="cb21-40"><a href="#cb21-40" aria-hidden="true" tabindex="-1"></a>    city_daily_night[<span class="st">'mean'</span>] <span class="op">+</span> city_daily_night[<span class="st">'std'</span>],</span>
+<span id="cb21-41"><a href="#cb21-41" aria-hidden="true" tabindex="-1"></a>    alpha<span class="op">=</span><span class="fl">0.3</span>,</span>
+<span id="cb21-42"><a href="#cb21-42" aria-hidden="true" tabindex="-1"></a>    label<span class="op">=</span><span class="st">'±1 Standard Deviation'</span></span>
+<span id="cb21-43"><a href="#cb21-43" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb21-44"><a href="#cb21-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-45"><a href="#cb21-45" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Time'</span>)</span>
+<span id="cb21-46"><a href="#cb21-46" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'PM2.5 (µg/m³)'</span>)</span>
+<span id="cb21-47"><a href="#cb21-47" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Daily PM2.5 Variation - Diurnal'</span>)</span>
+<span id="cb21-48"><a href="#cb21-48" aria-hidden="true" tabindex="-1"></a>plt.axhline(<span class="dv">15</span>, color<span class="op">=</span><span class="st">'darkgreen'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, label<span class="op">=</span><span class="st">'W.H.O Daily PM2.5 Target'</span>)</span>
+<span id="cb21-49"><a href="#cb21-49" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb21-50"><a href="#cb21-50" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">45</span>)</span>
+<span id="cb21-51"><a href="#cb21-51" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb21-52"><a href="#cb21-52" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="ReadingAir_files/figure-html/cell-17-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
 </section>
 <section id="city-monthly-statistics" class="level2" data-number="11.4">
 <h2 data-number="11.4" class="anchored" data-anchor-id="city-monthly-statistics"><span class="header-section-number">11.4</span> City Monthly Statistics</h2>
 <p>We’ll now use the city daily averages data to produce monthly and seasonal statistics. We are thus assuming that each day’s average is equally valid as cities report daily averages officially.</p>
-<div id="105e8373-b45c-4836-910d-089e77e0147d" class="cell" data-execution_count="99">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>city_daily[<span class="st">'month'</span>] <span class="op">=</span> city_daily.time.dt.strftime(<span class="st">'%b'</span>)</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>city_daily.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="99">
+<div id="105e8373-b45c-4836-910d-089e77e0147d" class="cell" data-execution_count="19">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>city_daily[<span class="st">'month'</span>] <span class="op">=</span> city_daily.time.dt.strftime(<span class="st">'%b'</span>)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>city_daily.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="19">
 <div>
 
 
@@ -1098,18 +1240,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="a508aeb1-e8d5-4627-bf01-4f24f6df99ca" class="cell" data-execution_count="100">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> calendar</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>month_order <span class="op">=</span> <span class="bu">list</span>(calendar.month_abbr)[<span class="dv">1</span>:]</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>city_daily[<span class="st">'month'</span>] <span class="op">=</span> pd.Categorical(city_daily[<span class="st">'month'</span>], categories<span class="op">=</span>month_order, ordered<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>city_monthly <span class="op">=</span> city_daily.groupby([<span class="st">'year'</span>,<span class="st">'month'</span>])[<span class="st">'mean'</span>].agg([<span class="st">'mean'</span>,<span class="st">'std'</span>]).reset_index().dropna()</span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>city_monthly.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="a508aeb1-e8d5-4627-bf01-4f24f6df99ca" class="cell" data-execution_count="20">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> calendar</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>month_order <span class="op">=</span> <span class="bu">list</span>(calendar.month_abbr)[<span class="dv">1</span>:]</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>city_daily[<span class="st">'month'</span>] <span class="op">=</span> pd.Categorical(city_daily[<span class="st">'month'</span>], categories<span class="op">=</span>month_order, ordered<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>city_monthly <span class="op">=</span> city_daily.groupby([<span class="st">'year'</span>,<span class="st">'month'</span>])[<span class="st">'mean'</span>].agg([<span class="st">'mean'</span>,<span class="st">'std'</span>]).reset_index().dropna()</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>city_monthly.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/tmp/ipykernel_3775/594153622.py:5: FutureWarning: The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.
+<pre><code>/tmp/ipykernel_4307/594153622.py:5: FutureWarning: The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.
   city_monthly = city_daily.groupby(['year','month'])['mean'].agg(['mean','std']).reset_index().dropna()</code></pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="100">
+<div class="cell-output cell-output-display" data-execution_count="20">
 <div>
 
 
@@ -1165,17 +1307,115 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="6a116c6d-ab07-4f28-a886-1a5feee1597e" class="cell" data-execution_count="101">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">5</span>))</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>ax.bar(city_monthly[<span class="st">'month'</span>], city_monthly[<span class="st">'mean'</span>], yerr<span class="op">=</span>city_monthly[<span class="st">'std'</span>].to_numpy(),</span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>       color<span class="op">=</span><span class="st">'skyblue'</span>, edgecolor<span class="op">=</span><span class="st">'black'</span>, capsize<span class="op">=</span><span class="dv">6</span>, ecolor<span class="op">=</span><span class="st">'crimson'</span>)</span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'City Monthly Average PM2.5'</span>)</span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'PM2.5 (µg/m³) '</span>)</span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="6a116c6d-ab07-4f28-a886-1a5feee1597e" class="cell" data-execution_count="21">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">5</span>))</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>ax.bar(city_monthly[<span class="st">'month'</span>], city_monthly[<span class="st">'mean'</span>], yerr<span class="op">=</span>city_monthly[<span class="st">'std'</span>].to_numpy(),</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>       color<span class="op">=</span><span class="st">'skyblue'</span>, edgecolor<span class="op">=</span><span class="st">'black'</span>, capsize<span class="op">=</span><span class="dv">6</span>, ecolor<span class="op">=</span><span class="st">'crimson'</span>)</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'City Monthly Average PM2.5'</span>)</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'PM2.5 (µg/m³) '</span>)</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="ReadingAir_files/figure-html/cell-18-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="ReadingAir_files/figure-html/cell-20-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Diurnal</p>
+<div id="545140b2-83ce-4664-bdaa-4bef4acb241d" class="cell" data-execution_count="22">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create actual datetime</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>city_daily_diurnal[<span class="st">'time'</span>] <span class="op">=</span> (</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>    pd.to_datetime(city_daily_diurnal[<span class="st">'year'</span>].astype(<span class="bu">str</span>), <span class="bu">format</span><span class="op">=</span><span class="st">'%Y'</span>)</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> pd.to_timedelta(city_daily_diurnal[<span class="st">'day_of_year'</span>] <span class="op">-</span> <span class="dv">1</span>, unit<span class="op">=</span><span class="st">'D'</span>)</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>city_daily_diurnal[<span class="st">'month'</span>] <span class="op">=</span> city_daily_diurnal.time.dt.strftime(<span class="st">'%b'</span>)</span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>month_order <span class="op">=</span> <span class="bu">list</span>(calendar.month_abbr)[<span class="dv">1</span>:]</span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>city_daily_diurnal[<span class="st">'month'</span>] <span class="op">=</span> pd.Categorical(city_daily_diurnal[<span class="st">'month'</span>], categories<span class="op">=</span>month_order, ordered<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>city_monthly_diurnal <span class="op">=</span> city_daily_diurnal.groupby([<span class="st">'year'</span>,<span class="st">'month'</span>,<span class="st">'DN'</span>])[<span class="st">'mean'</span>].agg([<span class="st">'mean'</span>,<span class="st">'std'</span>]).reset_index().dropna()</span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>city_monthly_diurnal.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/tmp/ipykernel_4307/1780426900.py:12: FutureWarning: The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.
+  city_monthly_diurnal = city_daily_diurnal.groupby(['year','month','DN'])['mean'].agg(['mean','std']).reset_index().dropna()</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="22">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">year</th>
+<th data-quarto-table-cell-role="th">month</th>
+<th data-quarto-table-cell-role="th">DN</th>
+<th data-quarto-table-cell-role="th">mean</th>
+<th data-quarto-table-cell-role="th">std</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>2024</td>
+<td>Jan</td>
+<td>D</td>
+<td>29.774738</td>
+<td>9.088560</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>2024</td>
+<td>Jan</td>
+<td>N</td>
+<td>44.548786</td>
+<td>14.189184</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>2024</td>
+<td>Feb</td>
+<td>D</td>
+<td>24.306320</td>
+<td>8.680840</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>2024</td>
+<td>Feb</td>
+<td>N</td>
+<td>30.272460</td>
+<td>9.156744</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>2024</td>
+<td>Mar</td>
+<td>D</td>
+<td>25.078230</td>
+<td>10.689991</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="75d0b380-c98a-491d-9419-fa395d06accb" class="cell" data-execution_count="23">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>df_mean <span class="op">=</span> city_monthly_diurnal.pivot(index<span class="op">=</span><span class="st">'month'</span>, columns<span class="op">=</span><span class="st">'DN'</span>, values<span class="op">=</span><span class="st">'mean'</span>)</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>df_std <span class="op">=</span> city_monthly_diurnal.pivot(index<span class="op">=</span><span class="st">'month'</span>, columns<span class="op">=</span><span class="st">'DN'</span>, values<span class="op">=</span><span class="st">'std'</span>)</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">6</span>))</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>df_mean.plot(kind<span class="op">=</span><span class="st">'bar'</span>, yerr<span class="op">=</span>df_std, ax<span class="op">=</span>ax, color<span class="op">=</span>[<span class="st">"#FF9F1C"</span>,<span class="st">"#1D3557"</span>],edgecolor<span class="op">=</span><span class="st">'black'</span>, capsize<span class="op">=</span><span class="dv">6</span>, ecolor<span class="op">=</span><span class="st">'crimson'</span>)</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'City Monthly Average PM2.5 - Diurnal Variation'</span>)</span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'PM2.5 (µg/m³) '</span>)</span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="ReadingAir_files/figure-html/cell-22-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
@@ -1183,10 +1423,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="city-annual-statistics" class="level2" data-number="11.5">
 <h2 data-number="11.5" class="anchored" data-anchor-id="city-annual-statistics"><span class="header-section-number">11.5</span> City Annual Statistics</h2>
-<div id="a298595b-cd09-4199-9875-d9778c8f724e" class="cell" data-execution_count="102">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Annual average</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>city_daily.groupby([<span class="st">'year'</span>])[[<span class="st">'mean'</span>]].agg([<span class="st">'mean'</span>,<span class="st">'std'</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="102">
+<p>The W.H.O’s Annual Standard for PM2.5 is 5 µg/m³. Addis Ababa is thus 8 times more than W.H.O standard.</p>
+<div id="a298595b-cd09-4199-9875-d9778c8f724e" class="cell" data-execution_count="24">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Annual average</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>city_daily.groupby([<span class="st">'year'</span>])[[<span class="st">'mean'</span>]].agg([<span class="st">'mean'</span>,<span class="st">'std'</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="24">
 <div>
 
 
@@ -1219,16 +1460,225 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>The W.H.O’s Annual Standard for PM2.5 is 5 µg/m³. Addis Ababa is thus 8 times more than W.H.O standard.</p>
+<div id="b61c9ebd-de53-4c0d-b5a9-29a231c24b7f" class="cell" data-execution_count="25">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>city_daily_diurnal.groupby([<span class="st">'year'</span>,<span class="st">'DN'</span>])[[<span class="st">'mean'</span>]].agg([<span class="st">'mean'</span>,<span class="st">'std'</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="25">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th colspan="2" data-quarto-table-cell-role="th" data-halign="left">mean</th>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">mean</th>
+<th data-quarto-table-cell-role="th">std</th>
+</tr>
+<tr class="header">
+<th data-quarto-table-cell-role="th">year</th>
+<th data-quarto-table-cell-role="th">DN</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th rowspan="2" data-quarto-table-cell-role="th" data-valign="top">2024</th>
+<th data-quarto-table-cell-role="th">D</th>
+<td>38.157480</td>
+<td>21.017833</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">N</th>
+<td>42.718817</td>
+<td>16.108997</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
 </section>
-<section id="temporal-trends" class="level2" data-number="11.6">
-<h2 data-number="11.6" class="anchored" data-anchor-id="temporal-trends"><span class="header-section-number">11.6</span> Temporal trends</h2>
-</section>
-<section id="spatial-heterogeniety" class="level2" data-number="11.7">
-<h2 data-number="11.7" class="anchored" data-anchor-id="spatial-heterogeniety"><span class="header-section-number">11.7</span> Spatial Heterogeniety</h2>
-</section>
-<section id="extreme-values-and-pollution-episodes" class="level2" data-number="11.8">
-<h2 data-number="11.8" class="anchored" data-anchor-id="extreme-values-and-pollution-episodes"><span class="header-section-number">11.8</span> Extreme Values and Pollution Episodes</h2>
+<section id="spatial-heterogeniety" class="level2" data-number="11.6">
+<h2 data-number="11.6" class="anchored" data-anchor-id="spatial-heterogeniety"><span class="header-section-number">11.6</span> Spatial Heterogeniety</h2>
+<p>We can see spatial heterogeneity in the pollutoin by visualising station level stats. Let’s plot station level annual means.</p>
+<div id="782db4ec-60cf-41ae-a462-cfd139d3d6e4" class="cell" data-execution_count="42">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>station_daily <span class="op">=</span> data.groupby([<span class="st">'year'</span>,<span class="st">'station'</span>,<span class="st">'day_of_year'</span>])[<span class="st">'pm2.5'</span>].agg([<span class="st">'mean'</span>,<span class="st">'std'</span>,<span class="st">'count'</span>]).reset_index()</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>station_annual <span class="op">=</span> station_daily.groupby([<span class="st">'year'</span>,<span class="st">'station'</span>])[<span class="st">'mean'</span>].agg([<span class="st">'mean'</span>]).reset_index()</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>station_annual <span class="op">=</span> station_annual.merge(data[[<span class="st">'station'</span>,<span class="st">'Lat'</span>,<span class="st">'Long'</span>]]).drop_duplicates().reset_index(drop<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>station_annual</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="42">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">year</th>
+<th data-quarto-table-cell-role="th">station</th>
+<th data-quarto-table-cell-role="th">mean</th>
+<th data-quarto-table-cell-role="th">Lat</th>
+<th data-quarto-table-cell-role="th">Long</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>2024</td>
+<td>AAEPGDC</td>
+<td>18.893042</td>
+<td>9.021745</td>
+<td>38.824353</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>2024</td>
+<td>AASTUMAIA</td>
+<td>30.296063</td>
+<td>8.883660</td>
+<td>38.809601</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>2024</td>
+<td>AAU4K</td>
+<td>36.025417</td>
+<td>9.034121</td>
+<td>38.765430</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>2024</td>
+<td>AHRI</td>
+<td>41.562116</td>
+<td>8.985801</td>
+<td>38.711855</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>2024</td>
+<td>AQ10_ICSL</td>
+<td>47.461347</td>
+<td>8.996560</td>
+<td>38.729099</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">5</th>
+<td>2024</td>
+<td>AQN1</td>
+<td>27.084370</td>
+<td>9.057409</td>
+<td>38.763878</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">6</th>
+<td>2024</td>
+<td>AQN2</td>
+<td>58.164605</td>
+<td>9.011622</td>
+<td>38.820760</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">7</th>
+<td>2024</td>
+<td>BLH</td>
+<td>44.542067</td>
+<td>9.019170</td>
+<td>38.747780</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">8</th>
+<td>2024</td>
+<td>ECA</td>
+<td>45.331427</td>
+<td>9.012812</td>
+<td>38.767014</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">9</th>
+<td>2024</td>
+<td>PCO</td>
+<td>35.144690</td>
+<td>8.987340</td>
+<td>38.736390</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">10</th>
+<td>2024</td>
+<td>REPPIE</td>
+<td>46.753306</td>
+<td>8.983766</td>
+<td>38.714447</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">11</th>
+<td>2024</td>
+<td>Skyline</td>
+<td>40.344499</td>
+<td>8.989531</td>
+<td>38.786888</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="e932f854-9dbe-4984-b015-90be6dff8561" class="cell" data-execution_count="50">
+<details class="code-fold">
+<summary>Show hidden code that plots monitors locations along with Annual Mean PM2.5 values.</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> geopandas <span class="im">as</span> gpd</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> contextily <span class="im">as</span> cx</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="co"># df has: station, lat, long, mean</span></span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>gdf <span class="op">=</span> gpd.GeoDataFrame(</span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>    station_annual,</span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>    geometry<span class="op">=</span>gpd.points_from_xy(station_annual[<span class="st">"Long"</span>], station_annual[<span class="st">"Lat"</span>]),</span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a>    crs<span class="op">=</span><span class="st">"EPSG:4326"</span>,</span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Buffer in a local metric CRS (UTM) so 2000 m is accurate,</span></span>
+<span id="cb32-13"><a href="#cb32-13" aria-hidden="true" tabindex="-1"></a><span class="co"># then reproject to Web Mercator for the basemap</span></span>
+<span id="cb32-14"><a href="#cb32-14" aria-hidden="true" tabindex="-1"></a>utm <span class="op">=</span> gdf.estimate_utm_crs()</span>
+<span id="cb32-15"><a href="#cb32-15" aria-hidden="true" tabindex="-1"></a>circles <span class="op">=</span> gdf.to_crs(utm).copy()</span>
+<span id="cb32-16"><a href="#cb32-16" aria-hidden="true" tabindex="-1"></a>circles[<span class="st">"geometry"</span>] <span class="op">=</span> circles.geometry.<span class="bu">buffer</span>(<span class="dv">2000</span>)   <span class="co"># 2 km radius</span></span>
+<span id="cb32-17"><a href="#cb32-17" aria-hidden="true" tabindex="-1"></a>circles <span class="op">=</span> circles.to_crs(epsg<span class="op">=</span><span class="dv">3857</span>)</span>
+<span id="cb32-18"><a href="#cb32-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-19"><a href="#cb32-19" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">10</span>))</span>
+<span id="cb32-20"><a href="#cb32-20" aria-hidden="true" tabindex="-1"></a>circles.plot(</span>
+<span id="cb32-21"><a href="#cb32-21" aria-hidden="true" tabindex="-1"></a>    column<span class="op">=</span><span class="st">"mean"</span>,</span>
+<span id="cb32-22"><a href="#cb32-22" aria-hidden="true" tabindex="-1"></a>    cmap<span class="op">=</span><span class="st">"YlOrRd"</span>,</span>
+<span id="cb32-23"><a href="#cb32-23" aria-hidden="true" tabindex="-1"></a>    alpha<span class="op">=</span><span class="fl">0.6</span>,</span>
+<span id="cb32-24"><a href="#cb32-24" aria-hidden="true" tabindex="-1"></a>    edgecolor<span class="op">=</span><span class="st">"black"</span>,</span>
+<span id="cb32-25"><a href="#cb32-25" aria-hidden="true" tabindex="-1"></a>    linewidth<span class="op">=</span><span class="fl">0.5</span>,</span>
+<span id="cb32-26"><a href="#cb32-26" aria-hidden="true" tabindex="-1"></a>    legend<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb32-27"><a href="#cb32-27" aria-hidden="true" tabindex="-1"></a>    legend_kwds<span class="op">=</span>{<span class="st">"label"</span>: <span class="st">"Annual Mean PM2.5 (µg/m³)"</span>, <span class="st">"shrink"</span>: <span class="fl">0.6</span>},</span>
+<span id="cb32-28"><a href="#cb32-28" aria-hidden="true" tabindex="-1"></a>    ax<span class="op">=</span>ax,</span>
+<span id="cb32-29"><a href="#cb32-29" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb32-30"><a href="#cb32-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-31"><a href="#cb32-31" aria-hidden="true" tabindex="-1"></a>cx.add_basemap(ax, source<span class="op">=</span>cx.providers.Esri.WorldStreetMap)   <span class="co"># no key</span></span>
+<span id="cb32-32"><a href="#cb32-32" aria-hidden="true" tabindex="-1"></a>ax.set_axis_off()</span>
+<span id="cb32-33"><a href="#cb32-33" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb32-34"><a href="#cb32-34" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="ReadingAir_files/figure-html/cell-26-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Each station represents a circular area of about 2km radius. We can thus see that the monitor network is not well distributed.</p>
 
 
 </section>
